@@ -1,0 +1,2702 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Root schema of a Transparency Information Language",
+    "description": "This schema defines the Transparency Information Language",
+    "default": {},
+    "examples": [
+      {
+        "meta": {
+          "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
+          "name": "Green Company",
+          "created": "2020-04-03T15:53:05.929588",
+          "modified": "2020-04-03T15: 53: 05.929588",
+          "version": 2,
+          "language": "de",
+          "status": "active",
+          "url": "https://green-bikes.de/privacy",
+          "_hash": "d732a793562a3e5dc57645a8"
+        },
+        "controller": {
+          "name": "Green Company AG",
+          "division": "Product line e-mobility",
+          "address": "Wolfsburger Ring 2, 38440 Berlin",
+          "country": "DE",
+          "representative": {
+            "name": "Jane Super",
+            "email": "contact@greencompany.de",
+            "phone": "0049 151 1234 5678"
+          }
+        },
+        "dataProtectionOfficer": {
+          "name": "Jane Super",
+          "address": "Wolfsburger Ring 2, 38440 Berlin",
+          "country": "DE",
+          "email": "contact@greencompany.de",
+          "phone": "0049 151 1234 5678"
+        },
+        "dataDisclosed": [
+          {
+            "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
+            "category": "E-mail address",
+            "purposes": [
+              {
+                "purpose": "Marketing",
+                "description": "Newsletter will be sent out once a month."
+              }
+            ],
+            "legalBases": [
+              {
+                "reference": "GDPR-99-1-a",
+                "description": "The data are processed on the basis of Art. 99 GDPR which states..."
+              },
+              {
+                "reference": "BDSG-42-5",
+                "description": "BDSG-42-5 refers to the processing of personal data within..."
+              }
+            ],
+            "legitimateInterests": [
+              {
+                "exists": true,
+                "reasoning": "There is an legitimate interest based on ... and is not overwritten because ..."
+              }
+            ],
+            "recipients": [
+              {
+                "name": "Yellow Company AG",
+                "division": "Product line e-mobility",
+                "address": "Triana 123, 9999 Seville",
+                "country": "ES",
+                "representative": {
+                  "name": "Jane Super",
+                  "email": "contact@yellowcompany.de",
+                  "phone": "0049 151 1234 9876"
+                },
+                "category": "Marketing content provider"
+              },
+              {
+                "category": "Responsible Statistical Institutes"
+              }
+            ],
+            "storage": [
+              {
+                "temporal": [
+                  {
+                    "description": "Creating backups.",
+                    "ttl": "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
+                  },
+                  {
+                    "description": "Finishing ordering process.",
+                    "ttl": "2020-08-09T18:31:42P3Y6M4DT12H30M17S"
+                  }
+                ],
+                "purposeConditional": [
+                  "Data is stored until the end of the ordering process."
+                ],
+                "legalBasisConditional": [
+                  "SGB-100-42"
+                ],
+                "aggregationFunction": "max"
+              }
+            ],
+            "nonDisclosure": {
+              "legalRequirement": false,
+              "contractualRegulation": false,
+              "obligationToProvide": false,
+              "consequences": "If the data is not disclosed, the shipment cannot be delivered."
+            }
+          }
+        ],
+        "thirdCountryTransfers": [
+          {
+            "country": "ES",
+            "adequacyDecision": {
+              "available": true,
+              "description": "An adequacy decision was made on the 23rd April 2020 by..."
+            },
+            "appropriateGuarantees": {
+              "available": true,
+              "description": "Here the appropriate guarantee was formulated by..."
+            },
+            "presenceOfEnforceableRightsAndEffectiveRemedies": {
+              "available": true,
+              "description": "These rights are given because of..."
+            },
+            "standardDataProtectionClause": {
+              "available": true,
+              "description": "The standard data protection clause which applies here can be found here: ..."
+            }
+          }
+        ],
+        "accessAndDataPortability": {
+          "available": true,
+          "description": "Data access is possible through...",
+          "url": "https://green-bikes.de/access",
+          "email": "access@greencompany.de",
+          "identificationEvidences": [
+            "ID card copy",
+            "Email verification"
+          ],
+          "administrativeFee": {
+            "amount": 0,
+            "currency": "EUR"
+          },
+          "dataFormat": "json"
+        },
+        "sources": [
+          {
+            "_id": "f1423cc00509931",
+            "dataCategory": "Creditworthiness",
+            "sources": [
+              {
+                "description": "This information could be retrieved from...",
+                "url": "https://blueCompany.org",
+                "publiclyAvailable": false
+              }
+            ]
+          }
+        ],
+        "rightToInformation": {
+          "available": true,
+          "description": "For the right to information please use this contact form and...",
+          "url": "https://greencompany.org/rightToInformation",
+          "email": "contact@greencompany.de",
+          "identificationEvidences": [
+            "ID card copy",
+            "Email verification"
+          ]
+        },
+        "rightToRectificationOrDeletion": {
+          "available": true,
+          "description": "For the right to rectification please use this contact form and...",
+          "url": "https://greencompany.org/rights",
+          "email": "contact@greencompany.de",
+          "identificationEvidences": [
+            "ID card copy",
+            "Email verification"
+          ]
+        },
+        "rightToDataPortability": {
+          "available": false,
+          "description": "Data portability is only possible when...",
+          "url": "https://greencompany.org/rights",
+          "email": "contact@greencompany.de",
+          "identificationEvidences": [
+            "ID card copy"
+          ]
+        },
+        "rightToWithdrawConsent": {
+          "available": true,
+          "description": "For the right to withdraw consent please use this contact form and...",
+          "url": "https://greencompany.org/rights",
+          "email": "contact@greencompany.de",
+          "identificationEvidences": [
+            "Email verification"
+          ]
+        },
+        "rightToComplain": {
+          "available": true,
+          "description": "For the right to complain please use this contact form and...",
+          "url": "https://greencompany.org/rights",
+          "email": "contact@greencompany.de",
+          "identificationEvidences": [
+            "ID card copy",
+            "Email verification"
+          ],
+          "supervisoryAuthority": {
+            "name": "Commissioner for Data Protection",
+            "address": "Friedrichstrasse 219, 10969 Berlin",
+            "country": "DE",
+            "email": "mailbox@privacy-berlin.de",
+            "phone": "0049 444 222 111"
+          }
+        },
+        "automatedDecisionMaking": {
+          "inUse": true,
+          "logicInvolved": "The personal data are processed as follows...",
+          "scopeAndIntendedEffects": "From processing follows..."
+        },
+        "changesOfPurpose": [
+          {
+            "description": "Due to technial requirements...",
+            "affectedDataCategories": [
+              "Email adress",
+              "Credit score"
+            ],
+            "plannedDateOfChange": "2020-08-2020-06-04T15:04:13+0000",
+            "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
+          }
+        ]
+      }
+    ],
+    "required": [
+      "meta",
+      "controller",
+      "dataProtectionOfficer",
+      "dataDisclosed",
+      "thirdCountryTransfers",
+      "accessAndDataPortability",
+      "sources",
+      "rightToInformation",
+      "rightToRectificationOrDeletion",
+      "rightToDataPortability",
+      "rightToWithdrawConsent",
+      "rightToComplain",
+      "automatedDecisionMaking",
+      "changesOfPurpose"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "meta": {
+        "$id": "#/properties/meta",
+        "type": "object",
+        "title": "The meta schema",
+        "description": "Meta information for the identification and verification of the document.",
+        "default": {},
+        "examples": [
+          {
+            "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
+            "name": "Green Company",
+            "created": "2020-04-03T15:53:05.929588",
+            "modified": "2020-04-03T15: 53: 05.929588",
+            "version": 2,
+            "language": "de",
+            "status": "active",
+            "url": "https://green-bikes.de/privacy",
+            "_hash": "d732a793562a3e5dc57645a8"
+          }
+        ],
+        "required": [
+          "_id",
+          "name",
+          "created",
+          "modified",
+          "version",
+          "language",
+          "status",
+          "url",
+          "_hash"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "_id": {
+            "$id": "#/properties/meta/properties/_id",
+            "type": "string",
+            "title": "The _id schema",
+            "description": "The ID follows the database-specific implementation and does not have to be set in advance; but should offer as much entropy as possible for globally unique identifiers.",
+            "default": "",
+            "examples": [
+              "f1424f86-ca0f-4f0c-9438-43cc00509931"
+            ]
+          },
+          "name": {
+            "$id": "#/properties/meta/properties/name",
+            "type": "string",
+            "title": "The name schema",
+            "description": "Name of the data controller.",
+            "default": "",
+            "examples": [
+              "Green Company"
+            ]
+          },
+          "created": {
+            "$id": "#/properties/meta/properties/created",
+            "type": "string",
+            "title": "The created schema",
+            "description": "Creation date of the document as an ISO-8601 time code.",
+            "default": "",
+            "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+            "examples": [
+              "2020-04-03T15:53:05.929588"
+            ]
+          },
+          "modified": {
+            "$id": "#/properties/meta/properties/modified",
+            "type": "string",
+            "title": "The modified schema",
+            "description": "Last modified date of the document as an ISO-8601 time code.",
+            "default": "",
+            "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+            "examples": [
+              "2020-04-03T15: 53: 05.929588"
+            ]
+          },
+          "version": {
+            "$id": "#/properties/meta/properties/version",
+            "type": "integer",
+            "title": "The version schema",
+            "description": "This number serves to version documents of a controller.",
+            "default": 1,
+            "minimum": 1,
+            "examples": [
+              2
+            ]
+          },
+          "language": {
+            "$id": "#/properties/meta/properties/language",
+            "type": "string",
+            "title": "The language schema",
+            "description": "All language abbreviation codes follow the established ISO 639-1 standard as identifiers for names of languages.",
+            "pattern": "^(aa|ab|ae|af|ak|am|an|ar|as|av|ay|az|az|ba|be|bg|bh|bi|bm|bn|bo|br|bs|ca|ce|ch|co|cr|cs|cu|cv|cy|da|de|dv|dz|ee|el|en|eo|es|et|eu|fa|ff|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|gv|ha|he|hi|ho|hr|ht|hu|hy|hz|ia|id|ie|ig|ii|ik|io|is|it|iu|ja|jv|ka|kg|ki|kj|kk|kl|km|kn|ko|kr|ks|ku|kv|kw|ky|la|lb|lg|li|ln|lo|lt|lu|lv|mg|mh|mi|mk|ml|mn|mr|ms|mt|my|na|nb|nd|ne|ng|nl|nn|no|nr|nv|ny|oc|oj|om|or|os|pa|pi|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sc|sd|se|sg|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|ty|ug|uk|ur|uz|ve|vi|vo|wa|wo|xh|yi|yo|za|zh|zu)$",
+            "default": "en",
+            "examples": [
+              "de"
+            ]
+          },
+          "status": {
+            "$id": "#/properties/meta/properties/status",
+            "type": "string",
+            "title": "The status schema",
+            "description": "The status of an instance can be active or inactive depending on the policy's legal force.",
+            "default": "active",
+            "pattern": "^(active|inactive)$",
+            "examples": [
+              "active",
+              "inactive"
+            ]
+          },
+          "url": {
+            "$id": "#/properties/meta/properties/url",
+            "type": "string",
+            "title": "The url schema",
+            "description": "An explanation about the purpose of this instance.",
+            "format": "uri",
+            "examples": [
+              "https://green-bikes.de/privacy"
+            ]
+          },
+          "_hash": {
+            "$id": "#/properties/meta/properties/_hash",
+            "type": "string",
+            "title": "The _hash schema",
+            "description": "The hash is based on one SHA256 calculation of the document.",
+            "minLength": 64,
+            "maxLength": 64,
+            "examples": [
+              "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
+            ]
+          }
+        }
+      },
+      "controller": {
+        "$id": "#/properties/controller",
+        "type": "object",
+        "title": "The controller schema",
+        "description": "The responsible controller is defined in here.",
+        "examples": [
+          {
+            "name": "Green Company AG",
+            "division": "Product line e-mobility",
+            "address": "Wolfsburger Ring 2, 38440 Berlin",
+            "country": "DE",
+            "representative": {
+              "name": "Jane Super",
+              "email": "contact@greencompany.de",
+              "phone": "0049 151 1234 5678"
+            }
+          }
+        ],
+        "required": [
+          "name",
+          "address",
+          "country",
+          "representative"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "name": {
+            "$id": "#/properties/controller/properties/name",
+            "type": "string",
+            "title": "The name schema",
+            "description": "Name of the controller.",
+            "examples": [
+              "Green Company AG"
+            ]
+          },
+          "division": {
+            "$id": "#/properties/controller/properties/division",
+            "type": "string",
+            "title": "The division schema",
+            "description": "Serves to differentiate between different areas of a company; particularly relevant for large companies.",
+            "examples": [
+              "Product line e-mobility"
+            ]
+          },
+          "address": {
+            "$id": "#/properties/controller/properties/address",
+            "type": "string",
+            "title": "The address schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Wolfsburger Ring 2, 38440 Berlin"
+            ]
+          },
+          "country": {
+            "$id": "#/properties/controller/properties/country",
+            "type": "string",
+            "title": "The country schema",
+            "description": "All country codes follow the established ones ISO 3166 country abbreviation standard.",
+            "default": "DE",
+            "minLength": 2,
+            "maxLength": 2,
+            "examples": [
+              "DE"
+            ]
+          },
+          "representative": {
+            "$id": "#/properties/controller/properties/representative",
+            "type": "object",
+            "title": "The representative schema",
+            "description": "The representative is a responsible real person thath representes the controller.",
+            "examples": [
+              {
+                "name": "Jane Super",
+                "email": "contact@greencompany.de",
+                "phone": "0049 151 1234 5678"
+              }
+            ],
+            "required": [
+              "name",
+              "email"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "$id": "#/properties/controller/properties/representative/properties/name",
+                "type": "string",
+                "title": "The name schema",
+                "description": "Name of the controller's representative.",
+                "default": "",
+                "examples": [
+                  "Jane Super"
+                ]
+              },
+              "email": {
+                "$id": "#/properties/controller/properties/representative/properties/email",
+                "type": "string",
+                "title": "The email schema",
+                "description": "Email address of the controller's representative.",
+                "format": "email",
+                "examples": [
+                  "contact@greencompany.de"
+                ]
+              },
+              "phone": {
+                "$id": "#/properties/controller/properties/representative/properties/phone",
+                "type": "string",
+                "title": "Phone number of the controller's representative.",
+                "description": "An explanation about the purpose of this instance.",
+                "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\.\/0-9]*$",
+                "examples": [
+                  "+49 151 1234 5678"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "dataProtectionOfficer": {
+        "$id": "#/properties/dataProtectionOfficer",
+        "type": "object",
+        "title": "The dataProtectionOfficer schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "name": "Jane Super",
+            "address": "Wolfsburger Ring 2, 38440 Berlin",
+            "country": "DE",
+            "email": "contact@greencompany.de",
+            "phone": "0049 151 1234 5678"
+          }
+        ],
+        "required": [
+          "name",
+          "address",
+          "country",
+          "email"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "name": {
+            "$id": "#/properties/dataProtectionOfficer/properties/name",
+            "type": "string",
+            "title": "The name schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Jane Super"
+            ]
+          },
+          "address": {
+            "$id": "#/properties/dataProtectionOfficer/properties/address",
+            "type": "string",
+            "title": "The address schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Wolfsburger Ring 2, 38440 Berlin"
+            ]
+          },
+          "country": {
+            "$id": "#/properties/dataProtectionOfficer/properties/country",
+            "type": "string",
+            "title": "The country schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "DE"
+            ]
+          },
+          "email": {
+            "$id": "#/properties/dataProtectionOfficer/properties/email",
+            "type": "string",
+            "title": "The email schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "contact@greencompany.de"
+            ]
+          },
+          "phone": {
+            "$id": "#/properties/dataProtectionOfficer/properties/phone",
+            "type": "string",
+            "title": "The phone schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "0049 151 1234 5678"
+            ]
+          }
+        }
+      },
+      "dataDisclosed": {
+        "$id": "#/properties/dataDisclosed",
+        "type": "array",
+        "title": "The dataDisclosed schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": [],
+        "examples": [
+          [
+            {
+              "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
+              "category": "E-mail address",
+              "purposes": [
+                {
+                  "purpose": "Marketing",
+                  "description": "Newsletter will be sent out once a month."
+                }
+              ],
+              "legalBases": [
+                {
+                  "reference": "GDPR-99-1-a",
+                  "description": "The data are processed on the basis of Art. 99 GDPR which states..."
+                },
+                {
+                  "reference": "BDSG-42-5",
+                  "description": "BDSG-42-5 refers to the processing of personal data within..."
+                }
+              ],
+              "legitimateInterests": [
+                {
+                  "exists": true,
+                  "reasoning": "There is an legitimate interest based on ... and is not overwritten because ..."
+                }
+              ],
+              "recipients": [
+                {
+                  "name": "Yellow Company AG",
+                  "division": "Product line e-mobility",
+                  "address": "Triana 123, 9999 Seville",
+                  "country": "ES",
+                  "representative": {
+                    "name": "Jane Super",
+                    "email": "contact@yellowcompany.de",
+                    "phone": "0049 151 1234 9876"
+                  },
+                  "category": "Marketing content provider"
+                },
+                {
+                  "category": "Responsible Statistical Institutes"
+                }
+              ],
+              "storage": [
+                {
+                  "temporal": [
+                    {
+                      "description": "Creating backups.",
+                      "ttl": "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
+                    },
+                    {
+                      "description": "Finishing ordering process.",
+                      "ttl": "2020-08-09T18:31:42P3Y6M4DT12H30M17S"
+                    }
+                  ],
+                  "purposeConditional": [
+                    "Data is stored until the end of the ordering process."
+                  ],
+                  "legalBasisConditional": [
+                    "SGB-100-42"
+                  ],
+                  "aggregationFunction": "max"
+                }
+              ],
+              "nonDisclosure": {
+                "legalRequirement": false,
+                "contractualRegulation": false,
+                "obligationToProvide": false,
+                "consequences": "If the data is not disclosed, the shipment cannot be delivered."
+              }
+            }
+          ]
+        ],
+        "additionalItems": true,
+        "items": {
+          "anyOf": [
+            {
+              "$id": "#/properties/dataDisclosed/items/anyOf/0",
+              "type": "object",
+              "title": "The first anyOf schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
+                  "category": "E-mail address",
+                  "purposes": [
+                    {
+                      "purpose": "Marketing",
+                      "description": "Newsletter will be sent out once a month."
+                    }
+                  ],
+                  "legalBases": [
+                    {
+                      "reference": "GDPR-99-1-a",
+                      "description": "The data are processed on the basis of Art. 99 GDPR which states..."
+                    },
+                    {
+                      "reference": "BDSG-42-5",
+                      "description": "BDSG-42-5 refers to the processing of personal data within..."
+                    }
+                  ],
+                  "legitimateInterests": [
+                    {
+                      "exists": true,
+                      "reasoning": "There is an legitimate interest based on ... and is not overwritten because ..."
+                    }
+                  ],
+                  "recipients": [
+                    {
+                      "name": "Yellow Company AG",
+                      "division": "Product line e-mobility",
+                      "address": "Triana 123, 9999 Seville",
+                      "country": "ES",
+                      "representative": {
+                        "name": "Jane Super",
+                        "email": "contact@yellowcompany.de",
+                        "phone": "0049 151 1234 9876"
+                      },
+                      "category": "Marketing content provider"
+                    },
+                    {
+                      "category": "Responsible Statistical Institutes"
+                    }
+                  ],
+                  "storage": [
+                    {
+                      "temporal": [
+                        {
+                          "description": "Creating backups.",
+                          "ttl": "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
+                        },
+                        {
+                          "description": "Finishing ordering process.",
+                          "ttl": "2020-08-09T18:31:42P3Y6M4DT12H30M17S"
+                        }
+                      ],
+                      "purposeConditional": [
+                        "Data is stored until the end of the ordering process."
+                      ],
+                      "legalBasisConditional": [
+                        "SGB-100-42"
+                      ],
+                      "aggregationFunction": "max"
+                    }
+                  ],
+                  "nonDisclosure": {
+                    "legalRequirement": false,
+                    "contractualRegulation": false,
+                    "obligationToProvide": false,
+                    "consequences": "If the data is not disclosed, the shipment cannot be delivered."
+                  }
+                }
+              ],
+              "required": [
+                "_id",
+                "category",
+                "purposes",
+                "legalBases",
+                "legitimateInterests",
+                "recipients",
+                "storage",
+                "nonDisclosure"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "_id": {
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/_id",
+                  "type": "string",
+                  "title": "The _id schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "f1424f86-ca0f-4f0c-9438-43cc00509931"
+                  ]
+                },
+                "category": {
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/category",
+                  "type": "string",
+                  "title": "The category schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "E-mail address"
+                  ]
+                },
+                "purposes": {
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes",
+                  "type": "array",
+                  "title": "The purposes schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "purpose": "Marketing",
+                        "description": "Newsletter will be sent out once a month."
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "purpose": "Marketing",
+                            "description": "Newsletter will be sent out once a month."
+                          }
+                        ],
+                        "required": [
+                          "purpose",
+                          "description"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "purpose": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items/anyOf/0/properties/purpose",
+                            "type": "string",
+                            "title": "The purpose schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "Marketing"
+                            ]
+                          },
+                          "description": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items/anyOf/0/properties/description",
+                            "type": "string",
+                            "title": "The description schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "Newsletter will be sent out once a month."
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items"
+                  }
+                },
+                "legalBases": {
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases",
+                  "type": "array",
+                  "title": "The legalBases schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "reference": "GDPR-99-1-a",
+                        "description": "The data are processed on the basis of Art. 99 GDPR which states..."
+                      },
+                      {
+                        "reference": "BDSG-42-5",
+                        "description": "BDSG-42-5 refers to the processing of personal data within..."
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "reference": "GDPR-99-1-a",
+                            "description": "The data are processed on the basis of Art. 99 GDPR which states..."
+                          }
+                        ],
+                        "required": [
+                          "reference",
+                          "description"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "reference": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items/anyOf/0/properties/reference",
+                            "type": "string",
+                            "title": "The reference schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "GDPR-99-1-a"
+                            ]
+                          },
+                          "description": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items/anyOf/0/properties/description",
+                            "type": "string",
+                            "title": "The description schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "The data are processed on the basis of Art. 99 GDPR which states..."
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items"
+                  }
+                },
+                "legitimateInterests": {
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legitimateInterests",
+                  "type": "array",
+                  "title": "The legitimateInterests schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "exists": true,
+                        "reasoning": "There is an legitimate interest based on ... and is not overwritten because ..."
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legitimateInterests/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "exists": true,
+                            "reasoning": "There is an legitimate interest based on ... and is not overwritten because ..."
+                          }
+                        ],
+                        "required": [
+                          "exists",
+                          "reasoning"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "exists": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legitimateInterests/items/anyOf/0/properties/exists",
+                            "type": "boolean",
+                            "title": "The exists schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                              true
+                            ]
+                          },
+                          "reasoning": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legitimateInterests/items/anyOf/0/properties/reasoning",
+                            "type": "string",
+                            "title": "The reasoning schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "There is an legitimate interest based on ... and is not overwritten because ..."
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legitimateInterests/items"
+                  }
+                },
+                "recipients": {
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients",
+                  "type": "array",
+                  "title": "The recipients schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "name": "Yellow Company AG",
+                        "division": "Product line e-mobility",
+                        "address": "Triana 123, 9999 Seville",
+                        "country": "ES",
+                        "representative": {
+                          "name": "Jane Super",
+                          "email": "contact@yellowcompany.de",
+                          "phone": "0049 151 1234 9876"
+                        },
+                        "category": "Marketing content provider"
+                      },
+                      {
+                        "category": "Responsible Statistical Institutes"
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "name": "Yellow Company AG",
+                            "division": "Product line e-mobility",
+                            "address": "Triana 123, 9999 Seville",
+                            "country": "ES",
+                            "representative": {
+                              "name": "Jane Super",
+                              "email": "contact@yellowcompany.de",
+                              "phone": "0049 151 1234 9876"
+                            },
+                            "category": "Marketing content provider"
+                          }
+                        ],
+                        "required": [
+                          "category"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "name": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/name",
+                            "type": "string",
+                            "title": "The name schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "Yellow Company AG"
+                            ]
+                          },
+                          "division": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/division",
+                            "type": "string",
+                            "title": "The division schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "Product line e-mobility"
+                            ]
+                          },
+                          "address": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/address",
+                            "type": "string",
+                            "title": "The address schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "Triana 123, 9999 Seville"
+                            ]
+                          },
+                          "country": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/country",
+                            "type": "string",
+                            "title": "The country schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "ES"
+                            ]
+                          },
+                          "representative": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/representative",
+                            "type": "object",
+                            "title": "The representative schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "examples": [
+                              {
+                                "name": "Jane Super",
+                                "email": "contact@yellowcompany.de",
+                                "phone": "0049 151 1234 9876"
+                              }
+                            ],
+                            "required": [],
+                            "additionalProperties": true,
+                            "properties": {
+                              "name": {
+                                "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/representative/properties/name",
+                                "type": "string",
+                                "title": "The name schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "Jane Super"
+                                ]
+                              },
+                              "email": {
+                                "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/representative/properties/email",
+                                "type": "string",
+                                "title": "The email schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "contact@yellowcompany.de"
+                                ]
+                              },
+                              "phone": {
+                                "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/representative/properties/phone",
+                                "type": "string",
+                                "title": "The phone schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                  "0049 151 1234 9876"
+                                ]
+                              }
+                            }
+                          },
+                          "category": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/category",
+                            "type": "string",
+                            "title": "The category schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "Marketing content provider"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/1",
+                        "type": "object",
+                        "title": "The second anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "category": "Responsible Statistical Institutes"
+                          }
+                        ],
+                        "required": [
+                          "category"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "category": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/1/properties/category",
+                            "type": "string",
+                            "title": "The category schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "Responsible Statistical Institutes"
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items"
+                  }
+                },
+                "storage": {
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage",
+                  "type": "array",
+                  "title": "The storage schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "temporal": [
+                          {
+                            "description": "Creating backups.",
+                            "ttl": "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
+                          },
+                          {
+                            "description": "Finishing ordering process.",
+                            "ttl": "2020-08-09T18:31:42P3Y6M4DT12H30M17S"
+                          }
+                        ],
+                        "purposeConditional": [
+                          "Data is stored until the end of the ordering process."
+                        ],
+                        "legalBasisConditional": [
+                          "SGB-100-42"
+                        ],
+                        "aggregationFunction": "max"
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "temporal": [
+                              {
+                                "description": "Creating backups.",
+                                "ttl": "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
+                              },
+                              {
+                                "description": "Finishing ordering process.",
+                                "ttl": "2020-08-09T18:31:42P3Y6M4DT12H30M17S"
+                              }
+                            ],
+                            "purposeConditional": [
+                              "Data is stored until the end of the ordering process."
+                            ],
+                            "legalBasisConditional": [
+                              "SGB-100-42"
+                            ],
+                            "aggregationFunction": "max"
+                          }
+                        ],
+                        "required": [
+                          "temporal",
+                          "purposeConditional",
+                          "legalBasisConditional",
+                          "aggregationFunction"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "temporal": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal",
+                            "type": "array",
+                            "title": "The temporal schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": [],
+                            "examples": [
+                              [
+                                {
+                                  "description": "Creating backups.",
+                                  "ttl": "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
+                                },
+                                {
+                                  "description": "Finishing ordering process.",
+                                  "ttl": "2020-08-09T18:31:42P3Y6M4DT12H30M17S"
+                                }
+                              ]
+                            ],
+                            "additionalItems": true,
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal/items/anyOf/0",
+                                  "type": "object",
+                                  "title": "The first anyOf schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "examples": [
+                                    {
+                                      "description": "Creating backups.",
+                                      "ttl": "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
+                                    }
+                                  ],
+                                  "required": [
+                                    "description",
+                                    "ttl"
+                                  ],
+                                  "additionalProperties": true,
+                                  "properties": {
+                                    "description": {
+                                      "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal/items/anyOf/0/properties/description",
+                                      "type": "string",
+                                      "title": "The description schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "Creating backups."
+                                      ]
+                                    },
+                                    "ttl": {
+                                      "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal/items/anyOf/0/properties/ttl",
+                                      "type": "string",
+                                      "title": "The ttl schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                        "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
+                                      ]
+                                    }
+                                  }
+                                }
+                              ],
+                              "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal/items"
+                            }
+                          },
+                          "purposeConditional": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/purposeConditional",
+                            "type": "array",
+                            "title": "The purposeConditional schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": [],
+                            "examples": [
+                              [
+                                "Data is stored until the end of the ordering process."
+                              ]
+                            ],
+                            "additionalItems": true,
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/purposeConditional/items/anyOf/0",
+                                  "type": "string",
+                                  "title": "The first anyOf schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": "",
+                                  "examples": [
+                                    "Data is stored until the end of the ordering process."
+                                  ]
+                                }
+                              ],
+                              "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/purposeConditional/items"
+                            }
+                          },
+                          "legalBasisConditional": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/legalBasisConditional",
+                            "type": "array",
+                            "title": "The legalBasisConditional schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": [],
+                            "examples": [
+                              [
+                                "SGB-100-42"
+                              ]
+                            ],
+                            "additionalItems": true,
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/legalBasisConditional/items/anyOf/0",
+                                  "type": "string",
+                                  "title": "The first anyOf schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": "",
+                                  "examples": [
+                                    "SGB-100-42"
+                                  ]
+                                }
+                              ],
+                              "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/legalBasisConditional/items"
+                            }
+                          },
+                          "aggregationFunction": {
+                            "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/aggregationFunction",
+                            "type": "string",
+                            "title": "The aggregationFunction schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "max"
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items"
+                  }
+                },
+                "nonDisclosure": {
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/nonDisclosure",
+                  "type": "object",
+                  "title": "The nonDisclosure schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "legalRequirement": false,
+                      "contractualRegulation": false,
+                      "obligationToProvide": false,
+                      "consequences": "If the data is not disclosed, the shipment cannot be delivered."
+                    }
+                  ],
+                  "required": [
+                    "legalRequirement",
+                    "contractualRegulation",
+                    "obligationToProvide",
+                    "consequences"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "legalRequirement": {
+                      "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/nonDisclosure/properties/legalRequirement",
+                      "type": "boolean",
+                      "title": "The legalRequirement schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    },
+                    "contractualRegulation": {
+                      "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/nonDisclosure/properties/contractualRegulation",
+                      "type": "boolean",
+                      "title": "The contractualRegulation schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    },
+                    "obligationToProvide": {
+                      "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/nonDisclosure/properties/obligationToProvide",
+                      "type": "boolean",
+                      "title": "The obligationToProvide schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    },
+                    "consequences": {
+                      "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/nonDisclosure/properties/consequences",
+                      "type": "string",
+                      "title": "The consequences schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "If the data is not disclosed, the shipment cannot be delivered."
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "$id": "#/properties/dataDisclosed/items"
+        }
+      },
+      "thirdCountryTransfers": {
+        "$id": "#/properties/thirdCountryTransfers",
+        "type": "array",
+        "title": "The thirdCountryTransfers schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": [],
+        "examples": [
+          [
+            {
+              "country": "ES",
+              "adequacyDecision": {
+                "available": true,
+                "description": "An adequacy decision was made on the 23rd April 2020 by..."
+              },
+              "appropriateGuarantees": {
+                "available": true,
+                "description": "Here the appropriate guarantee was formulated by..."
+              },
+              "presenceOfEnforceableRightsAndEffectiveRemedies": {
+                "available": true,
+                "description": "These rights are given because of..."
+              },
+              "standardDataProtectionClause": {
+                "available": true,
+                "description": "The standard data protection clause which applies here can be found here: ..."
+              }
+            }
+          ]
+        ],
+        "additionalItems": true,
+        "items": {
+          "anyOf": [
+            {
+              "$id": "#/properties/thirdCountryTransfers/items/anyOf/0",
+              "type": "object",
+              "title": "The first anyOf schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "country": "ES",
+                  "adequacyDecision": {
+                    "available": true,
+                    "description": "An adequacy decision was made on the 23rd April 2020 by..."
+                  },
+                  "appropriateGuarantees": {
+                    "available": true,
+                    "description": "Here the appropriate guarantee was formulated by..."
+                  },
+                  "presenceOfEnforceableRightsAndEffectiveRemedies": {
+                    "available": true,
+                    "description": "These rights are given because of..."
+                  },
+                  "standardDataProtectionClause": {
+                    "available": true,
+                    "description": "The standard data protection clause which applies here can be found here: ..."
+                  }
+                }
+              ],
+              "required": [
+                "country",
+                "adequacyDecision",
+                "appropriateGuarantees",
+                "presenceOfEnforceableRightsAndEffectiveRemedies",
+                "standardDataProtectionClause"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "country": {
+                  "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/country",
+                  "type": "string",
+                  "title": "The country schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "ES"
+                  ]
+                },
+                "adequacyDecision": {
+                  "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/adequacyDecision",
+                  "type": "object",
+                  "title": "The adequacyDecision schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "available": true,
+                      "description": "An adequacy decision was made on the 23rd April 2020 by..."
+                    }
+                  ],
+                  "required": [
+                    "available",
+                    "description"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "available": {
+                      "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/adequacyDecision/properties/available",
+                      "type": "boolean",
+                      "title": "The available schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": false,
+                      "examples": [
+                        true
+                      ]
+                    },
+                    "description": {
+                      "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/adequacyDecision/properties/description",
+                      "type": "string",
+                      "title": "The description schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "An adequacy decision was made on the 23rd April 2020 by..."
+                      ]
+                    }
+                  }
+                },
+                "appropriateGuarantees": {
+                  "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/appropriateGuarantees",
+                  "type": "object",
+                  "title": "The appropriateGuarantees schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "available": true,
+                      "description": "Here the appropriate guarantee was formulated by..."
+                    }
+                  ],
+                  "required": [
+                    "available",
+                    "description"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "available": {
+                      "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/appropriateGuarantees/properties/available",
+                      "type": "boolean",
+                      "title": "The available schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": false,
+                      "examples": [
+                        true
+                      ]
+                    },
+                    "description": {
+                      "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/appropriateGuarantees/properties/description",
+                      "type": "string",
+                      "title": "The description schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "Here the appropriate guarantee was formulated by..."
+                      ]
+                    }
+                  }
+                },
+                "presenceOfEnforceableRightsAndEffectiveRemedies": {
+                  "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/presenceOfEnforceableRightsAndEffectiveRemedies",
+                  "type": "object",
+                  "title": "The presenceOfEnforceableRightsAndEffectiveRemedies schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "available": true,
+                      "description": "These rights are given because of..."
+                    }
+                  ],
+                  "required": [
+                    "available",
+                    "description"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "available": {
+                      "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/presenceOfEnforceableRightsAndEffectiveRemedies/properties/available",
+                      "type": "boolean",
+                      "title": "The available schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": false,
+                      "examples": [
+                        true
+                      ]
+                    },
+                    "description": {
+                      "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/presenceOfEnforceableRightsAndEffectiveRemedies/properties/description",
+                      "type": "string",
+                      "title": "The description schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "These rights are given because of..."
+                      ]
+                    }
+                  }
+                },
+                "standardDataProtectionClause": {
+                  "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/standardDataProtectionClause",
+                  "type": "object",
+                  "title": "The standardDataProtectionClause schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "available": true,
+                      "description": "The standard data protection clause which applies here can be found here: ..."
+                    }
+                  ],
+                  "required": [
+                    "available",
+                    "description"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "available": {
+                      "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/standardDataProtectionClause/properties/available",
+                      "type": "boolean",
+                      "title": "The available schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": false,
+                      "examples": [
+                        true
+                      ]
+                    },
+                    "description": {
+                      "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/standardDataProtectionClause/properties/description",
+                      "type": "string",
+                      "title": "The description schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "The standard data protection clause which applies here can be found here: ..."
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "$id": "#/properties/thirdCountryTransfers/items"
+        }
+      },
+      "accessAndDataPortability": {
+        "$id": "#/properties/accessAndDataPortability",
+        "type": "object",
+        "title": "The accessAndDataPortability schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "available": true,
+            "description": "Data access is possible through...",
+            "url": "https://green-bikes.de/access",
+            "email": "access@greencompany.de",
+            "identificationEvidences": [
+              "ID card copy",
+              "Email verification"
+            ],
+            "administrativeFee": {
+              "amount": 0,
+              "currency": "EUR"
+            },
+            "dataFormat": "json"
+          }
+        ],
+        "required": [
+          "available",
+          "description",
+          "url",
+          "email",
+          "identificationEvidences",
+          "administrativeFee",
+          "dataFormat"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "available": {
+            "$id": "#/properties/accessAndDataPortability/properties/available",
+            "type": "boolean",
+            "title": "The available schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "description": {
+            "$id": "#/properties/accessAndDataPortability/properties/description",
+            "type": "string",
+            "title": "The description schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Data access is possible through..."
+            ]
+          },
+          "url": {
+            "$id": "#/properties/accessAndDataPortability/properties/url",
+            "type": "string",
+            "title": "The url schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "https://green-bikes.de/access"
+            ]
+          },
+          "email": {
+            "$id": "#/properties/accessAndDataPortability/properties/email",
+            "type": "string",
+            "title": "The email schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "access@greencompany.de"
+            ]
+          },
+          "identificationEvidences": {
+            "$id": "#/properties/accessAndDataPortability/properties/identificationEvidences",
+            "type": "array",
+            "title": "The identificationEvidences schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                "ID card copy",
+                "Email verification"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "$id": "#/properties/accessAndDataPortability/properties/identificationEvidences/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "ID card copy",
+                    "Email verification"
+                  ]
+                }
+              ],
+              "$id": "#/properties/accessAndDataPortability/properties/identificationEvidences/items"
+            }
+          },
+          "administrativeFee": {
+            "$id": "#/properties/accessAndDataPortability/properties/administrativeFee",
+            "type": "object",
+            "title": "The administrativeFee schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "amount": 0,
+                "currency": "EUR"
+              }
+            ],
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "amount": {
+                "$id": "#/properties/accessAndDataPortability/properties/administrativeFee/properties/amount",
+                "type": "number",
+                "title": "The amount schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "currency": {
+                "$id": "#/properties/accessAndDataPortability/properties/administrativeFee/properties/currency",
+                "type": "string",
+                "title": "The currency schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "EUR"
+                ]
+              }
+            }
+          },
+          "dataFormat": {
+            "$id": "#/properties/accessAndDataPortability/properties/dataFormat",
+            "type": "string",
+            "title": "The dataFormat schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "json"
+            ]
+          }
+        }
+      },
+      "sources": {
+        "$id": "#/properties/sources",
+        "type": "array",
+        "title": "The sources schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": [],
+        "examples": [
+          [
+            {
+              "_id": "f1423cc00509931",
+              "dataCategory": "Creditworthiness",
+              "sources": [
+                {
+                  "description": "This information could be retrieved from...",
+                  "url": "https://blueCompany.org",
+                  "publiclyAvailable": false
+                }
+              ]
+            }
+          ]
+        ],
+        "additionalItems": true,
+        "items": {
+          "anyOf": [
+            {
+              "$id": "#/properties/sources/items/anyOf/0",
+              "type": "object",
+              "title": "The first anyOf schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "_id": "f1423cc00509931",
+                  "dataCategory": "Creditworthiness",
+                  "sources": [
+                    {
+                      "description": "This information could be retrieved from...",
+                      "url": "https://blueCompany.org",
+                      "publiclyAvailable": false
+                    }
+                  ]
+                }
+              ],
+              "required": [
+                "_id",
+                "dataCategory",
+                "sources"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "_id": {
+                  "$id": "#/properties/sources/items/anyOf/0/properties/_id",
+                  "type": "string",
+                  "title": "The _id schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "f1423cc00509931"
+                  ]
+                },
+                "dataCategory": {
+                  "$id": "#/properties/sources/items/anyOf/0/properties/dataCategory",
+                  "type": "string",
+                  "title": "The dataCategory schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Creditworthiness"
+                  ]
+                },
+                "sources": {
+                  "$id": "#/properties/sources/items/anyOf/0/properties/sources",
+                  "type": "array",
+                  "title": "The sources schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "description": "This information could be retrieved from...",
+                        "url": "https://blueCompany.org",
+                        "publiclyAvailable": false
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                          {
+                            "description": "This information could be retrieved from...",
+                            "url": "https://blueCompany.org",
+                            "publiclyAvailable": false
+                          }
+                        ],
+                        "required": [
+                          "description",
+                          "url",
+                          "publiclyAvailable"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "description": {
+                            "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/description",
+                            "type": "string",
+                            "title": "The description schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "This information could be retrieved from..."
+                            ]
+                          },
+                          "url": {
+                            "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/url",
+                            "type": "string",
+                            "title": "The url schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "https://blueCompany.org"
+                            ]
+                          },
+                          "publiclyAvailable": {
+                            "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/publiclyAvailable",
+                            "type": "boolean",
+                            "title": "The publiclyAvailable schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                              false
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "$id": "#/properties/sources/items/anyOf/0/properties/sources/items"
+                  }
+                }
+              }
+            }
+          ],
+          "$id": "#/properties/sources/items"
+        }
+      },
+      "rightToInformation": {
+        "$id": "#/properties/rightToInformation",
+        "type": "object",
+        "title": "The rightToInformation schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "available": true,
+            "description": "For the right to information please use this contact form and...",
+            "url": "https://greencompany.org/rightToInformation",
+            "email": "contact@greencompany.de",
+            "identificationEvidences": [
+              "ID card copy",
+              "Email verification"
+            ]
+          }
+        ],
+        "required": [
+          "available",
+          "description",
+          "url",
+          "email",
+          "identificationEvidences"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "available": {
+            "$id": "#/properties/rightToInformation/properties/available",
+            "type": "boolean",
+            "title": "The available schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "description": {
+            "$id": "#/properties/rightToInformation/properties/description",
+            "type": "string",
+            "title": "The description schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "For the right to information please use this contact form and..."
+            ]
+          },
+          "url": {
+            "$id": "#/properties/rightToInformation/properties/url",
+            "type": "string",
+            "title": "The url schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "https://greencompany.org/rightToInformation"
+            ]
+          },
+          "email": {
+            "$id": "#/properties/rightToInformation/properties/email",
+            "type": "string",
+            "title": "The email schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "contact@greencompany.de"
+            ]
+          },
+          "identificationEvidences": {
+            "$id": "#/properties/rightToInformation/properties/identificationEvidences",
+            "type": "array",
+            "title": "The identificationEvidences schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                "ID card copy",
+                "Email verification"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "$id": "#/properties/rightToInformation/properties/identificationEvidences/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "ID card copy",
+                    "Email verification"
+                  ]
+                }
+              ],
+              "$id": "#/properties/rightToInformation/properties/identificationEvidences/items"
+            }
+          }
+        }
+      },
+      "rightToRectificationOrDeletion": {
+        "$id": "#/properties/rightToRectificationOrDeletion",
+        "type": "object",
+        "title": "The rightToRectificationOrDeletion schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "available": true,
+            "description": "For the right to rectification please use this contact form and...",
+            "url": "https://greencompany.org/rights",
+            "email": "contact@greencompany.de",
+            "identificationEvidences": [
+              "ID card copy",
+              "Email verification"
+            ]
+          }
+        ],
+        "required": [
+          "available",
+          "description",
+          "url",
+          "email",
+          "identificationEvidences"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "available": {
+            "$id": "#/properties/rightToRectificationOrDeletion/properties/available",
+            "type": "boolean",
+            "title": "The available schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "description": {
+            "$id": "#/properties/rightToRectificationOrDeletion/properties/description",
+            "type": "string",
+            "title": "The description schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "For the right to rectification please use this contact form and..."
+            ]
+          },
+          "url": {
+            "$id": "#/properties/rightToRectificationOrDeletion/properties/url",
+            "type": "string",
+            "title": "The url schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "https://greencompany.org/rights"
+            ]
+          },
+          "email": {
+            "$id": "#/properties/rightToRectificationOrDeletion/properties/email",
+            "type": "string",
+            "title": "The email schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "contact@greencompany.de"
+            ]
+          },
+          "identificationEvidences": {
+            "$id": "#/properties/rightToRectificationOrDeletion/properties/identificationEvidences",
+            "type": "array",
+            "title": "The identificationEvidences schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                "ID card copy",
+                "Email verification"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "$id": "#/properties/rightToRectificationOrDeletion/properties/identificationEvidences/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "ID card copy",
+                    "Email verification"
+                  ]
+                }
+              ],
+              "$id": "#/properties/rightToRectificationOrDeletion/properties/identificationEvidences/items"
+            }
+          }
+        }
+      },
+      "rightToDataPortability": {
+        "$id": "#/properties/rightToDataPortability",
+        "type": "object",
+        "title": "The rightToDataPortability schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "available": false,
+            "description": "Data portability is only possible when...",
+            "url": "https://greencompany.org/rights",
+            "email": "contact@greencompany.de",
+            "identificationEvidences": [
+              "ID card copy"
+            ]
+          }
+        ],
+        "required": [
+          "available",
+          "description",
+          "url",
+          "email",
+          "identificationEvidences"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "available": {
+            "$id": "#/properties/rightToDataPortability/properties/available",
+            "type": "boolean",
+            "title": "The available schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+              false
+            ]
+          },
+          "description": {
+            "$id": "#/properties/rightToDataPortability/properties/description",
+            "type": "string",
+            "title": "The description schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Data portability is only possible when..."
+            ]
+          },
+          "url": {
+            "$id": "#/properties/rightToDataPortability/properties/url",
+            "type": "string",
+            "title": "The url schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "https://greencompany.org/rights"
+            ]
+          },
+          "email": {
+            "$id": "#/properties/rightToDataPortability/properties/email",
+            "type": "string",
+            "title": "The email schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "contact@greencompany.de"
+            ]
+          },
+          "identificationEvidences": {
+            "$id": "#/properties/rightToDataPortability/properties/identificationEvidences",
+            "type": "array",
+            "title": "The identificationEvidences schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                "ID card copy"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "$id": "#/properties/rightToDataPortability/properties/identificationEvidences/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "ID card copy"
+                  ]
+                }
+              ],
+              "$id": "#/properties/rightToDataPortability/properties/identificationEvidences/items"
+            }
+          }
+        }
+      },
+      "rightToWithdrawConsent": {
+        "$id": "#/properties/rightToWithdrawConsent",
+        "type": "object",
+        "title": "The rightToWithdrawConsent schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "available": true,
+            "description": "For the right to withdraw consent please use this contact form and...",
+            "url": "https://greencompany.org/rights",
+            "email": "contact@greencompany.de",
+            "identificationEvidences": [
+              "Email verification"
+            ]
+          }
+        ],
+        "required": [
+          "available",
+          "description",
+          "url",
+          "email",
+          "identificationEvidences"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "available": {
+            "$id": "#/properties/rightToWithdrawConsent/properties/available",
+            "type": "boolean",
+            "title": "The available schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "description": {
+            "$id": "#/properties/rightToWithdrawConsent/properties/description",
+            "type": "string",
+            "title": "The description schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "For the right to withdraw consent please use this contact form and..."
+            ]
+          },
+          "url": {
+            "$id": "#/properties/rightToWithdrawConsent/properties/url",
+            "type": "string",
+            "title": "The url schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "https://greencompany.org/rights"
+            ]
+          },
+          "email": {
+            "$id": "#/properties/rightToWithdrawConsent/properties/email",
+            "type": "string",
+            "title": "The email schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "contact@greencompany.de"
+            ]
+          },
+          "identificationEvidences": {
+            "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences",
+            "type": "array",
+            "title": "The identificationEvidences schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                "Email verification"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Email verification"
+                  ]
+                }
+              ],
+              "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items"
+            }
+          }
+        }
+      },
+      "rightToComplain": {
+        "$id": "#/properties/rightToComplain",
+        "type": "object",
+        "title": "The rightToComplain schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "available": true,
+            "description": "For the right to complain please use this contact form and...",
+            "url": "https://greencompany.org/rights",
+            "email": "contact@greencompany.de",
+            "identificationEvidences": [
+              "ID card copy",
+              "Email verification"
+            ],
+            "supervisoryAuthority": {
+              "name": "Commissioner for Data Protection",
+              "address": "Friedrichstrasse 219, 10969 Berlin",
+              "country": "DE",
+              "email": "mailbox@privacy-berlin.de",
+              "phone": "0049 444 222 111"
+            }
+          }
+        ],
+        "required": [
+          "available",
+          "description",
+          "url",
+          "email",
+          "identificationEvidences",
+          "supervisoryAuthority"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "available": {
+            "$id": "#/properties/rightToComplain/properties/available",
+            "type": "boolean",
+            "title": "The available schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "description": {
+            "$id": "#/properties/rightToComplain/properties/description",
+            "type": "string",
+            "title": "The description schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "For the right to complain please use this contact form and..."
+            ]
+          },
+          "url": {
+            "$id": "#/properties/rightToComplain/properties/url",
+            "type": "string",
+            "title": "The url schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "https://greencompany.org/rights"
+            ]
+          },
+          "email": {
+            "$id": "#/properties/rightToComplain/properties/email",
+            "type": "string",
+            "title": "The email schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "contact@greencompany.de"
+            ]
+          },
+          "identificationEvidences": {
+            "$id": "#/properties/rightToComplain/properties/identificationEvidences",
+            "type": "array",
+            "title": "The identificationEvidences schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                "ID card copy",
+                "Email verification"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "$id": "#/properties/rightToComplain/properties/identificationEvidences/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "ID card copy",
+                    "Email verification"
+                  ]
+                }
+              ],
+              "$id": "#/properties/rightToComplain/properties/identificationEvidences/items"
+            }
+          },
+          "supervisoryAuthority": {
+            "$id": "#/properties/rightToComplain/properties/supervisoryAuthority",
+            "type": "object",
+            "title": "The supervisoryAuthority schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "name": "Commissioner for Data Protection",
+                "address": "Friedrichstrasse 219, 10969 Berlin",
+                "country": "DE",
+                "email": "mailbox@privacy-berlin.de",
+                "phone": "0049 444 222 111"
+              }
+            ],
+            "required": [
+              "name",
+              "address",
+              "country",
+              "email",
+              "phone"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/name",
+                "type": "string",
+                "title": "The name schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Commissioner for Data Protection"
+                ]
+              },
+              "address": {
+                "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/address",
+                "type": "string",
+                "title": "The address schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Friedrichstrasse 219, 10969 Berlin"
+                ]
+              },
+              "country": {
+                "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/country",
+                "type": "string",
+                "title": "The country schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "DE"
+                ]
+              },
+              "email": {
+                "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/email",
+                "type": "string",
+                "title": "The email schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "mailbox@privacy-berlin.de"
+                ]
+              },
+              "phone": {
+                "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/phone",
+                "type": "string",
+                "title": "The phone schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "0049 444 222 111"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "automatedDecisionMaking": {
+        "$id": "#/properties/automatedDecisionMaking",
+        "type": "object",
+        "title": "The automatedDecisionMaking schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "inUse": true,
+            "logicInvolved": "The personal data are processed as follows...",
+            "scopeAndIntendedEffects": "From processing follows..."
+          }
+        ],
+        "required": [
+          "inUse",
+          "logicInvolved",
+          "scopeAndIntendedEffects"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "inUse": {
+            "$id": "#/properties/automatedDecisionMaking/properties/inUse",
+            "type": "boolean",
+            "title": "The inUse schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "logicInvolved": {
+            "$id": "#/properties/automatedDecisionMaking/properties/logicInvolved",
+            "type": "string",
+            "title": "The logicInvolved schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "The personal data are processed as follows..."
+            ]
+          },
+          "scopeAndIntendedEffects": {
+            "$id": "#/properties/automatedDecisionMaking/properties/scopeAndIntendedEffects",
+            "type": "string",
+            "title": "The scopeAndIntendedEffects schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "From processing follows..."
+            ]
+          }
+        }
+      },
+      "changesOfPurpose": {
+        "$id": "#/properties/changesOfPurpose",
+        "type": "array",
+        "title": "The changesOfPurpose schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": [],
+        "examples": [
+          [
+            {
+              "description": "Due to technial requirements...",
+              "affectedDataCategories": [
+                "Email adress",
+                "Credit score"
+              ],
+              "plannedDateOfChange": "2020-08-2020-06-04T15:04:13+0000",
+              "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
+            }
+          ]
+        ],
+        "additionalItems": true,
+        "items": {
+          "anyOf": [
+            {
+              "$id": "#/properties/changesOfPurpose/items/anyOf/0",
+              "type": "object",
+              "title": "The first anyOf schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "examples": [
+                {
+                  "description": "Due to technial requirements...",
+                  "affectedDataCategories": [
+                    "Email adress",
+                    "Credit score"
+                  ],
+                  "plannedDateOfChange": "2020-08-2020-06-04T15:04:13+0000",
+                  "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
+                }
+              ],
+              "required": [
+                "description",
+                "affectedDataCategories",
+                "plannedDateOfChange",
+                "urlOfNewVersion"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "description": {
+                  "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/description",
+                  "type": "string",
+                  "title": "The description schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "Due to technial requirements..."
+                  ]
+                },
+                "affectedDataCategories": {
+                  "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories",
+                  "type": "array",
+                  "title": "The affectedDataCategories schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      "Email adress",
+                      "Credit score"
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "Email adress",
+                          "Credit score"
+                        ]
+                      }
+                    ],
+                    "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items"
+                  }
+                },
+                "plannedDateOfChange": {
+                  "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/plannedDateOfChange",
+                  "type": "string",
+                  "title": "The plannedDateOfChange schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "2020-08-2020-06-04T15:04:13+0000"
+                  ]
+                },
+                "urlOfNewVersion": {
+                  "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/urlOfNewVersion",
+                  "type": "string",
+                  "title": "The urlOfNewVersion schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "https://greencomp.de/privacypolicy/2"
+                  ]
+                }
+              }
+            }
+          ],
+          "$id": "#/properties/changesOfPurpose/items"
+        }
+      }
+    }
+  }
