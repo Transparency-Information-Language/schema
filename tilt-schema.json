@@ -3,7 +3,6 @@
   "type": "object",
   "title": "Root schema of a Transparency Information Language",
   "description": "This schema defines the Transparency Information Language",
-  "default": {},
   "examples": [
     {
       "meta": {
@@ -218,7 +217,7 @@
       },
       "changesOfPurpose": [
         {
-          "description": "Due to technial requirements...",
+          "description": "Due to techncial requirements...",
           "affectedDataCategories": [
             "Email adress",
             "Credit score"
@@ -252,7 +251,6 @@
       "type": "object",
       "title": "The meta schema",
       "description": "Meta information for the identification and verification of the document.",
-      "default": {},
       "examples": [
         {
           "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
@@ -360,7 +358,7 @@
           "type": "string",
           "title": "The url schema",
           "description": "An explanation about the purpose of this instance.",
-          "format": "uri",
+          "format": "uri-reference",
           "examples": [
             "https://green-bikes.de/privacy"
           ]
@@ -502,7 +500,6 @@
       "type": "object",
       "title": "The dataProtectionOfficer schema",
       "description": "The Data Protection Officer (DPO) of the controller.",
-      "default": {},
       "examples": [
         {
           "name": "Jane Super",
@@ -919,7 +916,8 @@
                           "description": "The legitimate interest only has to be stated if the processing is carried out in accordance with Art. 13 (1d). This field refers to the existence of such an interest.",
                           "default": false,
                           "examples": [
-                            true
+                            true,
+                            false
                           ]
                         },
                         "reasoning": {
@@ -1049,7 +1047,6 @@
                           "type": "object",
                           "title": "The representative schema",
                           "description": "The representative of the third party (recipient).",
-                          "default": {},
                           "examples": [
                             {
                               "name": "Jane Super",
@@ -1358,7 +1355,8 @@
                     "description": "Is there a legal requirement to collect these data?",
                     "default": false,
                     "examples": [
-                      false
+                      false,
+                      true
                     ]
                   },
                   "contractualRegulation": {
@@ -1368,7 +1366,8 @@
                     "description": "Is there a contractual regulation to collect these data?",
                     "default": false,
                     "examples": [
-                      false
+                      false,
+                      true
                     ]
                   },
                   "obligationToProvide": {
@@ -1378,7 +1377,8 @@
                     "description": "Is there an obligation for the data subject to provide these data?",
                     "default": false,
                     "examples": [
-                      false
+                      false,
+                      true
                     ]
                   },
                   "consequences": {
@@ -1404,7 +1404,6 @@
       "type": "array",
       "title": "The thirdCountryTransfers schema",
       "description": "This schema refers to the adequacy decisions of any third country transfers.",
-      "default": [],
       "examples": [
         [
           {
@@ -1505,7 +1504,8 @@
                     "description": "Adequacy decision by the European commission exists?",
                     "default": false,
                     "examples": [
-                      true
+                      true,
+                      false
                     ]
                   },
                   "description": {
@@ -1554,7 +1554,8 @@
                     "description": "Do suitable guarantees according to Art. 45 exist?",
                     "default": false,
                     "examples": [
-                      true
+                      true,
+                      false
                     ]
                   },
                   "description": {
@@ -1603,7 +1604,8 @@
                     "description": "Presence of enforceable rights and effective remedies?",
                     "default": false,
                     "examples": [
-                      true
+                      true,
+                      false
                     ]
                   },
                   "description": {
@@ -1652,7 +1654,8 @@
                     "description": "Does a standard data protection clause exist?",
                     "default": false,
                     "examples": [
-                      true
+                      true,
+                      false
                     ]
                   },
                   "description": {
@@ -1678,7 +1681,6 @@
       "type": "object",
       "title": "The accessAndDataPortability schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": {},
       "examples": [
         {
           "available": true,
@@ -1697,13 +1699,7 @@
         }
       ],
       "required": [
-        "available",
-        "description",
-        "url",
-        "email",
-        "identificationEvidences",
-        "administrativeFee",
-        "dataFormat"
+        "available"
       ],
       "additionalProperties": true,
       "properties": {
@@ -1711,8 +1707,8 @@
           "$id": "#/properties/accessAndDataPortability/properties/available",
           "type": "boolean",
           "title": "The available schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": false,
+          "description": "The information is subject to the requirements of Art. 20 (right to data portability) GDPR.",
+          "default": true,
           "examples": [
             true
           ]
@@ -1721,18 +1717,19 @@
           "$id": "#/properties/accessAndDataPortability/properties/description",
           "type": "string",
           "title": "The description schema",
-          "description": "An explanation about the purpose of this instance.",
+          "description": "Description of the requirements according to Art. 20 GDPR.",
           "default": "",
           "examples": [
-            "Data access is possible through..."
+            "Data access is possible through...",
+            "In the event that the requirements of Art. 20 Para. 1 GDPR are met, you have the right to store your data in a structured, common .."
           ]
         },
         "url": {
           "$id": "#/properties/accessAndDataPortability/properties/url",
           "type": "string",
           "title": "The url schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "description": "URL to relevant resources such as Access portals.",
+          "format": "uri-reference",
           "examples": [
             "https://green-bikes.de/access"
           ]
@@ -1742,7 +1739,7 @@
           "type": "string",
           "title": "The email schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "email",
           "examples": [
             "access@greencompany.de"
           ]
@@ -1752,7 +1749,6 @@
           "type": "array",
           "title": "The identificationEvidences schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": [],
           "examples": [
             [
               "ID card copy",
@@ -1766,7 +1762,6 @@
                 "$id": "#/properties/accessAndDataPortability/properties/identificationEvidences/items/anyOf/0",
                 "type": "string",
                 "title": "The first anyOf schema",
-                "description": "An explanation about the purpose of this instance.",
                 "default": "",
                 "examples": [
                   "ID card copy",
@@ -1781,8 +1776,7 @@
           "$id": "#/properties/accessAndDataPortability/properties/administrativeFee",
           "type": "object",
           "title": "The administrativeFee schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": {},
+          "description": "The fee that refers to several copies.",
           "examples": [
             {
               "amount": 0,
@@ -1799,7 +1793,7 @@
               "$id": "#/properties/accessAndDataPortability/properties/administrativeFee/properties/amount",
               "type": "number",
               "title": "The amount schema",
-              "description": "An explanation about the purpose of this instance.",
+              "description": "The amount of money to be paid for a copy.",
               "default": 0,
               "examples": [
                 0
@@ -1809,23 +1803,43 @@
               "$id": "#/properties/accessAndDataPortability/properties/administrativeFee/properties/currency",
               "type": "string",
               "title": "The currency schema",
-              "description": "An explanation about the purpose of this instance.",
-              "default": "",
+              "description": "The currency in which the amount of money for one copy has to be provided acc. to ISO 4217.",
+              "default": "EUR",
+              "minLength": 3,
+              "maxLength": 3,
               "examples": [
                 "EUR"
               ]
             }
           }
         },
-        "dataFormat": {
-          "$id": "#/properties/accessAndDataPortability/properties/dataFormat",
-          "type": "string",
+        "dataFormats": {
+          "$id": "#/properties/accessAndDataPortability/properties/dataFormats",
+          "type": "array",
           "title": "The dataFormat schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
+          "description": "An explanation about the data format(s) the data is provided in.",
+          "default": [
             "json"
-          ]
+          ],
+          "examples": [
+            "json",
+            "xml"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "$id": "#/properties/accessAndDataPortability/properties/dataFormats/items/anyOf/0",
+                "type": "string",
+                "title": "The first anyOf schema",
+                "default": "",
+                "examples": [
+                  "json",
+                  "xml"
+                ]
+              }
+            ],
+            "$id": "#/properties/accessAndDataPortability/properties/dataFormats/items"
+          }
         }
       }
     },
@@ -1833,8 +1847,7 @@
       "$id": "#/properties/sources",
       "type": "array",
       "title": "The sources schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": [],
+      "description": "This duty to provide information is limited to the collection of personal data that does not take place from the data subject (Art. 14).",
       "examples": [
         [
           {
@@ -1857,8 +1870,6 @@
             "$id": "#/properties/sources/items/anyOf/0",
             "type": "object",
             "title": "The first anyOf schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": {},
             "examples": [
               {
                 "_id": "f1423cc00509931",
@@ -1883,7 +1894,7 @@
                 "$id": "#/properties/sources/items/anyOf/0/properties/_id",
                 "type": "string",
                 "title": "The _id schema",
-                "description": "An explanation about the purpose of this instance.",
+                "description": "This refers to an locally unique ID in an arbitrary but deterministic format.",
                 "default": "",
                 "examples": [
                   "f1423cc00509931"
@@ -1893,8 +1904,7 @@
                 "$id": "#/properties/sources/items/anyOf/0/properties/dataCategory",
                 "type": "string",
                 "title": "The dataCategory schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": "",
+                "description": "The category the data refer to.",
                 "examples": [
                   "Creditworthiness"
                 ]
@@ -1903,8 +1913,7 @@
                 "$id": "#/properties/sources/items/anyOf/0/properties/sources",
                 "type": "array",
                 "title": "The sources schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": [],
+                "description": "Specify the source(s) where the data come from.",
                 "examples": [
                   [
                     {
@@ -1921,8 +1930,6 @@
                       "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0",
                       "type": "object",
                       "title": "The first anyOf schema",
-                      "description": "An explanation about the purpose of this instance.",
-                      "default": {},
                       "examples": [
                         {
                           "description": "This information could be retrieved from...",
@@ -1941,8 +1948,7 @@
                           "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/description",
                           "type": "string",
                           "title": "The description schema",
-                          "description": "An explanation about the purpose of this instance.",
-                          "default": "",
+                          "description": "Description of the source the data is taken from.",
                           "examples": [
                             "This information could be retrieved from..."
                           ]
@@ -1951,8 +1957,8 @@
                           "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/url",
                           "type": "string",
                           "title": "The url schema",
-                          "description": "An explanation about the purpose of this instance.",
-                          "default": "",
+                          "description": "URL (reference) where the data is taken from.",
+                          "format": "uri-reference",
                           "examples": [
                             "https://blueCompany.org"
                           ]
@@ -1961,10 +1967,11 @@
                           "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/publiclyAvailable",
                           "type": "boolean",
                           "title": "The publiclyAvailable schema",
-                          "description": "An explanation about the purpose of this instance.",
+                          "description": "Are these data publicly available?",
                           "default": false,
                           "examples": [
-                            false
+                            false,
+                            true
                           ]
                         }
                       }
@@ -1983,8 +1990,7 @@
       "$id": "#/properties/rightToInformation",
       "type": "object",
       "title": "The rightToInformation schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": {},
+      "description": "Refers to the right of information.",
       "examples": [
         {
           "available": true,
@@ -1997,21 +2003,29 @@
           ]
         }
       ],
-      "required": [
-        "available",
-        "description",
-        "url",
-        "email",
-        "identificationEvidences"
-      ],
+      "if": {
+        "properties": {
+          "available": {
+            "const": true
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "then": {
+        "required": [
+          "description"
+        ]
+      },
       "additionalProperties": true,
       "properties": {
         "available": {
           "$id": "#/properties/rightToInformation/properties/available",
           "type": "boolean",
           "title": "The available schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": false,
+          "description": "Possibility available?",
+          "default": true,
           "examples": [
             true
           ]
@@ -2020,8 +2034,7 @@
           "$id": "#/properties/rightToInformation/properties/description",
           "type": "string",
           "title": "The description schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "description": "Description of the right.",
           "examples": [
             "For the right to information please use this contact form and..."
           ]
@@ -2030,8 +2043,8 @@
           "$id": "#/properties/rightToInformation/properties/url",
           "type": "string",
           "title": "The url schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "description": "URL to an online portal.",
+          "format": "uri-reference",
           "examples": [
             "https://greencompany.org/rightToInformation"
           ]
@@ -2040,8 +2053,7 @@
           "$id": "#/properties/rightToInformation/properties/email",
           "type": "string",
           "title": "The email schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "email",
           "examples": [
             "contact@greencompany.de"
           ]
@@ -2050,8 +2062,6 @@
           "$id": "#/properties/rightToInformation/properties/identificationEvidences",
           "type": "array",
           "title": "The identificationEvidences schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": [],
           "examples": [
             [
               "ID card copy",
@@ -2065,8 +2075,6 @@
                 "$id": "#/properties/rightToInformation/properties/identificationEvidences/items/anyOf/0",
                 "type": "string",
                 "title": "The first anyOf schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": "",
                 "examples": [
                   "ID card copy",
                   "Email verification"
@@ -2082,8 +2090,7 @@
       "$id": "#/properties/rightToRectificationOrDeletion",
       "type": "object",
       "title": "The rightToRectificationOrDeletion schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": {},
+      "description": "This schema refers to the right to rectification or deletion (Art. 16 GDPR).",
       "examples": [
         {
           "available": true,
@@ -2096,30 +2103,38 @@
           ]
         }
       ],
-      "required": [
-        "available",
-        "description",
-        "url",
-        "email",
-        "identificationEvidences"
-      ],
+      "if": {
+        "properties": {
+          "available": {
+            "const": true
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "then": {
+        "required": [
+          "description"
+        ]
+      },
       "additionalProperties": true,
       "properties": {
         "available": {
           "$id": "#/properties/rightToRectificationOrDeletion/properties/available",
           "type": "boolean",
           "title": "The available schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": false,
+          "description": "Possibility available?",
+          "default": true,
           "examples": [
-            true
+            true,
+            false
           ]
         },
         "description": {
           "$id": "#/properties/rightToRectificationOrDeletion/properties/description",
           "type": "string",
           "title": "The description schema",
-          "description": "An explanation about the purpose of this instance.",
           "default": "",
           "examples": [
             "For the right to rectification please use this contact form and..."
@@ -2129,8 +2144,7 @@
           "$id": "#/properties/rightToRectificationOrDeletion/properties/url",
           "type": "string",
           "title": "The url schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "uri-reference",
           "examples": [
             "https://greencompany.org/rights"
           ]
@@ -2139,8 +2153,7 @@
           "$id": "#/properties/rightToRectificationOrDeletion/properties/email",
           "type": "string",
           "title": "The email schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "email",
           "examples": [
             "contact@greencompany.de"
           ]
@@ -2149,8 +2162,6 @@
           "$id": "#/properties/rightToRectificationOrDeletion/properties/identificationEvidences",
           "type": "array",
           "title": "The identificationEvidences schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": [],
           "examples": [
             [
               "ID card copy",
@@ -2164,7 +2175,6 @@
                 "$id": "#/properties/rightToRectificationOrDeletion/properties/identificationEvidences/items/anyOf/0",
                 "type": "string",
                 "title": "The first anyOf schema",
-                "description": "An explanation about the purpose of this instance.",
                 "default": "",
                 "examples": [
                   "ID card copy",
@@ -2181,11 +2191,10 @@
       "$id": "#/properties/rightToDataPortability",
       "type": "object",
       "title": "The rightToDataPortability schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": {},
+      "description": "The right to data portability as stated in Art. 20 GDPR.",
       "examples": [
         {
-          "available": false,
+          "available": true,
           "description": "Data portability is only possible when...",
           "url": "https://greencompany.org/rights",
           "email": "contact@greencompany.de",
@@ -2194,31 +2203,37 @@
           ]
         }
       ],
-      "required": [
-        "available",
-        "description",
-        "url",
-        "email",
-        "identificationEvidences"
-      ],
+      "if": {
+        "properties": {
+          "available": {
+            "const": true
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "then": {
+        "required": [
+          "description"
+        ]
+      },
       "additionalProperties": true,
       "properties": {
         "available": {
           "$id": "#/properties/rightToDataPortability/properties/available",
           "type": "boolean",
           "title": "The available schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": false,
+          "default": true,
           "examples": [
-            false
+            false,
+            true
           ]
         },
         "description": {
           "$id": "#/properties/rightToDataPortability/properties/description",
           "type": "string",
           "title": "The description schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
           "examples": [
             "Data portability is only possible when..."
           ]
@@ -2227,7 +2242,7 @@
           "$id": "#/properties/rightToDataPortability/properties/url",
           "type": "string",
           "title": "The url schema",
-          "description": "An explanation about the purpose of this instance.",
+          "format": "uri-reference",
           "default": "",
           "examples": [
             "https://greencompany.org/rights"
@@ -2237,8 +2252,7 @@
           "$id": "#/properties/rightToDataPortability/properties/email",
           "type": "string",
           "title": "The email schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "email",
           "examples": [
             "contact@greencompany.de"
           ]
@@ -2247,8 +2261,6 @@
           "$id": "#/properties/rightToDataPortability/properties/identificationEvidences",
           "type": "array",
           "title": "The identificationEvidences schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": [],
           "examples": [
             [
               "ID card copy"
@@ -2277,8 +2289,7 @@
       "$id": "#/properties/rightToWithdrawConsent",
       "type": "object",
       "title": "The rightToWithdrawConsent schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": {},
+      "description": "This schema refers to the right to withdraw consent.",
       "examples": [
         {
           "available": true,
@@ -2290,31 +2301,37 @@
           ]
         }
       ],
-      "required": [
-        "available",
-        "description",
-        "url",
-        "email",
-        "identificationEvidences"
-      ],
+      "if": {
+        "properties": {
+          "available": {
+            "const": true
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "then": {
+        "required": [
+          "description"
+        ]
+      },
       "additionalProperties": true,
       "properties": {
         "available": {
           "$id": "#/properties/rightToWithdrawConsent/properties/available",
           "type": "boolean",
           "title": "The available schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": false,
+          "default": true,
           "examples": [
-            true
+            true,
+            false
           ]
         },
         "description": {
           "$id": "#/properties/rightToWithdrawConsent/properties/description",
           "type": "string",
           "title": "The description schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
           "examples": [
             "For the right to withdraw consent please use this contact form and..."
           ]
@@ -2323,8 +2340,7 @@
           "$id": "#/properties/rightToWithdrawConsent/properties/url",
           "type": "string",
           "title": "The url schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "uri-reference",
           "examples": [
             "https://greencompany.org/rights"
           ]
@@ -2333,8 +2349,7 @@
           "$id": "#/properties/rightToWithdrawConsent/properties/email",
           "type": "string",
           "title": "The email schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "email",
           "examples": [
             "contact@greencompany.de"
           ]
@@ -2343,8 +2358,6 @@
           "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences",
           "type": "array",
           "title": "The identificationEvidences schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": [],
           "examples": [
             [
               "Email verification"
@@ -2357,8 +2370,6 @@
                 "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items/anyOf/0",
                 "type": "string",
                 "title": "The first anyOf schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": "",
                 "examples": [
                   "Email verification"
                 ]
@@ -2373,8 +2384,7 @@
       "$id": "#/properties/rightToComplain",
       "type": "object",
       "title": "The rightToComplain schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": {},
+      "description": "This schema refers to the right to complain.",
       "examples": [
         {
           "available": true,
@@ -2394,14 +2404,22 @@
           }
         }
       ],
-      "required": [
-        "available",
-        "description",
-        "url",
-        "email",
-        "identificationEvidences",
-        "supervisoryAuthority"
-      ],
+      "if": {
+        "properties": {
+          "available": {
+            "const": true
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "then": {
+        "required": [
+          "description",
+          "supervisoryAuthority"
+        ]
+      },
       "additionalProperties": true,
       "properties": {
         "available": {
@@ -2409,17 +2427,16 @@
           "type": "boolean",
           "title": "The available schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": false,
+          "default": true,
           "examples": [
-            true
+            true,
+            false
           ]
         },
         "description": {
           "$id": "#/properties/rightToComplain/properties/description",
           "type": "string",
           "title": "The description schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
           "examples": [
             "For the right to complain please use this contact form and..."
           ]
@@ -2428,8 +2445,7 @@
           "$id": "#/properties/rightToComplain/properties/url",
           "type": "string",
           "title": "The url schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "uri-reference",
           "examples": [
             "https://greencompany.org/rights"
           ]
@@ -2438,8 +2454,7 @@
           "$id": "#/properties/rightToComplain/properties/email",
           "type": "string",
           "title": "The email schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "format": "email",
           "examples": [
             "contact@greencompany.de"
           ]
@@ -2448,8 +2463,6 @@
           "$id": "#/properties/rightToComplain/properties/identificationEvidences",
           "type": "array",
           "title": "The identificationEvidences schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": [],
           "examples": [
             [
               "ID card copy",
@@ -2463,7 +2476,6 @@
                 "$id": "#/properties/rightToComplain/properties/identificationEvidences/items/anyOf/0",
                 "type": "string",
                 "title": "The first anyOf schema",
-                "description": "An explanation about the purpose of this instance.",
                 "default": "",
                 "examples": [
                   "ID card copy",
@@ -2478,8 +2490,7 @@
           "$id": "#/properties/rightToComplain/properties/supervisoryAuthority",
           "type": "object",
           "title": "The supervisoryAuthority schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": {},
+          "description": "Defines the supervisory authority that has to be contacted in order to complain about the data controller's practices.",
           "examples": [
             {
               "name": "Commissioner for Data Protection",
@@ -2490,11 +2501,7 @@
             }
           ],
           "required": [
-            "name",
-            "address",
-            "country",
-            "email",
-            "phone"
+            "name"
           ],
           "additionalProperties": true,
           "properties": {
@@ -2502,8 +2509,7 @@
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/name",
               "type": "string",
               "title": "The name schema",
-              "description": "An explanation about the purpose of this instance.",
-              "default": "",
+              "description": "Name of the supervisory authority.",
               "examples": [
                 "Commissioner for Data Protection"
               ]
@@ -2512,8 +2518,7 @@
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/address",
               "type": "string",
               "title": "The address schema",
-              "description": "An explanation about the purpose of this instance.",
-              "default": "",
+              "description": "Adress of the supervisory authority.",
               "examples": [
                 "Friedrichstrasse 219, 10969 Berlin"
               ]
@@ -2522,8 +2527,9 @@
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/country",
               "type": "string",
               "title": "The country schema",
-              "description": "An explanation about the purpose of this instance.",
-              "default": "",
+              "description": "Country of the supervisory authority.",
+              "minLength": 2,
+              "maxLength": 2,
               "examples": [
                 "DE"
               ]
@@ -2532,8 +2538,8 @@
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/email",
               "type": "string",
               "title": "The email schema",
-              "description": "An explanation about the purpose of this instance.",
-              "default": "",
+              "description": "Email adress of the supervisory authority.",
+              "format": "email",
               "examples": [
                 "mailbox@privacy-berlin.de"
               ]
@@ -2542,8 +2548,8 @@
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/phone",
               "type": "string",
               "title": "The phone schema",
-              "description": "An explanation about the purpose of this instance.",
-              "default": "",
+              "description": "Phone number of the supervisory authority.",
+              "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
               "examples": [
                 "0049 444 222 111"
               ]
@@ -2557,7 +2563,6 @@
       "type": "object",
       "title": "The automatedDecisionMaking schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": {},
       "examples": [
         {
           "inUse": true,
@@ -2609,7 +2614,6 @@
       "type": "array",
       "title": "The changesOfPurpose schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": [],
       "examples": [
         [
           {
@@ -2631,7 +2635,6 @@
             "type": "object",
             "title": "The first anyOf schema",
             "description": "An explanation about the purpose of this instance.",
-            "default": {},
             "examples": [
               {
                 "description": "Due to technial requirements...",
@@ -2666,7 +2669,6 @@
                 "type": "array",
                 "title": "The affectedDataCategories schema",
                 "description": "An explanation about the purpose of this instance.",
-                "default": [],
                 "examples": [
                   [
                     "Email adress",
