@@ -358,7 +358,7 @@
           "$id": "#/properties/meta/properties/url",
           "type": "string",
           "title": "The url schema",
-          "description": "An explanation about the purpose of this instance.",
+          "description": "URL to this schema.",
           "format": "uri-reference",
           "examples": [
             "https://green-bikes.de/privacy"
@@ -425,7 +425,7 @@
           "$id": "#/properties/controller/properties/address",
           "type": "string",
           "title": "The address schema",
-          "description": "An explanation about the purpose of this instance.",
+          "description": "Address of the controller.",
           "default": "",
           "examples": [
             "Wolfsburger Ring 2, 38440 Berlin"
@@ -485,8 +485,8 @@
             "phone": {
               "$id": "#/properties/controller/properties/representative/properties/phone",
               "type": "string",
-              "title": "Phone number of the controller's representative.",
-              "description": "An explanation about the purpose of this instance.",
+              "title": "The phone schema",
+              "description": "Phone number of the controller's representative.",
               "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
               "examples": [
                 "+49 151 1234 5678"
@@ -532,7 +532,7 @@
           "$id": "#/properties/dataProtectionOfficer/properties/address",
           "type": "string",
           "title": "The address schema",
-          "description": "An explanation about the purpose of this instance.",
+          "description": "Address of the DPO.",
           "default": "",
           "examples": [
             "Wolfsburger Ring 2, 38440 Berlin"
@@ -1681,7 +1681,7 @@
       "$id": "#/properties/accessAndDataPortability",
       "type": "object",
       "title": "The accessAndDataPortability schema",
-      "description": "An explanation about the purpose of this instance.",
+      "description": "Defining the right to access and data portability.",
       "examples": [
         {
           "available": true,
@@ -1729,7 +1729,7 @@
           "$id": "#/properties/accessAndDataPortability/properties/url",
           "type": "string",
           "title": "The url schema",
-          "description": "URL to relevant resources such as Access portals.",
+          "description": "URL to relevant resources such as access portals.",
           "format": "uri-reference",
           "examples": [
             "https://green-bikes.de/access"
@@ -1739,7 +1739,7 @@
           "$id": "#/properties/accessAndDataPortability/properties/email",
           "type": "string",
           "title": "The email schema",
-          "description": "An explanation about the purpose of this instance.",
+          "description": "Contact email address",
           "format": "email",
           "examples": [
             "access@greencompany.de"
@@ -1749,7 +1749,7 @@
           "$id": "#/properties/accessAndDataPortability/properties/identificationEvidences",
           "type": "array",
           "title": "The identificationEvidences schema",
-          "description": "An explanation about the purpose of this instance.",
+          "description": "ID evidences",
           "examples": [
             [
               "ID card copy",
@@ -2274,8 +2274,6 @@
                 "$id": "#/properties/rightToDataPortability/properties/identificationEvidences/items/anyOf/0",
                 "type": "string",
                 "title": "The first anyOf schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": "",
                 "examples": [
                   "ID card copy"
                 ]
@@ -2427,7 +2425,7 @@
           "$id": "#/properties/rightToComplain/properties/available",
           "type": "boolean",
           "title": "The available schema",
-          "description": "An explanation about the purpose of this instance.",
+          "description": "Is this right available?",
           "default": true,
           "examples": [
             true,
@@ -2700,7 +2698,7 @@
                 "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/plannedDateOfChange",
                 "type": "string",
                 "title": "The plannedDateOfChange schema",
-                "description": "An explanation about the purpose of this instance.",
+                "description": "Specify the planned date to the changes as ISO 8601 string.",
                 "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                 "examples": [
                   "2020-08-20"
