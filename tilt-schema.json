@@ -222,7 +222,7 @@
             "Email adress",
             "Credit score"
           ],
-          "plannedDateOfChange": "2020-08-2020-06-04T15:04:13+0000",
+          "plannedDateOfChange": "2020-08-20",
           "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
         }
       ]
@@ -447,7 +447,7 @@
           "$id": "#/properties/controller/properties/representative",
           "type": "object",
           "title": "The representative schema",
-          "description": "The representative is a responsible real person thath representes the controller.",
+          "description": "The representative is a responsible real person that represents the controller.",
           "examples": [
             {
               "name": "Jane Super",
@@ -2562,7 +2562,7 @@
       "$id": "#/properties/automatedDecisionMaking",
       "type": "object",
       "title": "The automatedDecisionMaking schema",
-      "description": "An explanation about the purpose of this instance.",
+      "description": "Automated decision making and potentially involved logic. Does include profiling.",
       "examples": [
         {
           "inUse": true,
@@ -2570,29 +2570,40 @@
           "scopeAndIntendedEffects": "From processing follows..."
         }
       ],
-      "required": [
-        "inUse",
-        "logicInvolved",
-        "scopeAndIntendedEffects"
-      ],
+      "if": {
+        "properties": {
+          "inUse": {
+            "const": true
+          }
+        },
+        "required": [
+          "inUse"
+        ]
+      },
+      "then": {
+        "required": [
+          "logicInvolved",
+          "scopeAndIntendedEffects"
+        ]
+      },
       "additionalProperties": true,
       "properties": {
         "inUse": {
           "$id": "#/properties/automatedDecisionMaking/properties/inUse",
           "type": "boolean",
           "title": "The inUse schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": false,
+          "description": "Is automated decision making in use?",
+          "default": true,
           "examples": [
-            true
+            true,
+            false
           ]
         },
         "logicInvolved": {
           "$id": "#/properties/automatedDecisionMaking/properties/logicInvolved",
           "type": "string",
           "title": "The logicInvolved schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "description": "An explanation about the logic involved to automated decision making.",
           "examples": [
             "The personal data are processed as follows..."
           ]
@@ -2601,8 +2612,7 @@
           "$id": "#/properties/automatedDecisionMaking/properties/scopeAndIntendedEffects",
           "type": "string",
           "title": "The scopeAndIntendedEffects schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": "",
+          "description": "Scope and intended effects of such processing for the data subject.",
           "examples": [
             "From processing follows..."
           ]
@@ -2613,16 +2623,16 @@
       "$id": "#/properties/changesOfPurpose",
       "type": "array",
       "title": "The changesOfPurpose schema",
-      "description": "An explanation about the purpose of this instance.",
+      "description": "Notification of change of purpose.",
       "examples": [
         [
           {
-            "description": "Due to technial requirements...",
+            "description": "Due to technical requirements...",
             "affectedDataCategories": [
               "Email adress",
               "Credit score"
             ],
-            "plannedDateOfChange": "2020-08-2020-06-04T15:04:13+0000",
+            "plannedDateOfChange": "2020-08-20",
             "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
           }
         ]
@@ -2634,41 +2644,34 @@
             "$id": "#/properties/changesOfPurpose/items/anyOf/0",
             "type": "object",
             "title": "The first anyOf schema",
-            "description": "An explanation about the purpose of this instance.",
             "examples": [
               {
-                "description": "Due to technial requirements...",
+                "description": "Due to technical requirements...",
                 "affectedDataCategories": [
                   "Email adress",
                   "Credit score"
                 ],
-                "plannedDateOfChange": "2020-08-2020-06-04T15:04:13+0000",
+                "plannedDateOfChange": "2020-08-20",
                 "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
               }
             ],
-            "required": [
-              "description",
-              "affectedDataCategories",
-              "plannedDateOfChange",
-              "urlOfNewVersion"
-            ],
+            "required": [],
             "additionalProperties": true,
             "properties": {
               "description": {
                 "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/description",
                 "type": "string",
                 "title": "The description schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": "",
+                "description": "Description of the change of purpose.",
                 "examples": [
-                  "Due to technial requirements..."
+                  "Due to technical requirements..."
                 ]
               },
               "affectedDataCategories": {
                 "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories",
                 "type": "array",
                 "title": "The affectedDataCategories schema",
-                "description": "An explanation about the purpose of this instance.",
+                "description": "Data categories that are affected from the change of purpose.",
                 "examples": [
                   [
                     "Email adress",
@@ -2682,7 +2685,6 @@
                       "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items/anyOf/0",
                       "type": "string",
                       "title": "The first anyOf schema",
-                      "description": "An explanation about the purpose of this instance.",
                       "default": "",
                       "examples": [
                         "Email adress",
@@ -2698,19 +2700,18 @@
                 "type": "string",
                 "title": "The plannedDateOfChange schema",
                 "description": "An explanation about the purpose of this instance.",
-                "default": "",
+                "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                 "examples": [
-                  "2020-08-2020-06-04T15:04:13+0000"
+                  "2020-08-20"
                 ]
               },
               "urlOfNewVersion": {
                 "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/urlOfNewVersion",
                 "type": "string",
                 "title": "The urlOfNewVersion schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": "",
+                "description": "The URL points to a document of the same schema as this one. That creates a chain of information requirements for seamless recognition of transparency information even over a longer period of time.",
                 "examples": [
-                  "https://greencomp.de/privacypolicy/2"
+                  "https://greencomp.de/tilt/2"
                 ]
               }
             }

@@ -134,7 +134,10 @@
       "amount": 0,
       "currency": "EUR"
     },
-    "dataFormats": ["json", "xml"]
+    "dataFormats": [
+      "json",
+      "xml"
+    ]
   },
   "sources": [
     {
@@ -216,7 +219,7 @@
         "Email adress",
         "Credit score"
       ],
-      "plannedDateOfChange": "2020-08-2020-06-04T15:04:13+0000",
+      "plannedDateOfChange": "2020-08-20",
       "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
     }
   ]
