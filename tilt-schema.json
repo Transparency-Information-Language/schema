@@ -649,7 +649,7 @@
           {
             "$id": "#/properties/dataDisclosed/items/anyOf/0",
             "type": "object",
-            "title": "The anyOf schema",
+            "title": "AnyOf schema",
             "description": "The description of data disclosed.",
             "examples": [
               {
@@ -772,7 +772,7 @@
                     {
                       "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items/anyOf/0",
                       "type": "object",
-                      "title": "The anyOf schema for the purposes.",
+                      "title": "AnyOf schema for the purposes.",
                       "examples": [
                         {
                           "purpose": "Marketing",
@@ -832,7 +832,7 @@
                     {
                       "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items/anyOf/0",
                       "type": "object",
-                      "title": "The anyOf schema for the legal bases of the data disclosed.",
+                      "title": "AnyOf schema for the legal bases of the data disclosed.",
                       "examples": [
                         {
                           "reference": "GDPR-99-1-a",
@@ -873,7 +873,7 @@
                 "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legitimateInterests",
                 "type": "array",
                 "title": "LegitimateInterests",
-                "description": "An explanation about  the legitimate interests for the processing of data disclosed.",
+                "description": "An explanation about the legitimate interests for the processing of data disclosed.",
                 "examples": [
                   [
                     {
@@ -888,7 +888,7 @@
                     {
                       "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legitimateInterests/items/anyOf/0",
                       "type": "object",
-                      "title": "The anyOf schema for legitimate interests.",
+                      "title": "AnyOf schema for legitimate interests.",
                       "examples": [
                         {
                           "exists": true,
@@ -968,7 +968,7 @@
                     {
                       "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0",
                       "type": "object",
-                      "title": "The anyOf schema if recipients",
+                      "title": "AnyOf schema if recipients",
                       "examples": [
                         {
                           "name": "Yellow Company AG",
@@ -1254,7 +1254,7 @@
                               {
                                 "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/purposeConditional/items/anyOf/0",
                                 "type": "string",
-                                "title": "The anyOf schema",
+                                "title": "AnyOf schema",
                                 "examples": [
                                   "Data is stored until the end of the ordering process."
                                 ]
@@ -1416,7 +1416,7 @@
           {
             "$id": "#/properties/thirdCountryTransfers/items/anyOf/0",
             "type": "object",
-            "title": "The anyOf schema",
+            "title": "AnyOf schema",
             "examples": [
               {
                 "country": "ES",
