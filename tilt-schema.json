@@ -1170,9 +1170,6 @@
                         }
                       ],
                       "required": [
-                        "temporal",
-                        "purposeConditional",
-                        "legalBasisConditional",
                         "aggregationFunction"
                       ],
                       "additionalProperties": true,
