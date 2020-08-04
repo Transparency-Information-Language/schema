@@ -1,0 +1,188 @@
+(*
+
+# Transparency Information Language
+
+With this proposed EBNF for transparency information with regards to data privacy, an essential step towards a sophisticated ecosystem shall be made by introducing a transparency enhancing toolkit based on a formal language model describing transparency information in the context of multi-service environments and latest legal requirements (EU General Data Protection Regulation). The desired results of the work should be suitable as ready-to-use privacy engineering solutions for developers and serve as a starting point for further research in this area. Eventually, data subjects should (be able to) understand what happens to data relating to them by using the interfaces of the toolkit.
+
+Author: *Elias Grünewald*
+
+License: *GNU General Public License, Version 3*
+
+*)
+
+
+tilt = header, properties, [addProp];
+header = "$schema", "$id", "type", "title", "description", "examples", "required", [addProp];
+
+properties = meta,
+  controller,
+  dataProtectionOfficer,
+  dataDisclosed,
+  thirdCountryTransfers,
+  accessAndDataPortability,
+  sources,
+  rightToInformation,
+  rightToRectificationOrDeletion,
+  rightToDataPortability,
+  rightToWithdrawConsent,
+  rightToComplain,
+  automatedDecisionMaking,
+  changesOfPurpose,
+  [addProp];
+(* Note: Each of these properties can have any additional "subproperties" which are not shown in here. *)
+
+meta = id, name, created, modified, version, language, status, url, hash;
+id = string;
+created = stringDate;
+modified = stringDate;
+version = string;
+language = string;
+status = string;
+url = stringUrl;
+hash = stringHash;
+
+controller = name, division, address, country, representative;
+name = string;
+division = string;
+address = string;
+country = stringCountryCode;
+
+representative = name, email, [phone];
+email = stringEmail;
+phone = stringPhone;
+
+dataProtectionOfficer = name, address, country, email;
+
+dataDisclosed = {(
+  id,
+  category,
+  purposes,
+  legalBases,
+  legitimateInterests,
+  (recipients | category),
+  storage,
+  nonDisclosure,
+  [addProp]
+  )};
+
+category = string;
+
+purposes = (purpose, description) | purposes;
+purpose = string;
+description = string;
+
+legalBases = {(reference, description)};
+reference = stringReference;
+
+legitimateInterests = (exists) | ((exists, reasoning) | legitimateInterests);
+exists = boolean;
+reasoning = string;
+
+recipients = ((controller, category) | category) | recipients;
+
+storage = (temporal | purposeConditional | legalBasisConditional), aggregationFunction;
+temporal = (description, ttl) | temporal;
+ttl = stringDate;
+purposeConditional = string | purposeConditional;
+legalBasisConditional = stringReference | legalBasisConditional;
+aggregationFunction = "min" | "max" | "sum" | "avg";
+
+nonDisclosure = legalRequirement, contractualRegulation, obligationToProvide, consequences;
+legalRequirement = boolean;
+contractualRegulation = boolean;
+obligationToProvide = boolean;
+consequences = string;
+
+thirdCountryTransfers =
+  (country,
+  adequacyDecision,
+  appropriateGuarantees,
+  presenceOfEnforceableRightsAndEffectiveRemedies,
+  standardDataProtectionClause) |
+  thirdCountryTransfers;
+
+
+available = boolean;
+ifAvailableThenDescription = available | (available, description);
+
+adequacyDecision = ifAvailableThenDescription;
+appropriateGuarantees = ifAvailableThenDescription;
+presenceOfEnforceableRightsAndEffectiveRemedies = ifAvailableThenDescription;
+standardDataProtectionClause = ifAvailableThenDescription;
+
+accessAndDataPortability =
+  available,
+  description,
+  url,
+  email,
+  identificationEvidences,
+  administrativeFee,
+  dataFormats;
+
+identificationEvidences = string | identificationEvidences;
+administrativeFee = amount, currency;
+amount = number;
+currency = stringCurrency;
+dataFormats = string | dataFormats;
+
+sources = (id, dataCategory, sourcesSources) | sources;
+dataCategory = string;
+sourcesSources = description, url, publiclyAvailable;
+publiclyAvailable = boolean;
+
+rightToInformation = right;
+rightToRectificationOrDeletion = right;
+rightToDataPortability = right;
+rightToWithdrawConsent = right;
+rightToComplain = right, supervisoryAuthority;
+supervisoryAuthority = name, address, country, email, phone;
+right = available, [description, url, email, identificationEvidences];
+
+automatedDecisionMaking = inUse, [logicInvolved, scopeAndIntendedEffects];
+inUse = boolean;
+logicInvolved = string;
+scopeAndIntendedEffects = string;
+
+changesOfPurpose = {description, affectedCategories, plannedDateOfChange, urlOfNewVersion};
+affectedCategories = string | affectedCategories;
+plannedDateOfChange = stringDate;
+urlOfNewVersion = stringUrl;
+
+addProp = {addProp};
+
+stringDate = "ISO 8601";
+stringUrl = "RFC 3986"; 
+stringCountryCode = "[A-Z]{2}";
+stringEmail = "RFC5322";
+stringPhone = "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$";
+stringReference = "^[A-Z]*([-]?[0-9]*|[a-z]*)*$";
+stringHash = "SHA256 Hash";
+stringCurrency = "[A-Z]{3}";
+
+boolean = "true" | "false";
+
+
+(*  In the following, the JSON specification is used: *)
+
+json = object | array;
+object = "{" , [ string , ":" , value , { "," , string , ":" , value } ] , "}";
+array = "[" , [ value , { "," , value } ] , "]";
+value
+  = string  | number | object | array | "true"
+  | "false" | "null"
+  ;
+
+string = '"' ,
+  { ? Any unicode character except " or \ or control character ?
+  | "\" ,
+    ( '"' (* quotation mark *)        | "\" (* reverse solidus *)
+    | "/" (* solidus *)               | "b" (* backspace *)
+    | "f" (* formfeed *)              | "n" (* newline *)
+    | "r" (* carriage return *)       | "t" (* horizontal tab *)
+    | "u" , 4 * ? hexadeximal digit ?
+    )
+  } , '"';
+  
+number = [ "-" ] , ( "0" | ? digit 1-9 ? , { ? digit ? } ) , [ "." ,
+  ? digit ? , { ? digit ? } ] , [ ( "e" | "E" ) ,
+  [ "+" | "-" ] , ? digit ? , { ? digit ? } ];

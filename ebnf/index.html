@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="generator" content="ebnf2railroad" />
+  <title>tilt</title>
+  <style type="text/css">
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+:root {
+    --subtleText: #777;
+    --highlightText: hotpink;
+    --itemHeadingBackground: #eee;
+    --background: white;
+    --borderColor: #ccc;
+    --textColor: #111;
+
+    --diagramBackground: #f8f8f8;
+    --diagramLines: black;
+    --diagramText: black;
+    --terminalLines: black;
+    --terminalFill: #feffdf;
+    --nonTerminalLines: black;
+    --nonTerminalFill: #feffdf;
+    --specialSequenceLines: black;
+    --specialSequenceFill: #ffe79a;
+
+    --ebnfCodeBackground: #e8e8e8;
+    --ebnfIdentifier: #ef5a5a;
+    --ebnfTerminal: #ffa952;
+    --ebnfBaseColor: #777;
+}
+
+.theme-dark {
+    --subtleText: #777;
+    --highlightText: hotpink;
+    --itemHeadingBackground: #444;
+    --background: #333;
+    --borderColor: lightblue;
+    --textColor: #ddd;
+
+    --diagramBackground: #222;
+    --diagramLines: lightblue;
+    --diagramText: #a7d129;
+    --terminalLines: #a7d129;
+    --terminalFill: #3e432e;
+    --nonTerminalLines: #a7d129;
+    --nonTerminalFill: #3e432e;
+    --specialSequenceLines: #a7d129;
+    --specialSequenceFill: #616f39;
+
+    --ebnfCodeBackground: #3e432e;
+    --ebnfIdentifier: lightblue;
+    --ebnfTerminal: #a7d129;
+    --ebnfBaseColor: #ddd;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--background);
+    color: var(--textColor);
+}
+
+a {
+    color: inherit;
+}
+
+a:visited {
+    color: var(--subtleText);
+}
+
+a:active, a:focus, a:hover {
+    color: var(--highlightText);
+}
+
+header {
+    border-bottom: 1px solid var(--borderColor);
+    padding: 1rem;
+}
+
+header button {
+  display: none;
+}
+
+main {
+    overflow: hidden;
+    margin-left: 300px;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    padding: 1rem 2rem 1rem 1rem;
+    z-index: 5;
+    background: var(--background);
+    width: 300px;
+    float: left;
+    overflow: auto;
+}
+
+nav h3 {
+    white-space: nowrap;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    display: inline-block;
+    color: var(--subtleText);
+    text-decoration: none;
+    padding: 0.33rem 0;
+}
+
+article {
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem 2rem;
+    border-left: 1px solid var(--borderColor);
+}
+
+article + footer {
+    padding: 1rem 2rem;
+    border-left: 1px solid var(--borderColor);
+    background: var(--itemHeadingBackground);
+}
+
+code {
+    width: 100%;
+}
+
+pre {
+    overflow: auto;
+}
+
+pre > code {
+    display: block;
+    padding: 1em;
+    background: var(--diagramBackground);
+}
+
+h4 {
+    padding: 2rem;
+    margin: 4rem -2rem 1rem -2rem;
+    background: var(--itemHeadingBackground);
+    font-size: 125%;
+}
+
+dfn {
+    font-style: normal;
+    cursor: default;
+}
+
+.diagram-container {
+    background: var(--diagramBackground);
+    margin-bottom: 0.25rem;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+}
+
+/* Responsiveness */
+@media (max-width: 800px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 0.5rem 1rem;
+    display: flex;
+  }
+
+  header h1 {
+    margin: 0 auto 0 0;
+    display: flex;
+    align-items: center;
+  }
+
+  header button {
+    display: initial;
+    position: relative;
+    z-index: 10;
+  }
+
+  header button::after {
+    content: '☰';
+    margin-left: auto;
+    font-size: 1.5rem;
+  }
+
+  main {
+    display: block;
+    position: relative;
+    margin-left: 0;
+  }
+
+  nav {
+    height: auto;
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(300px);
+    padding-top: 3rem;
+    background: var(--background);
+    box-shadow: 0 0 0 1000000rem rgba(0, 0, 0, 0.35);
+  }
+
+  .menu-open nav {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  nav a {
+    padding: 0.66rem 0;
+  }
+
+  article {
+    margin-left: 0;
+    border-left: 0;
+    padding: 1rem;
+  }
+  article + footer {
+    padding: 1rem;
+    border-left: 0;
+  }
+}
+
+/* EBNF text representation styling */
+code.ebnf {
+  padding: 1em;
+  background: var(--ebnfCodeBackground);
+  font-weight: bold;
+  color: var(--ebnfBaseColor);
+  white-space: pre-wrap;
+  display: inline-block;
+  width: 100%;
+}
+.ebnf-identifier {
+  color: var(--ebnfIdentifier);
+}
+.ebnf-terminal {
+  color: var(--ebnfTerminal);
+}
+.ebnf-non-terminal {
+  font-weight: normal;
+}
+.ebnf-comment {
+  font-weight: normal;
+  font-style: italic;
+  color: #999;
+}
+
+/* EBNF diagram representation styling */
+svg.railroad-diagram {
+  width: 100%;
+}
+svg.railroad-diagram path {
+  stroke-width: 3;
+  stroke: var(--diagramLines);
+  fill: rgba(0,0,0,0);
+}
+svg.railroad-diagram text {
+  font: bold 14px monospace;
+  text-anchor: middle;
+  fill: var(--diagramText);
+}
+svg.railroad-diagram text.diagram-text {
+  font-size: 12px;
+}
+svg.railroad-diagram text.diagram-arrow {
+  font-size: 16px;
+}
+svg.railroad-diagram text.label {
+  text-anchor: start;
+}
+svg.railroad-diagram text.comment {
+  font: italic 12px monospace;
+}
+svg.railroad-diagram g.non-terminal text {
+  /*font-style: italic;*/
+}
+svg.railroad-diagram g.special-sequence rect {
+  fill: var(--specialSequenceFill);
+  stroke: var(--specialSequenceLines);
+}
+svg.railroad-diagram g.special-sequence text {
+  font-style: italic;
+}
+svg.railroad-diagram rect {
+  stroke-width: 3;
+}
+svg.railroad-diagram g.non-terminal rect {
+  fill: var(--nonTerminalFill);
+  stroke: var(--nonTerminalLines);
+}
+svg.railroad-diagram g.terminal rect {
+  fill: var(--terminalFill);
+  stroke: var(--terminalLines);
+}
+svg.railroad-diagram path.diagram-text {
+  stroke-width: 3;
+  stroke: black;
+  fill: white;
+  cursor: help;
+}
+svg.railroad-diagram g.diagram-text:hover path.diagram-text {
+  fill: #eee;
+}
+</style>
+</head>
+<body>
+
+  <script type="text/javascript">
+    const htmlTag = document.getElementsByTagName("html")[0];
+    const options = (document.location.search || "")
+      .slice(1)
+      .split("&")
+      .map(kv => kv.split("="))
+      .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+
+    if (options["theme"]) {
+      htmlTag.classList.add("theme-" + options["theme"]);
+    }
+  </script>
+  <header>
+    <h1>tilt</h1>
+    <button type="button"></button>
+  </header>
+  <nav>
+    <h3>Root elements:</h3>
+    <ul class="nav-alphabetical">
+    <li class="root-node"><a href="#json">json</a>
+        
+        
+      </li><li class="root-node"><a href="#tilt">tilt</a>
+        
+        
+      </li>
+    </ul>
+    <h3>Quick navigation:</h3>
+    <ul class="nav-alphabetical">
+    <li><a href="#accessAndDataPortability">accessAndDataPortability</a>
+        
+        
+      </li><li><a href="#adequacyDecision">adequacyDecision</a>
+        
+        
+      </li><li><a href="#administrativeFee">administrativeFee</a>
+        
+        
+      </li><li><a href="#affectedCategories">affectedCategories</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#aggregationFunction">aggregationFunction</a>
+        
+        
+      </li><li><a href="#amount">amount</a>
+        
+        
+      </li><li><a href="#appropriateGuarantees">appropriateGuarantees</a>
+        
+        
+      </li><li><a href="#array">array</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#automatedDecisionMaking">automatedDecisionMaking</a>
+        
+        
+      </li><li><a href="#category">category</a>
+        
+        
+      </li><li><a href="#changesOfPurpose">changesOfPurpose</a>
+        
+        
+      </li><li><a href="#consequences">consequences</a>
+        
+        
+      </li><li><a href="#contractualRegulation">contractualRegulation</a>
+        
+        
+      </li><li><a href="#controller">controller</a>
+        
+        
+      </li><li><a href="#created">created</a>
+        
+        
+      </li><li><a href="#currency">currency</a>
+        
+        
+      </li><li><a href="#dataCategory">dataCategory</a>
+        
+        
+      </li><li><a href="#dataDisclosed">dataDisclosed</a>
+        
+        
+      </li><li><a href="#dataFormats">dataFormats</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#dataProtectionOfficer">dataProtectionOfficer</a>
+        
+        
+      </li><li><a href="#division">division</a>
+        
+        
+      </li><li><a href="#exists">exists</a>
+        
+        
+      </li><li><a href="#hash">hash</a>
+        
+        
+      </li><li><a href="#header">header</a>
+        
+        
+      </li><li><a href="#id">id</a>
+        
+        
+      </li><li><a href="#inUse">inUse</a>
+        
+        
+      </li><li><a href="#language">language</a>
+        
+        
+      </li><li><a href="#legalBases">legalBases</a>
+        
+        
+      </li><li><a href="#legalBasisConditional">legalBasisConditional</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#legalRequirement">legalRequirement</a>
+        
+        
+      </li><li><a href="#legitimateInterests">legitimateInterests</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#logicInvolved">logicInvolved</a>
+        
+        
+      </li><li><a href="#meta">meta</a>
+        
+        
+      </li><li><a href="#modified">modified</a>
+        
+        
+      </li><li><a href="#nonDisclosure">nonDisclosure</a>
+        
+        
+      </li><li><a href="#number">number</a>
+        
+        
+      </li><li><a href="#object">object</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#obligationToProvide">obligationToProvide</a>
+        
+        
+      </li><li><a href="#phone">phone</a>
+        
+        
+      </li><li><a href="#plannedDateOfChange">plannedDateOfChange</a>
+        
+        
+      </li><li><a href="#presenceOfEnforceableRightsAndEffectiveRemedies">presenceOfEnforceableRightsAndEffectiveRemedies</a>
+        
+        
+      </li><li><a href="#properties">properties</a>
+        
+        
+      </li><li><a href="#publiclyAvailable">publiclyAvailable</a>
+        
+        
+      </li><li><a href="#purpose">purpose</a>
+        
+        
+      </li><li><a href="#purposeConditional">purposeConditional</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#purposes">purposes</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#reasoning">reasoning</a>
+        
+        
+      </li><li><a href="#recipients">recipients</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#reference">reference</a>
+        
+        
+      </li><li><a href="#representative">representative</a>
+        
+        
+      </li><li><a href="#rightToComplain">rightToComplain</a>
+        
+        
+      </li><li><a href="#rightToDataPortability">rightToDataPortability</a>
+        
+        
+      </li><li><a href="#rightToInformation">rightToInformation</a>
+        
+        
+      </li><li><a href="#rightToRectificationOrDeletion">rightToRectificationOrDeletion</a>
+        
+        
+      </li><li><a href="#rightToWithdrawConsent">rightToWithdrawConsent</a>
+        
+        
+      </li><li><a href="#scopeAndIntendedEffects">scopeAndIntendedEffects</a>
+        
+        
+      </li><li><a href="#sources">sources</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#sourcesSources">sourcesSources</a>
+        
+        
+      </li><li><a href="#standardDataProtectionClause">standardDataProtectionClause</a>
+        
+        
+      </li><li><a href="#status">status</a>
+        
+        
+      </li><li><a href="#storage">storage</a>
+        
+        
+      </li><li><a href="#stringCurrency">stringCurrency</a>
+        
+        
+      </li><li><a href="#stringHash">stringHash</a>
+        
+        
+      </li><li><a href="#stringPhone">stringPhone</a>
+        
+        
+      </li><li><a href="#stringReference">stringReference</a>
+        
+        
+      </li><li><a href="#supervisoryAuthority">supervisoryAuthority</a>
+        
+        
+      </li><li><a href="#temporal">temporal</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#thirdCountryTransfers">thirdCountryTransfers</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li><a href="#ttl">ttl</a>
+        
+        
+      </li><li><a href="#urlOfNewVersion">urlOfNewVersion</a>
+        
+        
+      </li><li><a href="#version">version</a>
+        
+        
+      </li>
+    </ul>
+    <h3>Common elements:</h3>
+    <ul class="nav-alphabetical">
+    <li class="common-node"><a href="#addProp">addProp</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li class="common-node"><a href="#address">address</a>
+        
+        
+      </li><li class="common-node"><a href="#available">available</a>
+        
+        
+      </li><li class="common-node"><a href="#boolean">boolean</a>
+        
+        
+      </li><li class="common-node"><a href="#country">country</a>
+        
+        
+      </li><li class="common-node"><a href="#description">description</a>
+        
+        
+      </li><li class="common-node"><a href="#email">email</a>
+        
+        
+      </li><li class="common-node"><a href="#identificationEvidences">identificationEvidences</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li><li class="common-node"><a href="#ifAvailableThenDescription">ifAvailableThenDescription</a>
+        
+        
+      </li><li class="common-node"><a href="#name">name</a>
+        
+        
+      </li><li class="common-node"><a href="#right">right</a>
+        
+        
+      </li><li class="common-node"><a href="#string">string</a>
+        
+        
+      </li><li class="common-node"><a href="#stringCountryCode">stringCountryCode</a>
+        
+        
+      </li><li class="common-node"><a href="#stringDate">stringDate</a>
+        
+        
+      </li><li class="common-node"><a href="#stringEmail">stringEmail</a>
+        
+        
+      </li><li class="common-node"><a href="#stringUrl">stringUrl</a>
+        
+        
+      </li><li class="common-node"><a href="#url">url</a>
+        
+        
+      </li><li class="common-node"><a href="#value">value</a>
+        <dfn title="recursive">♺</dfn>
+        
+      </li>
+    </ul>
+  </nav>
+  <main>
+  <article>
+    <h1 id="transparencyinformationlanguage">Transparency Information Language</h1>
+<p>With this proposed EBNF for transparency information with regards to data privacy, an essential step towards a sophisticated ecosystem shall be made by introducing a transparency enhancing toolkit based on a formal language model describing transparency information in the context of multi-service environments and latest legal requirements (EU General Data Protection Regulation). The desired results of the work should be suitable as ready-to-use privacy engineering solutions for developers and serve as a starting point for further research in this area. Eventually, data subjects should (be able to) understand what happens to data relating to them by using the interfaces of the toolkit.</p>
+<p>Author: <em>Elias Grünewald</em></p>
+<p>License: <em>GNU General Public License, Version 3</em></p><section>
+  <h4 id="tilt">tilt</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="425.5" height="71" viewBox="0 0 425.5 71"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><path d="M40 40h10"></path><g><path d="M50 40h0"></path><path d="M375.5 40h0"></path><g class="non-terminal"><path d="M50 40h0"></path><path d="M121 40h0"></path><rect x="50" y="29" width="71" height="22"></rect><a xlink:href="#header"><text x="85.5" y="44">header</text></a></g><path d="M121 40h10"></path><path d="M131 40h10"></path><g class="non-terminal"><path d="M141 40h0"></path><path d="M246 40h0"></path><rect x="141" y="29" width="105" height="22"></rect><a xlink:href="#properties"><text x="193.5" y="44">properties</text></a></g><path d="M246 40h10"></path><g><path d="M256 40h0"></path><path d="M375.5 40h0"></path><path d="M256 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M276 20h79.5"></path></g><path d="M355.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M256 40h20"></path><g class="non-terminal"><path d="M276 40h0"></path><path d="M355.5 40h0"></path><rect x="276" y="29" width="79.5" height="22"></rect><a xlink:href="#addProp"><text x="315.75" y="44">addProp</text></a></g><path d="M355.5 40h20"></path></g></g><path d="M375.5 40h10"></path><path d="M 385.5 40 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">tilt</span> = <a class="ebnf-non-terminal" href="#header">header</a> , <a class="ebnf-non-terminal" href="#properties">properties</a> , [ <a class="ebnf-non-terminal" href="#addProp">addProp</a> ]<span class="ebnf-end">;</span></code>
+  <p><strong>tilt</strong> is referencing:<p>
+<ul>
+<li><a href="#header">header</a></li><li><a href="#properties">properties</a></li><li><a href="#addProp">addProp</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="header">header</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="469.5" height="150" viewBox="0 0 469.5 150"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M50 31h10"></path><g><path d="M60 31h24"></path><path d="M385.5 31h24"></path><g class="terminal"><path d="M84 31h0"></path><path d="M163.5 31h0"></path><rect x="84" y="20" width="79.5" height="22" rx="10" ry="10"></rect><text x="123.75" y="35">$schema</text></g><path d="M163.5 31h10"></path><path d="M173.5 31h10"></path><g class="terminal"><path d="M183.5 31h0"></path><path d="M229 31h0"></path><rect x="183.5" y="20" width="45.5" height="22" rx="10" ry="10"></rect><text x="206.25" y="35">$id</text></g><path d="M229 31h10"></path><path d="M239 31h10"></path><g class="terminal"><path d="M249 31h0"></path><path d="M303 31h0"></path><rect x="249" y="20" width="54" height="22" rx="10" ry="10"></rect><text x="276" y="35">type</text></g><path d="M303 31h10"></path><path d="M313 31h10"></path><g class="terminal"><path d="M323 31h0"></path><path d="M385.5 31h0"></path><rect x="323" y="20" width="62.5" height="22" rx="10" ry="10"></rect><text x="354.25" y="35">title</text></g></g><path d="M409.5 31a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-349.5a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 71h10"></path><path d="M399.5 71h10"></path><g class="terminal"><path d="M70 71h0"></path><path d="M183.5 71h0"></path><rect x="70" y="60" width="113.5" height="22" rx="10" ry="10"></rect><text x="126.75" y="75">description</text></g><path d="M183.5 71h10"></path><path d="M193.5 71h10"></path><g class="terminal"><path d="M203.5 71h0"></path><path d="M291.5 71h0"></path><rect x="203.5" y="60" width="88" height="22" rx="10" ry="10"></rect><text x="247.5" y="75">examples</text></g><path d="M291.5 71h10"></path><path d="M301.5 71h10"></path><g class="terminal"><path d="M311.5 71h0"></path><path d="M399.5 71h0"></path><rect x="311.5" y="60" width="88" height="22" rx="10" ry="10"></rect><text x="355.5" y="75">required</text></g></g><path d="M409.5 71a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-349.5a10 10 0 0 0 -10 10v8a10 10 0 0 0 10 10"></path><g><path d="M60 119h115"></path><path d="M294.5 119h115"></path><g><path d="M175 119h0"></path><path d="M294.5 119h0"></path><path d="M175 119a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M195 99h79.5"></path></g><path d="M274.5 99a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M175 119h20"></path><g class="non-terminal"><path d="M195 119h0"></path><path d="M274.5 119h0"></path><rect x="195" y="108" width="79.5" height="22"></rect><a xlink:href="#addProp"><text x="234.75" y="123">addProp</text></a></g><path d="M274.5 119h20"></path></g></g><path d="M409.5 119h10"></path><path d="M419.5 119h0"></path></g><path d="M419.5 119h10"></path><path d="M 429.5 119 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">header</span> = <span class="ebnf-terminal">"$schema"</span> , <span class="ebnf-terminal">"$id"</span> , <span class="ebnf-terminal">"type"</span> , <span class="ebnf-terminal">"title"</span> ,
+  <span class="ebnf-terminal">"description"</span> , <span class="ebnf-terminal">"examples"</span> , <span class="ebnf-terminal">"required"</span> ,
+  [ <a class="ebnf-non-terminal" href="#addProp">addProp</a> ]<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>header</strong>:<p>
+<ul>
+<li><a href="#tilt">tilt</a></li>
+</ul>
+  <p><strong>header</strong> is referencing:<p>
+<ul>
+<li><a href="#addProp">addProp</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="properties">properties</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="574" height="350" viewBox="0 0 574 350"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M50 31h10"></path><g><path d="M60 31h28.25"></path><path d="M485.75 31h28.25"></path><g class="non-terminal"><path d="M88.25 31h0"></path><path d="M142.25 31h0"></path><rect x="88.25" y="20" width="54" height="22"></rect><a xlink:href="#meta"><text x="115.25" y="35">meta</text></a></g><path d="M142.25 31h10"></path><path d="M152.25 31h10"></path><g class="non-terminal"><path d="M162.25 31h0"></path><path d="M267.25 31h0"></path><rect x="162.25" y="20" width="105" height="22"></rect><a xlink:href="#controller"><text x="214.75" y="35">controller</text></a></g><path d="M267.25 31h10"></path><path d="M277.25 31h10"></path><g class="non-terminal"><path d="M287.25 31h0"></path><path d="M485.75 31h0"></path><rect x="287.25" y="20" width="198.5" height="22"></rect><a xlink:href="#dataProtectionOfficer"><text x="386.5" y="35">dataProtectionOfficer</text></a></g></g><path d="M514 31a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-454a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 71h52.5"></path><path d="M461.5 71h52.5"></path><g class="non-terminal"><path d="M112.5 71h0"></path><path d="M243 71h0"></path><rect x="112.5" y="60" width="130.5" height="22"></rect><a xlink:href="#dataDisclosed"><text x="177.75" y="75">dataDisclosed</text></a></g><path d="M243 71h10"></path><path d="M253 71h10"></path><g class="non-terminal"><path d="M263 71h0"></path><path d="M461.5 71h0"></path><rect x="263" y="60" width="198.5" height="22"></rect><a xlink:href="#thirdCountryTransfers"><text x="362.25" y="75">thirdCountryTransfers</text></a></g></g><path d="M514 71a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-454a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 111h115"></path><path d="M399 111h115"></path><g class="non-terminal"><path d="M175 111h0"></path><path d="M399 111h0"></path><rect x="175" y="100" width="224" height="22"></rect><a xlink:href="#accessAndDataPortability"><text x="287" y="115">accessAndDataPortability</text></a></g></g><path d="M514 111a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-454a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 151h90.75"></path><path d="M423.25 151h90.75"></path><g class="non-terminal"><path d="M150.75 151h0"></path><path d="M230.25 151h0"></path><rect x="150.75" y="140" width="79.5" height="22"></rect><a xlink:href="#sources"><text x="190.5" y="155">sources</text></a></g><path d="M230.25 151h10"></path><path d="M240.25 151h10"></path><g class="non-terminal"><path d="M250.25 151h0"></path><path d="M423.25 151h0"></path><rect x="250.25" y="140" width="173" height="22"></rect><a xlink:href="#rightToInformation"><text x="336.75" y="155">rightToInformation</text></a></g></g><path d="M514 151a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-454a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 191h89.5"></path><path d="M424.5 191h89.5"></path><g class="non-terminal"><path d="M149.5 191h0"></path><path d="M424.5 191h0"></path><rect x="149.5" y="180" width="275" height="22"></rect><a xlink:href="#rightToRectificationOrDeletion"><text x="287" y="195">rightToRectificationOrDeletion</text></a></g></g><path d="M514 191a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-454a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 231h10"></path><path d="M504 231h10"></path><g class="non-terminal"><path d="M70 231h0"></path><path d="M277 231h0"></path><rect x="70" y="220" width="207" height="22"></rect><a xlink:href="#rightToDataPortability"><text x="173.5" y="235">rightToDataPortability</text></a></g><path d="M277 231h10"></path><path d="M287 231h10"></path><g class="non-terminal"><path d="M297 231h0"></path><path d="M504 231h0"></path><rect x="297" y="220" width="207" height="22"></rect><a xlink:href="#rightToWithdrawConsent"><text x="400.5" y="235">rightToWithdrawConsent</text></a></g></g><path d="M514 231a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-454a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 271h35.5"></path><path d="M478.5 271h35.5"></path><g class="non-terminal"><path d="M95.5 271h0"></path><path d="M243 271h0"></path><rect x="95.5" y="260" width="147.5" height="22"></rect><a xlink:href="#rightToComplain"><text x="169.25" y="275">rightToComplain</text></a></g><path d="M243 271h10"></path><path d="M253 271h10"></path><g class="non-terminal"><path d="M263 271h0"></path><path d="M478.5 271h0"></path><rect x="263" y="260" width="215.5" height="22"></rect><a xlink:href="#automatedDecisionMaking"><text x="370.75" y="275">automatedDecisionMaking</text></a></g></g><path d="M514 271a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-454a10 10 0 0 0 -10 10v8a10 10 0 0 0 10 10"></path><g><path d="M60 319h84.25"></path><path d="M429.75 319h84.25"></path><g class="non-terminal"><path d="M144.25 319h0"></path><path d="M300.25 319h0"></path><rect x="144.25" y="308" width="156" height="22"></rect><a xlink:href="#changesOfPurpose"><text x="222.25" y="323">changesOfPurpose</text></a></g><path d="M300.25 319h10"></path><g><path d="M310.25 319h0"></path><path d="M429.75 319h0"></path><path d="M310.25 319a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M330.25 299h79.5"></path></g><path d="M409.75 299a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M310.25 319h20"></path><g class="non-terminal"><path d="M330.25 319h0"></path><path d="M409.75 319h0"></path><rect x="330.25" y="308" width="79.5" height="22"></rect><a xlink:href="#addProp"><text x="370" y="323">addProp</text></a></g><path d="M409.75 319h20"></path></g></g><path d="M514 319h10"></path><path d="M524 319h0"></path></g><path d="M524 319h10"></path><path d="M 534 319 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">properties</span> = <a class="ebnf-non-terminal" href="#meta">meta</a> , <a class="ebnf-non-terminal" href="#controller">controller</a> , <a class="ebnf-non-terminal" href="#dataProtectionOfficer">dataProtectionOfficer</a> ,
+  <a class="ebnf-non-terminal" href="#dataDisclosed">dataDisclosed</a> , <a class="ebnf-non-terminal" href="#thirdCountryTransfers">thirdCountryTransfers</a> , <a class="ebnf-non-terminal" href="#accessAndDataPortability">accessAndDataPortability</a> ,
+  <a class="ebnf-non-terminal" href="#sources">sources</a> , <a class="ebnf-non-terminal" href="#rightToInformation">rightToInformation</a> , <a class="ebnf-non-terminal" href="#rightToRectificationOrDeletion">rightToRectificationOrDeletion</a> ,
+  <a class="ebnf-non-terminal" href="#rightToDataPortability">rightToDataPortability</a> , <a class="ebnf-non-terminal" href="#rightToWithdrawConsent">rightToWithdrawConsent</a> ,
+  <a class="ebnf-non-terminal" href="#rightToComplain">rightToComplain</a> , <a class="ebnf-non-terminal" href="#automatedDecisionMaking">automatedDecisionMaking</a> ,
+  <a class="ebnf-non-terminal" href="#changesOfPurpose">changesOfPurpose</a> , [ <a class="ebnf-non-terminal" href="#addProp">addProp</a> ]<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>properties</strong>:<p>
+<ul>
+<li><a href="#tilt">tilt</a></li>
+</ul>
+  <p><strong>properties</strong> is referencing:<p>
+<ul>
+<li><a href="#meta">meta</a></li><li><a href="#controller">controller</a></li><li><a href="#dataProtectionOfficer">dataProtectionOfficer</a></li><li><a href="#dataDisclosed">dataDisclosed</a></li><li><a href="#thirdCountryTransfers">thirdCountryTransfers</a></li><li><a href="#accessAndDataPortability">accessAndDataPortability</a></li><li><a href="#sources">sources</a></li><li><a href="#rightToInformation">rightToInformation</a></li><li><a href="#rightToRectificationOrDeletion">rightToRectificationOrDeletion</a></li><li><a href="#rightToDataPortability">rightToDataPortability</a></li><li><a href="#rightToWithdrawConsent">rightToWithdrawConsent</a></li><li><a href="#rightToComplain">rightToComplain</a></li><li><a href="#automatedDecisionMaking">automatedDecisionMaking</a></li><li><a href="#changesOfPurpose">changesOfPurpose</a></li><li><a href="#addProp">addProp</a></li>
+</ul>
+</section>
+<p>Note: Each of these properties can have any additional "subproperties" which are not shown in here. </p><section>
+  <h4 id="meta">meta</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="558" height="102" viewBox="0 0 558 102"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M50 31h10"></path><g><path d="M60 31h59.75"></path><path d="M438.25 31h59.75"></path><g class="non-terminal"><path d="M119.75 31h0"></path><path d="M156.75 31h0"></path><rect x="119.75" y="20" width="37" height="22"></rect><a xlink:href="#id"><text x="138.25" y="35">id</text></a></g><path d="M156.75 31h10"></path><path d="M166.75 31h10"></path><g class="non-terminal"><path d="M176.75 31h0"></path><path d="M230.75 31h0"></path><rect x="176.75" y="20" width="54" height="22"></rect><a xlink:href="#name"><text x="203.75" y="35">name</text></a></g><path d="M230.75 31h10"></path><path d="M240.75 31h10"></path><g class="non-terminal"><path d="M250.75 31h0"></path><path d="M330.25 31h0"></path><rect x="250.75" y="20" width="79.5" height="22"></rect><a xlink:href="#created"><text x="290.5" y="35">created</text></a></g><path d="M330.25 31h10"></path><path d="M340.25 31h10"></path><g class="non-terminal"><path d="M350.25 31h0"></path><path d="M438.25 31h0"></path><rect x="350.25" y="20" width="88" height="22"></rect><a xlink:href="#modified"><text x="394.25" y="35">modified</text></a></g></g><path d="M498 31a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-438a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 71h10"></path><path d="M488 71h10"></path><g class="non-terminal"><path d="M70 71h0"></path><path d="M149.5 71h0"></path><rect x="70" y="60" width="79.5" height="22"></rect><a xlink:href="#version"><text x="109.75" y="75">version</text></a></g><path d="M149.5 71h10"></path><path d="M159.5 71h10"></path><g class="non-terminal"><path d="M169.5 71h0"></path><path d="M257.5 71h0"></path><rect x="169.5" y="60" width="88" height="22"></rect><a xlink:href="#language"><text x="213.5" y="75">language</text></a></g><path d="M257.5 71h10"></path><path d="M267.5 71h10"></path><g class="non-terminal"><path d="M277.5 71h0"></path><path d="M348.5 71h0"></path><rect x="277.5" y="60" width="71" height="22"></rect><a xlink:href="#status"><text x="313" y="75">status</text></a></g><path d="M348.5 71h10"></path><path d="M358.5 71h10"></path><g class="non-terminal"><path d="M368.5 71h0"></path><path d="M414 71h0"></path><rect x="368.5" y="60" width="45.5" height="22"></rect><a xlink:href="#url"><text x="391.25" y="75">url</text></a></g><path d="M414 71h10"></path><path d="M424 71h10"></path><g class="non-terminal"><path d="M434 71h0"></path><path d="M488 71h0"></path><rect x="434" y="60" width="54" height="22"></rect><a xlink:href="#hash"><text x="461" y="75">hash</text></a></g></g><path d="M498 71h10"></path><path d="M508 71h0"></path></g><path d="M508 71h10"></path><path d="M 518 71 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">meta</span> = <a class="ebnf-non-terminal" href="#id">id</a> , <a class="ebnf-non-terminal" href="#name">name</a> , <a class="ebnf-non-terminal" href="#created">created</a> , <a class="ebnf-non-terminal" href="#modified">modified</a> , <a class="ebnf-non-terminal" href="#version">version</a> ,
+  <a class="ebnf-non-terminal" href="#language">language</a> , <a class="ebnf-non-terminal" href="#status">status</a> , <a class="ebnf-non-terminal" href="#url">url</a> , <a class="ebnf-non-terminal" href="#hash">hash</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>meta</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>meta</strong> is referencing:<p>
+<ul>
+<li><a href="#id">id</a></li><li><a href="#name">name</a></li><li><a href="#created">created</a></li><li><a href="#modified">modified</a></li><li><a href="#version">version</a></li><li><a href="#language">language</a></li><li><a href="#status">status</a></li><li><a href="#url">url</a></li><li><a href="#hash">hash</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="id">id</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">id</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>id</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li><li><a href="#dataDisclosed">dataDisclosed</a></li><li><a href="#sources">sources</a></li>
+</ul>
+  <p><strong>id</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="created">created</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="205" height="62" viewBox="0 0 205 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M155 31h0"></path><rect x="50" y="20" width="105" height="22"></rect><a xlink:href="#stringDate"><text x="102.5" y="35">stringDate</text></a></g><path d="M155 31h10"></path><path d="M 165 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">created</span> = <a class="ebnf-non-terminal" href="#stringDate">stringDate</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>created</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li>
+</ul>
+  <p><strong>created</strong> is referencing:<p>
+<ul>
+<li><a href="#stringDate">stringDate</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="modified">modified</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="205" height="62" viewBox="0 0 205 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M155 31h0"></path><rect x="50" y="20" width="105" height="22"></rect><a xlink:href="#stringDate"><text x="102.5" y="35">stringDate</text></a></g><path d="M155 31h10"></path><path d="M 165 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">modified</span> = <a class="ebnf-non-terminal" href="#stringDate">stringDate</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>modified</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li>
+</ul>
+  <p><strong>modified</strong> is referencing:<p>
+<ul>
+<li><a href="#stringDate">stringDate</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="version">version</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">version</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>version</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li>
+</ul>
+  <p><strong>version</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="language">language</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">language</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>language</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li>
+</ul>
+  <p><strong>language</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="status">status</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">status</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>status</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li>
+</ul>
+  <p><strong>status</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="url">url</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="196.5" height="62" viewBox="0 0 196.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M146.5 31h0"></path><rect x="50" y="20" width="96.5" height="22"></rect><a xlink:href="#stringUrl"><text x="98.25" y="35">stringUrl</text></a></g><path d="M146.5 31h10"></path><path d="M 156.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">url</span> = <a class="ebnf-non-terminal" href="#stringUrl">stringUrl</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>url</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li><li><a href="#accessAndDataPortability">accessAndDataPortability</a></li><li><a href="#sourcesSources">sourcesSources</a></li><li><a href="#right">right</a></li>
+</ul>
+  <p><strong>url</strong> is referencing:<p>
+<ul>
+<li><a href="#stringUrl">stringUrl</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="hash">hash</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="205" height="62" viewBox="0 0 205 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M155 31h0"></path><rect x="50" y="20" width="105" height="22"></rect><a xlink:href="#stringHash"><text x="102.5" y="35">stringHash</text></a></g><path d="M155 31h10"></path><path d="M 165 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">hash</span> = <a class="ebnf-non-terminal" href="#stringHash">stringHash</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>hash</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li>
+</ul>
+  <p><strong>hash</strong> is referencing:<p>
+<ul>
+<li><a href="#stringHash">stringHash</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="controller">controller</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="401.5" height="102" viewBox="0 0 401.5 102"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M50 31h10"></path><g><path d="M60 31h10"></path><path d="M331.5 31h10"></path><g class="non-terminal"><path d="M70 31h0"></path><path d="M124 31h0"></path><rect x="70" y="20" width="54" height="22"></rect><a xlink:href="#name"><text x="97" y="35">name</text></a></g><path d="M124 31h10"></path><path d="M134 31h10"></path><g class="non-terminal"><path d="M144 31h0"></path><path d="M232 31h0"></path><rect x="144" y="20" width="88" height="22"></rect><a xlink:href="#division"><text x="188" y="35">division</text></a></g><path d="M232 31h10"></path><path d="M242 31h10"></path><g class="non-terminal"><path d="M252 31h0"></path><path d="M331.5 31h0"></path><rect x="252" y="20" width="79.5" height="22"></rect><a xlink:href="#address"><text x="291.75" y="35">address</text></a></g></g><path d="M341.5 31a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-281.5a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 71h21.5"></path><path d="M320 71h21.5"></path><g class="non-terminal"><path d="M81.5 71h0"></path><path d="M161 71h0"></path><rect x="81.5" y="60" width="79.5" height="22"></rect><a xlink:href="#country"><text x="121.25" y="75">country</text></a></g><path d="M161 71h10"></path><path d="M171 71h10"></path><g class="non-terminal"><path d="M181 71h0"></path><path d="M320 71h0"></path><rect x="181" y="60" width="139" height="22"></rect><a xlink:href="#representative"><text x="250.5" y="75">representative</text></a></g></g><path d="M341.5 71h10"></path><path d="M351.5 71h0"></path></g><path d="M351.5 71h10"></path><path d="M 361.5 71 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">controller</span> = <a class="ebnf-non-terminal" href="#name">name</a> , <a class="ebnf-non-terminal" href="#division">division</a> , <a class="ebnf-non-terminal" href="#address">address</a> , <a class="ebnf-non-terminal" href="#country">country</a> ,
+  <a class="ebnf-non-terminal" href="#representative">representative</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>controller</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li><li><a href="#recipients">recipients</a></li>
+</ul>
+  <p><strong>controller</strong> is referencing:<p>
+<ul>
+<li><a href="#name">name</a></li><li><a href="#division">division</a></li><li><a href="#address">address</a></li><li><a href="#country">country</a></li><li><a href="#representative">representative</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="name">name</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">name</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>name</strong>:<p>
+<ul>
+<li><a href="#meta">meta</a></li><li><a href="#controller">controller</a></li><li><a href="#representative">representative</a></li><li><a href="#dataProtectionOfficer">dataProtectionOfficer</a></li><li><a href="#supervisoryAuthority">supervisoryAuthority</a></li>
+</ul>
+  <p><strong>name</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="division">division</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">division</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>division</strong>:<p>
+<ul>
+<li><a href="#controller">controller</a></li>
+</ul>
+  <p><strong>division</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="address">address</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">address</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>address</strong>:<p>
+<ul>
+<li><a href="#controller">controller</a></li><li><a href="#dataProtectionOfficer">dataProtectionOfficer</a></li><li><a href="#supervisoryAuthority">supervisoryAuthority</a></li>
+</ul>
+  <p><strong>address</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="country">country</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="264.5" height="62" viewBox="0 0 264.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M214.5 31h0"></path><rect x="50" y="20" width="164.5" height="22"></rect><a xlink:href="#stringCountryCode"><text x="132.25" y="35">stringCountryCode</text></a></g><path d="M214.5 31h10"></path><path d="M 224.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">country</span> = <a class="ebnf-non-terminal" href="#stringCountryCode">stringCountryCode</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>country</strong>:<p>
+<ul>
+<li><a href="#controller">controller</a></li><li><a href="#dataProtectionOfficer">dataProtectionOfficer</a></li><li><a href="#thirdCountryTransfers">thirdCountryTransfers</a></li><li><a href="#supervisoryAuthority">supervisoryAuthority</a></li>
+</ul>
+  <p><strong>country</strong> is referencing:<p>
+<ul>
+<li><a href="#stringCountryCode">stringCountryCode</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="representative">representative</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="349" height="71" viewBox="0 0 349 71"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><path d="M40 40h10"></path><g><path d="M50 40h0"></path><path d="M299 40h0"></path><g class="non-terminal"><path d="M50 40h0"></path><path d="M104 40h0"></path><rect x="50" y="29" width="54" height="22"></rect><a xlink:href="#name"><text x="77" y="44">name</text></a></g><path d="M104 40h10"></path><path d="M114 40h10"></path><g class="non-terminal"><path d="M124 40h0"></path><path d="M186.5 40h0"></path><rect x="124" y="29" width="62.5" height="22"></rect><a xlink:href="#email"><text x="155.25" y="44">email</text></a></g><path d="M186.5 40h10"></path><g><path d="M196.5 40h0"></path><path d="M299 40h0"></path><path d="M196.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M216.5 20h62.5"></path></g><path d="M279 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M196.5 40h20"></path><g class="non-terminal"><path d="M216.5 40h0"></path><path d="M279 40h0"></path><rect x="216.5" y="29" width="62.5" height="22"></rect><a xlink:href="#phone"><text x="247.75" y="44">phone</text></a></g><path d="M279 40h20"></path></g></g><path d="M299 40h10"></path><path d="M 309 40 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">representative</span> = <a class="ebnf-non-terminal" href="#name">name</a> , <a class="ebnf-non-terminal" href="#email">email</a> , [ <a class="ebnf-non-terminal" href="#phone">phone</a> ]<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>representative</strong>:<p>
+<ul>
+<li><a href="#controller">controller</a></li>
+</ul>
+  <p><strong>representative</strong> is referencing:<p>
+<ul>
+<li><a href="#name">name</a></li><li><a href="#email">email</a></li><li><a href="#phone">phone</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="email">email</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="213.5" height="62" viewBox="0 0 213.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M163.5 31h0"></path><rect x="50" y="20" width="113.5" height="22"></rect><a xlink:href="#stringEmail"><text x="106.75" y="35">stringEmail</text></a></g><path d="M163.5 31h10"></path><path d="M 173.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">email</span> = <a class="ebnf-non-terminal" href="#stringEmail">stringEmail</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>email</strong>:<p>
+<ul>
+<li><a href="#representative">representative</a></li><li><a href="#dataProtectionOfficer">dataProtectionOfficer</a></li><li><a href="#accessAndDataPortability">accessAndDataPortability</a></li><li><a href="#supervisoryAuthority">supervisoryAuthority</a></li><li><a href="#right">right</a></li>
+</ul>
+  <p><strong>email</strong> is referencing:<p>
+<ul>
+<li><a href="#stringEmail">stringEmail</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="phone">phone</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="213.5" height="62" viewBox="0 0 213.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M163.5 31h0"></path><rect x="50" y="20" width="113.5" height="22"></rect><a xlink:href="#stringPhone"><text x="106.75" y="35">stringPhone</text></a></g><path d="M163.5 31h10"></path><path d="M 173.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">phone</span> = <a class="ebnf-non-terminal" href="#stringPhone">stringPhone</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>phone</strong>:<p>
+<ul>
+<li><a href="#representative">representative</a></li><li><a href="#supervisoryAuthority">supervisoryAuthority</a></li>
+</ul>
+  <p><strong>phone</strong> is referencing:<p>
+<ul>
+<li><a href="#stringPhone">stringPhone</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="dataProtectionOfficer">dataProtectionOfficer</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="435.5" height="62" viewBox="0 0 435.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M385.5 31h0"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M104 31h0"></path><rect x="50" y="20" width="54" height="22"></rect><a xlink:href="#name"><text x="77" y="35">name</text></a></g><path d="M104 31h10"></path><path d="M114 31h10"></path><g class="non-terminal"><path d="M124 31h0"></path><path d="M203.5 31h0"></path><rect x="124" y="20" width="79.5" height="22"></rect><a xlink:href="#address"><text x="163.75" y="35">address</text></a></g><path d="M203.5 31h10"></path><path d="M213.5 31h10"></path><g class="non-terminal"><path d="M223.5 31h0"></path><path d="M303 31h0"></path><rect x="223.5" y="20" width="79.5" height="22"></rect><a xlink:href="#country"><text x="263.25" y="35">country</text></a></g><path d="M303 31h10"></path><path d="M313 31h10"></path><g class="non-terminal"><path d="M323 31h0"></path><path d="M385.5 31h0"></path><rect x="323" y="20" width="62.5" height="22"></rect><a xlink:href="#email"><text x="354.25" y="35">email</text></a></g></g><path d="M385.5 31h10"></path><path d="M 395.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">dataProtectionOfficer</span> = <a class="ebnf-non-terminal" href="#name">name</a> , <a class="ebnf-non-terminal" href="#address">address</a> , <a class="ebnf-non-terminal" href="#country">country</a> , <a class="ebnf-non-terminal" href="#email">email</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>dataProtectionOfficer</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>dataProtectionOfficer</strong> is referencing:<p>
+<ul>
+<li><a href="#name">name</a></li><li><a href="#address">address</a></li><li><a href="#country">country</a></li><li><a href="#email">email</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="dataDisclosed">dataDisclosed</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="558" height="187" viewBox="0 0 558 187"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><g><path d="M40 40h0"></path><path d="M518 157h0"></path><path d="M40 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M60 20h438"></path></g><path d="M498 20a10 10 0 0 1 10 10v117a10 10 0 0 0 10 10"></path><path d="M40 40h20"></path><g><path d="M60 40h0"></path><path d="M498 157h0"></path><path d="M60 40h10"></path><g><path d="M70 40h0"></path><path d="M70 40h10"></path><g><path d="M80 40h10"></path><path d="M468 40h10"></path><g class="non-terminal"><path d="M90 40h0"></path><path d="M127 40h0"></path><rect x="90" y="29" width="37" height="22"></rect><a xlink:href="#id"><text x="108.5" y="44">id</text></a></g><path d="M127 40h10"></path><path d="M137 40h10"></path><g class="non-terminal"><path d="M147 40h0"></path><path d="M235 40h0"></path><rect x="147" y="29" width="88" height="22"></rect><a xlink:href="#category"><text x="191" y="44">category</text></a></g><path d="M235 40h10"></path><path d="M245 40h10"></path><g class="non-terminal"><path d="M255 40h0"></path><path d="M343 40h0"></path><rect x="255" y="29" width="88" height="22"></rect><a xlink:href="#purposes"><text x="299" y="44">purposes</text></a></g><path d="M343 40h10"></path><path d="M353 40h10"></path><g class="non-terminal"><path d="M363 40h0"></path><path d="M468 40h0"></path><rect x="363" y="29" width="105" height="22"></rect><a xlink:href="#legalBases"><text x="415.5" y="44">legalBases</text></a></g></g><path d="M478 40a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-398a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M80 80h30.75"></path><path d="M447.25 80h30.75"></path><g class="non-terminal"><path d="M110.75 80h0"></path><path d="M292.25 80h0"></path><rect x="110.75" y="69" width="181.5" height="22"></rect><a xlink:href="#legitimateInterests"><text x="201.5" y="84">legitimateInterests</text></a></g><path d="M292.25 80h10"></path><g><path d="M302.25 80h0"></path><path d="M447.25 80h0"></path><path d="M302.25 80h20"></path><g class="non-terminal"><path d="M322.25 80h0"></path><path d="M427.25 80h0"></path><rect x="322.25" y="69" width="105" height="22"></rect><a xlink:href="#recipients"><text x="374.75" y="84">recipients</text></a></g><path d="M427.25 80h20"></path><path d="M302.25 80a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M322.25 110h8.5"></path><path d="M418.75 110h8.5"></path><rect x="330.75" y="99" width="88" height="22"></rect><a xlink:href="#category"><text x="374.75" y="114">category</text></a></g><path d="M427.25 110a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g></g><path d="M478 80a10 10 0 0 1 10 10v29a10 10 0 0 1 -10 10h-398a10 10 0 0 0 -10 10v8a10 10 0 0 0 10 10"></path><g><path d="M80 157h19.25"></path><path d="M458.75 157h19.25"></path><g class="non-terminal"><path d="M99.25 157h0"></path><path d="M178.75 157h0"></path><rect x="99.25" y="146" width="79.5" height="22"></rect><a xlink:href="#storage"><text x="139" y="161">storage</text></a></g><path d="M178.75 157h10"></path><path d="M188.75 157h10"></path><g class="non-terminal"><path d="M198.75 157h0"></path><path d="M329.25 157h0"></path><rect x="198.75" y="146" width="130.5" height="22"></rect><a xlink:href="#nonDisclosure"><text x="264" y="161">nonDisclosure</text></a></g><path d="M329.25 157h10"></path><g><path d="M339.25 157h0"></path><path d="M458.75 157h0"></path><path d="M339.25 157a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M359.25 137h79.5"></path></g><path d="M438.75 137a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M339.25 157h20"></path><g class="non-terminal"><path d="M359.25 157h0"></path><path d="M438.75 157h0"></path><rect x="359.25" y="146" width="79.5" height="22"></rect><a xlink:href="#addProp"><text x="399" y="161">addProp</text></a></g><path d="M438.75 157h20"></path></g></g><path d="M478 157h10"></path><path d="M488 157h0"></path></g><path d="M488 157h10"></path><path d="M70 40a10 10 0 0 0 -10 10v116a10 10 0 0 0 10 10"></path><g><path d="M70 176h418"></path></g><path d="M488 176a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path></g><path d="M498 157h20"></path></g><path d="M 518 157 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">dataDisclosed</span> = { ( <a class="ebnf-non-terminal" href="#id">id</a> , <a class="ebnf-non-terminal" href="#category">category</a> , <a class="ebnf-non-terminal" href="#purposes">purposes</a> ,
+  <a class="ebnf-non-terminal" href="#legalBases">legalBases</a> , <a class="ebnf-non-terminal" href="#legitimateInterests">legitimateInterests</a> , ( <a class="ebnf-non-terminal" href="#recipients">recipients</a> | <a class="ebnf-non-terminal" href="#category">category</a> ) ,
+  <a class="ebnf-non-terminal" href="#storage">storage</a> , <a class="ebnf-non-terminal" href="#nonDisclosure">nonDisclosure</a> , [ <a class="ebnf-non-terminal" href="#addProp">addProp</a> ] ) }<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>dataDisclosed</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>dataDisclosed</strong> is referencing:<p>
+<ul>
+<li><a href="#id">id</a></li><li><a href="#category">category</a></li><li><a href="#purposes">purposes</a></li><li><a href="#legalBases">legalBases</a></li><li><a href="#legitimateInterests">legitimateInterests</a></li><li><a href="#recipients">recipients</a></li><li><a href="#storage">storage</a></li><li><a href="#nonDisclosure">nonDisclosure</a></li><li><a href="#addProp">addProp</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="category">category</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">category</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>category</strong>:<p>
+<ul>
+<li><a href="#dataDisclosed">dataDisclosed</a></li><li><a href="#recipients">recipients</a></li>
+</ul>
+  <p><strong>category</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="purposes">purposes</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="333" height="92" viewBox="0 0 333 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M293 31h0"></path><path d="M40 31h20"></path><g><path d="M60 31h0"></path><path d="M273 31h0"></path><g class="non-terminal"><path d="M60 31h0"></path><path d="M139.5 31h0"></path><rect x="60" y="20" width="79.5" height="22"></rect><a xlink:href="#purpose"><text x="99.75" y="35">purpose</text></a></g><path d="M139.5 31h10"></path><path d="M149.5 31h10"></path><g class="non-terminal"><path d="M159.5 31h0"></path><path d="M273 31h0"></path><rect x="159.5" y="20" width="113.5" height="22"></rect><a xlink:href="#description"><text x="216.25" y="35">description</text></a></g></g><path d="M273 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h62.5"></path><path d="M210.5 61h62.5"></path><rect x="122.5" y="50" width="88" height="22"></rect><a xlink:href="#purposes"><text x="166.5" y="65">purposes</text></a></g><path d="M273 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 293 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">purposes</span> = ( <a class="ebnf-non-terminal" href="#purpose">purpose</a> , <a class="ebnf-non-terminal" href="#description">description</a> ) | <a class="ebnf-non-terminal" href="#purposes">purposes</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>purposes</strong>:<p>
+<ul>
+<li><a href="#dataDisclosed">dataDisclosed</a></li>
+</ul>
+  <p><strong>purposes</strong> is referencing:<p>
+<ul>
+<li><a href="#purpose">purpose</a></li><li><a href="#description">description</a></li><li><a href="#purposes">purposes</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="purpose">purpose</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">purpose</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>purpose</strong>:<p>
+<ul>
+<li><a href="#purposes">purposes</a></li>
+</ul>
+  <p><strong>purpose</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="description">description</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">description</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>description</strong>:<p>
+<ul>
+<li><a href="#purposes">purposes</a></li><li><a href="#legalBases">legalBases</a></li><li><a href="#temporal">temporal</a></li><li><a href="#ifAvailableThenDescription">ifAvailableThenDescription</a></li><li><a href="#accessAndDataPortability">accessAndDataPortability</a></li><li><a href="#sourcesSources">sourcesSources</a></li><li><a href="#right">right</a></li><li><a href="#changesOfPurpose">changesOfPurpose</a></li>
+</ul>
+  <p><strong>description</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="legalBases">legalBases</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="370" height="80" viewBox="0 0 370 80"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><g><path d="M40 40h0"></path><path d="M330 40h0"></path><path d="M40 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M60 20h250"></path></g><path d="M310 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M40 40h20"></path><g><path d="M60 40h0"></path><path d="M310 40h0"></path><path d="M60 40h10"></path><g><path d="M70 40h0"></path><path d="M300 40h0"></path><g class="non-terminal"><path d="M70 40h0"></path><path d="M166.5 40h0"></path><rect x="70" y="29" width="96.5" height="22"></rect><a xlink:href="#reference"><text x="118.25" y="44">reference</text></a></g><path d="M166.5 40h10"></path><path d="M176.5 40h10"></path><g class="non-terminal"><path d="M186.5 40h0"></path><path d="M300 40h0"></path><rect x="186.5" y="29" width="113.5" height="22"></rect><a xlink:href="#description"><text x="243.25" y="44">description</text></a></g></g><path d="M300 40h10"></path><path d="M70 40a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M70 60h230"></path></g><path d="M300 60a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path></g><path d="M310 40h20"></path></g><path d="M 330 40 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">legalBases</span> = { ( <a class="ebnf-non-terminal" href="#reference">reference</a> , <a class="ebnf-non-terminal" href="#description">description</a> ) }<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>legalBases</strong>:<p>
+<ul>
+<li><a href="#dataDisclosed">dataDisclosed</a></li>
+</ul>
+  <p><strong>legalBases</strong> is referencing:<p>
+<ul>
+<li><a href="#reference">reference</a></li><li><a href="#description">description</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="reference">reference</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="247.5" height="62" viewBox="0 0 247.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M197.5 31h0"></path><rect x="50" y="20" width="147.5" height="22"></rect><a xlink:href="#stringReference"><text x="123.75" y="35">stringReference</text></a></g><path d="M197.5 31h10"></path><path d="M 207.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">reference</span> = <a class="ebnf-non-terminal" href="#stringReference">stringReference</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>reference</strong>:<p>
+<ul>
+<li><a href="#legalBases">legalBases</a></li>
+</ul>
+  <p><strong>reference</strong> is referencing:<p>
+<ul>
+<li><a href="#stringReference">stringReference</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="legitimateInterests">legitimateInterests</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="307.5" height="122" viewBox="0 0 307.5 122"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M267.5 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h58.25"></path><path d="M189.25 31h58.25"></path><rect x="118.25" y="20" width="71" height="22"></rect><a xlink:href="#exists"><text x="153.75" y="35">exists</text></a></g><path d="M247.5 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g><path d="M60 61h0"></path><path d="M247.5 61h0"></path><g class="non-terminal"><path d="M60 61h0"></path><path d="M131 61h0"></path><rect x="60" y="50" width="71" height="22"></rect><a xlink:href="#exists"><text x="95.5" y="65">exists</text></a></g><path d="M131 61h10"></path><path d="M141 61h10"></path><g class="non-terminal"><path d="M151 61h0"></path><path d="M247.5 61h0"></path><rect x="151" y="50" width="96.5" height="22"></rect><a xlink:href="#reasoning"><text x="199.25" y="65">reasoning</text></a></g></g><path d="M247.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 91h3"></path><path d="M244.5 91h3"></path><rect x="63" y="80" width="181.5" height="22"></rect><a xlink:href="#legitimateInterests"><text x="153.75" y="95">legitimateInterests</text></a></g><path d="M247.5 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10"></path></g><path d="M 267.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">legitimateInterests</span>
+  = ( <a class="ebnf-non-terminal" href="#exists">exists</a> )
+  |
+  ( ( <a class="ebnf-non-terminal" href="#exists">exists</a> , <a class="ebnf-non-terminal" href="#reasoning">reasoning</a> )
+  | <a class="ebnf-non-terminal" href="#legitimateInterests">legitimateInterests</a>
+  )
+  <span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>legitimateInterests</strong>:<p>
+<ul>
+<li><a href="#dataDisclosed">dataDisclosed</a></li>
+</ul>
+  <p><strong>legitimateInterests</strong> is referencing:<p>
+<ul>
+<li><a href="#exists">exists</a></li><li><a href="#reasoning">reasoning</a></li><li><a href="#legitimateInterests">legitimateInterests</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="exists">exists</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="179.5" height="62" viewBox="0 0 179.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M129.5 31h0"></path><rect x="50" y="20" width="79.5" height="22"></rect><a xlink:href="#boolean"><text x="89.75" y="35">boolean</text></a></g><path d="M129.5 31h10"></path><path d="M 139.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">exists</span> = <a class="ebnf-non-terminal" href="#boolean">boolean</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>exists</strong>:<p>
+<ul>
+<li><a href="#legitimateInterests">legitimateInterests</a></li>
+</ul>
+  <p><strong>exists</strong> is referencing:<p>
+<ul>
+<li><a href="#boolean">boolean</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="reasoning">reasoning</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">reasoning</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>reasoning</strong>:<p>
+<ul>
+<li><a href="#legitimateInterests">legitimateInterests</a></li>
+</ul>
+  <p><strong>reasoning</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="recipients">recipients</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="333" height="122" viewBox="0 0 333 122"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M293 31h0"></path><path d="M40 31h20"></path><g><path d="M60 31h0"></path><path d="M273 31h0"></path><g class="non-terminal"><path d="M60 31h0"></path><path d="M165 31h0"></path><rect x="60" y="20" width="105" height="22"></rect><a xlink:href="#controller"><text x="112.5" y="35">controller</text></a></g><path d="M165 31h10"></path><path d="M175 31h10"></path><g class="non-terminal"><path d="M185 31h0"></path><path d="M273 31h0"></path><rect x="185" y="20" width="88" height="22"></rect><a xlink:href="#category"><text x="229" y="35">category</text></a></g></g><path d="M273 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h62.5"></path><path d="M210.5 61h62.5"></path><rect x="122.5" y="50" width="88" height="22"></rect><a xlink:href="#category"><text x="166.5" y="65">category</text></a></g><path d="M273 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 91h54"></path><path d="M219 91h54"></path><rect x="114" y="80" width="105" height="22"></rect><a xlink:href="#recipients"><text x="166.5" y="95">recipients</text></a></g><path d="M273 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10"></path></g><path d="M 293 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">recipients</span>
+  = ( ( <a class="ebnf-non-terminal" href="#controller">controller</a> , <a class="ebnf-non-terminal" href="#category">category</a> ) | <a class="ebnf-non-terminal" href="#category">category</a> )
+  | <a class="ebnf-non-terminal" href="#recipients">recipients</a>
+  <span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>recipients</strong>:<p>
+<ul>
+<li><a href="#dataDisclosed">dataDisclosed</a></li>
+</ul>
+  <p><strong>recipients</strong> is referencing:<p>
+<ul>
+<li><a href="#controller">controller</a></li><li><a href="#category">category</a></li><li><a href="#recipients">recipients</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="storage">storage</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="378.5" height="161" viewBox="0 0 378.5 161"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M50 31h10"></path><g><path d="M60 31h10"></path><path d="M308.5 31h10"></path><g><path d="M70 31h0"></path><path d="M308.5 31h0"></path><path d="M70 31h20"></path><g class="non-terminal"><path d="M90 31h55.25"></path><path d="M233.25 31h55.25"></path><rect x="145.25" y="20" width="88" height="22"></rect><a xlink:href="#temporal"><text x="189.25" y="35">temporal</text></a></g><path d="M288.5 31h20"></path><path d="M70 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M90 61h12.75"></path><path d="M275.75 61h12.75"></path><rect x="102.75" y="50" width="173" height="22"></rect><a xlink:href="#purposeConditional"><text x="189.25" y="65">purposeConditional</text></a></g><path d="M288.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path><path d="M70 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M90 91h0"></path><path d="M288.5 91h0"></path><rect x="90" y="80" width="198.5" height="22"></rect><a xlink:href="#legalBasisConditional"><text x="189.25" y="95">legalBasisConditional</text></a></g><path d="M288.5 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10"></path></g></g><path d="M318.5 31a10 10 0 0 1 10 10v59a10 10 0 0 1 -10 10h-258.5a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 130h38.5"></path><path d="M280 130h38.5"></path><g class="non-terminal"><path d="M98.5 130h0"></path><path d="M280 130h0"></path><rect x="98.5" y="119" width="181.5" height="22"></rect><a xlink:href="#aggregationFunction"><text x="189.25" y="134">aggregationFunction</text></a></g></g><path d="M318.5 130h10"></path><path d="M328.5 130h0"></path></g><path d="M328.5 130h10"></path><path d="M 338.5 130 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">storage</span> = 
+  ( <a class="ebnf-non-terminal" href="#temporal">temporal</a>
+  | <a class="ebnf-non-terminal" href="#purposeConditional">purposeConditional</a>
+  | <a class="ebnf-non-terminal" href="#legalBasisConditional">legalBasisConditional</a>
+  ) , <a class="ebnf-non-terminal" href="#aggregationFunction">aggregationFunction</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>storage</strong>:<p>
+<ul>
+<li><a href="#dataDisclosed">dataDisclosed</a></li>
+</ul>
+  <p><strong>storage</strong> is referencing:<p>
+<ul>
+<li><a href="#temporal">temporal</a></li><li><a href="#purposeConditional">purposeConditional</a></li><li><a href="#legalBasisConditional">legalBasisConditional</a></li><li><a href="#aggregationFunction">aggregationFunction</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="temporal">temporal</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="299" height="92" viewBox="0 0 299 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M259 31h0"></path><path d="M40 31h20"></path><g><path d="M60 31h0"></path><path d="M239 31h0"></path><g class="non-terminal"><path d="M60 31h0"></path><path d="M173.5 31h0"></path><rect x="60" y="20" width="113.5" height="22"></rect><a xlink:href="#description"><text x="116.75" y="35">description</text></a></g><path d="M173.5 31h10"></path><path d="M183.5 31h10"></path><g class="non-terminal"><path d="M193.5 31h0"></path><path d="M239 31h0"></path><rect x="193.5" y="20" width="45.5" height="22"></rect><a xlink:href="#ttl"><text x="216.25" y="35">ttl</text></a></g></g><path d="M239 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h45.5"></path><path d="M193.5 61h45.5"></path><rect x="105.5" y="50" width="88" height="22"></rect><a xlink:href="#temporal"><text x="149.5" y="65">temporal</text></a></g><path d="M239 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 259 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">temporal</span> = ( <a class="ebnf-non-terminal" href="#description">description</a> , <a class="ebnf-non-terminal" href="#ttl">ttl</a> ) | <a class="ebnf-non-terminal" href="#temporal">temporal</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>temporal</strong>:<p>
+<ul>
+<li><a href="#storage">storage</a></li>
+</ul>
+  <p><strong>temporal</strong> is referencing:<p>
+<ul>
+<li><a href="#description">description</a></li><li><a href="#ttl">ttl</a></li><li><a href="#temporal">temporal</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="ttl">ttl</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="205" height="62" viewBox="0 0 205 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M155 31h0"></path><rect x="50" y="20" width="105" height="22"></rect><a xlink:href="#stringDate"><text x="102.5" y="35">stringDate</text></a></g><path d="M155 31h10"></path><path d="M 165 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">ttl</span> = <a class="ebnf-non-terminal" href="#stringDate">stringDate</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>ttl</strong>:<p>
+<ul>
+<li><a href="#temporal">temporal</a></li>
+</ul>
+  <p><strong>ttl</strong> is referencing:<p>
+<ul>
+<li><a href="#stringDate">stringDate</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="purposeConditional">purposeConditional</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="293" height="92" viewBox="0 0 293 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M253 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h51"></path><path d="M182 31h51"></path><rect x="111" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="146.5" y="35">string</text></a></g><path d="M233 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h0"></path><path d="M233 61h0"></path><rect x="60" y="50" width="173" height="22"></rect><a xlink:href="#purposeConditional"><text x="146.5" y="65">purposeConditional</text></a></g><path d="M233 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 253 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">purposeConditional</span> = <a class="ebnf-non-terminal" href="#string">string</a> | <a class="ebnf-non-terminal" href="#purposeConditional">purposeConditional</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>purposeConditional</strong>:<p>
+<ul>
+<li><a href="#storage">storage</a></li>
+</ul>
+  <p><strong>purposeConditional</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li><li><a href="#purposeConditional">purposeConditional</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="legalBasisConditional">legalBasisConditional</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="318.5" height="92" viewBox="0 0 318.5 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M278.5 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h25.5"></path><path d="M233 31h25.5"></path><rect x="85.5" y="20" width="147.5" height="22"></rect><a xlink:href="#stringReference"><text x="159.25" y="35">stringReference</text></a></g><path d="M258.5 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h0"></path><path d="M258.5 61h0"></path><rect x="60" y="50" width="198.5" height="22"></rect><a xlink:href="#legalBasisConditional"><text x="159.25" y="65">legalBasisConditional</text></a></g><path d="M258.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 278.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">legalBasisConditional</span> = <a class="ebnf-non-terminal" href="#stringReference">stringReference</a> | <a class="ebnf-non-terminal" href="#legalBasisConditional">legalBasisConditional</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>legalBasisConditional</strong>:<p>
+<ul>
+<li><a href="#storage">storage</a></li>
+</ul>
+  <p><strong>legalBasisConditional</strong> is referencing:<p>
+<ul>
+<li><a href="#stringReference">stringReference</a></li><li><a href="#legalBasisConditional">legalBasisConditional</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="aggregationFunction">aggregationFunction</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="165.5" height="152" viewBox="0 0 165.5 152"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M125.5 31h0"></path><path d="M40 31h20"></path><g class="terminal"><path d="M60 31h0"></path><path d="M105.5 31h0"></path><rect x="60" y="20" width="45.5" height="22" rx="10" ry="10"></rect><text x="82.75" y="35">min</text></g><path d="M105.5 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M60 61h0"></path><path d="M105.5 61h0"></path><rect x="60" y="50" width="45.5" height="22" rx="10" ry="10"></rect><text x="82.75" y="65">max</text></g><path d="M105.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M60 91h0"></path><path d="M105.5 91h0"></path><rect x="60" y="80" width="45.5" height="22" rx="10" ry="10"></rect><text x="82.75" y="95">sum</text></g><path d="M105.5 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M60 121h0"></path><path d="M105.5 121h0"></path><rect x="60" y="110" width="45.5" height="22" rx="10" ry="10"></rect><text x="82.75" y="125">avg</text></g><path d="M105.5 121a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10"></path></g><path d="M 125.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">aggregationFunction</span>
+  = <span class="ebnf-terminal">"min"</span>
+  | <span class="ebnf-terminal">"max"</span>
+  | <span class="ebnf-terminal">"sum"</span>
+  | <span class="ebnf-terminal">"avg"</span>
+  <span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>aggregationFunction</strong>:<p>
+<ul>
+<li><a href="#storage">storage</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="nonDisclosure">nonDisclosure</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="514.5" height="102" viewBox="0 0 514.5 102"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M50 31h10"></path><g><path d="M60 31h10"></path><path d="M444.5 31h10"></path><g class="non-terminal"><path d="M70 31h0"></path><path d="M226 31h0"></path><rect x="70" y="20" width="156" height="22"></rect><a xlink:href="#legalRequirement"><text x="148" y="35">legalRequirement</text></a></g><path d="M226 31h10"></path><path d="M236 31h10"></path><g class="non-terminal"><path d="M246 31h0"></path><path d="M444.5 31h0"></path><rect x="246" y="20" width="198.5" height="22"></rect><a xlink:href="#contractualRegulation"><text x="345.25" y="35">contractualRegulation</text></a></g></g><path d="M454.5 31a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-394.5a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 71h35.5"></path><path d="M419 71h35.5"></path><g class="non-terminal"><path d="M95.5 71h0"></path><path d="M277 71h0"></path><rect x="95.5" y="60" width="181.5" height="22"></rect><a xlink:href="#obligationToProvide"><text x="186.25" y="75">obligationToProvide</text></a></g><path d="M277 71h10"></path><path d="M287 71h10"></path><g class="non-terminal"><path d="M297 71h0"></path><path d="M419 71h0"></path><rect x="297" y="60" width="122" height="22"></rect><a xlink:href="#consequences"><text x="358" y="75">consequences</text></a></g></g><path d="M454.5 71h10"></path><path d="M464.5 71h0"></path></g><path d="M464.5 71h10"></path><path d="M 474.5 71 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">nonDisclosure</span> = <a class="ebnf-non-terminal" href="#legalRequirement">legalRequirement</a> , <a class="ebnf-non-terminal" href="#contractualRegulation">contractualRegulation</a> ,
+  <a class="ebnf-non-terminal" href="#obligationToProvide">obligationToProvide</a> , <a class="ebnf-non-terminal" href="#consequences">consequences</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>nonDisclosure</strong>:<p>
+<ul>
+<li><a href="#dataDisclosed">dataDisclosed</a></li>
+</ul>
+  <p><strong>nonDisclosure</strong> is referencing:<p>
+<ul>
+<li><a href="#legalRequirement">legalRequirement</a></li><li><a href="#contractualRegulation">contractualRegulation</a></li><li><a href="#obligationToProvide">obligationToProvide</a></li><li><a href="#consequences">consequences</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="legalRequirement">legalRequirement</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="179.5" height="62" viewBox="0 0 179.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M129.5 31h0"></path><rect x="50" y="20" width="79.5" height="22"></rect><a xlink:href="#boolean"><text x="89.75" y="35">boolean</text></a></g><path d="M129.5 31h10"></path><path d="M 139.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">legalRequirement</span> = <a class="ebnf-non-terminal" href="#boolean">boolean</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>legalRequirement</strong>:<p>
+<ul>
+<li><a href="#nonDisclosure">nonDisclosure</a></li>
+</ul>
+  <p><strong>legalRequirement</strong> is referencing:<p>
+<ul>
+<li><a href="#boolean">boolean</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="contractualRegulation">contractualRegulation</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="179.5" height="62" viewBox="0 0 179.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M129.5 31h0"></path><rect x="50" y="20" width="79.5" height="22"></rect><a xlink:href="#boolean"><text x="89.75" y="35">boolean</text></a></g><path d="M129.5 31h10"></path><path d="M 139.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">contractualRegulation</span> = <a class="ebnf-non-terminal" href="#boolean">boolean</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>contractualRegulation</strong>:<p>
+<ul>
+<li><a href="#nonDisclosure">nonDisclosure</a></li>
+</ul>
+  <p><strong>contractualRegulation</strong> is referencing:<p>
+<ul>
+<li><a href="#boolean">boolean</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="obligationToProvide">obligationToProvide</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="179.5" height="62" viewBox="0 0 179.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M129.5 31h0"></path><rect x="50" y="20" width="79.5" height="22"></rect><a xlink:href="#boolean"><text x="89.75" y="35">boolean</text></a></g><path d="M129.5 31h10"></path><path d="M 139.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">obligationToProvide</span> = <a class="ebnf-non-terminal" href="#boolean">boolean</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>obligationToProvide</strong>:<p>
+<ul>
+<li><a href="#nonDisclosure">nonDisclosure</a></li>
+</ul>
+  <p><strong>obligationToProvide</strong> is referencing:<p>
+<ul>
+<li><a href="#boolean">boolean</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="consequences">consequences</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">consequences</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>consequences</strong>:<p>
+<ul>
+<li><a href="#nonDisclosure">nonDisclosure</a></li>
+</ul>
+  <p><strong>consequences</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="thirdCountryTransfers">thirdCountryTransfers</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="798" height="172" viewBox="0 0 798 172"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M758 111h0"></path><path d="M40 31h20"></path><g><path d="M60 31h0"></path><path d="M60 31h10"></path><g><path d="M70 31h201.25"></path><path d="M526.75 31h201.25"></path><g class="non-terminal"><path d="M271.25 31h0"></path><path d="M350.75 31h0"></path><rect x="271.25" y="20" width="79.5" height="22"></rect><a xlink:href="#country"><text x="311" y="35">country</text></a></g><path d="M350.75 31h10"></path><path d="M360.75 31h10"></path><g class="non-terminal"><path d="M370.75 31h0"></path><path d="M526.75 31h0"></path><rect x="370.75" y="20" width="156" height="22"></rect><a xlink:href="#adequacyDecision"><text x="448.75" y="35">adequacyDecision</text></a></g></g><path d="M728 31a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-658a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M70 71h10"></path><path d="M718 71h10"></path><g class="non-terminal"><path d="M80 71h0"></path><path d="M278.5 71h0"></path><rect x="80" y="60" width="198.5" height="22"></rect><a xlink:href="#appropriateGuarantees"><text x="179.25" y="75">appropriateGuarantees</text></a></g><path d="M278.5 71h10"></path><path d="M288.5 71h10"></path><g class="non-terminal"><path d="M298.5 71h0"></path><path d="M718 71h0"></path><rect x="298.5" y="60" width="419.5" height="22"></rect><a xlink:href="#presenceOfEnforceableRightsAndEffectiveRemedies"><text x="508.25" y="75">presenceOfEnforceableRightsAndEffectiveRemedies</text></a></g></g><path d="M728 71a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-658a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M70 111h200"></path><path d="M528 111h200"></path><g class="non-terminal"><path d="M270 111h0"></path><path d="M528 111h0"></path><rect x="270" y="100" width="258" height="22"></rect><a xlink:href="#standardDataProtectionClause"><text x="399" y="115">standardDataProtectionClause</text></a></g></g><path d="M728 111h10"></path><path d="M738 111h0"></path></g><path d="M738 111h20"></path><path d="M40 31a10 10 0 0 1 10 10v90a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 141h239.75"></path><path d="M498.25 141h239.75"></path><rect x="299.75" y="130" width="198.5" height="22"></rect><a xlink:href="#thirdCountryTransfers"><text x="399" y="145">thirdCountryTransfers</text></a></g><path d="M738 141a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 758 111 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">thirdCountryTransfers</span>
+  = ( <a class="ebnf-non-terminal" href="#country">country</a> , <a class="ebnf-non-terminal" href="#adequacyDecision">adequacyDecision</a> , <a class="ebnf-non-terminal" href="#appropriateGuarantees">appropriateGuarantees</a> ,
+    <a class="ebnf-non-terminal" href="#presenceOfEnforceableRightsAndEffectiveRemedies">presenceOfEnforceableRightsAndEffectiveRemedies</a> ,
+    <a class="ebnf-non-terminal" href="#standardDataProtectionClause">standardDataProtectionClause</a> )
+  | <a class="ebnf-non-terminal" href="#thirdCountryTransfers">thirdCountryTransfers</a>
+  <span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>thirdCountryTransfers</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>thirdCountryTransfers</strong> is referencing:<p>
+<ul>
+<li><a href="#country">country</a></li><li><a href="#adequacyDecision">adequacyDecision</a></li><li><a href="#appropriateGuarantees">appropriateGuarantees</a></li><li><a href="#presenceOfEnforceableRightsAndEffectiveRemedies">presenceOfEnforceableRightsAndEffectiveRemedies</a></li><li><a href="#standardDataProtectionClause">standardDataProtectionClause</a></li><li><a href="#thirdCountryTransfers">thirdCountryTransfers</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="available">available</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="179.5" height="62" viewBox="0 0 179.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M129.5 31h0"></path><rect x="50" y="20" width="79.5" height="22"></rect><a xlink:href="#boolean"><text x="89.75" y="35">boolean</text></a></g><path d="M129.5 31h10"></path><path d="M 139.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">available</span> = <a class="ebnf-non-terminal" href="#boolean">boolean</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>available</strong>:<p>
+<ul>
+<li><a href="#ifAvailableThenDescription">ifAvailableThenDescription</a></li><li><a href="#accessAndDataPortability">accessAndDataPortability</a></li><li><a href="#right">right</a></li>
+</ul>
+  <p><strong>available</strong> is referencing:<p>
+<ul>
+<li><a href="#boolean">boolean</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="ifAvailableThenDescription">ifAvailableThenDescription</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="350" height="92" viewBox="0 0 350 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M310 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h66.75"></path><path d="M223.25 31h66.75"></path><rect x="126.75" y="20" width="96.5" height="22"></rect><a xlink:href="#available"><text x="175" y="35">available</text></a></g><path d="M290 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g><path d="M60 61h0"></path><path d="M290 61h0"></path><g class="non-terminal"><path d="M60 61h0"></path><path d="M156.5 61h0"></path><rect x="60" y="50" width="96.5" height="22"></rect><a xlink:href="#available"><text x="108.25" y="65">available</text></a></g><path d="M156.5 61h10"></path><path d="M166.5 61h10"></path><g class="non-terminal"><path d="M176.5 61h0"></path><path d="M290 61h0"></path><rect x="176.5" y="50" width="113.5" height="22"></rect><a xlink:href="#description"><text x="233.25" y="65">description</text></a></g></g><path d="M290 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 310 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">ifAvailableThenDescription</span> = <a class="ebnf-non-terminal" href="#available">available</a> | ( <a class="ebnf-non-terminal" href="#available">available</a> , <a class="ebnf-non-terminal" href="#description">description</a> )<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>ifAvailableThenDescription</strong>:<p>
+<ul>
+<li><a href="#adequacyDecision">adequacyDecision</a></li><li><a href="#appropriateGuarantees">appropriateGuarantees</a></li><li><a href="#presenceOfEnforceableRightsAndEffectiveRemedies">presenceOfEnforceableRightsAndEffectiveRemedies</a></li><li><a href="#standardDataProtectionClause">standardDataProtectionClause</a></li>
+</ul>
+  <p><strong>ifAvailableThenDescription</strong> is referencing:<p>
+<ul>
+<li><a href="#available">available</a></li><li><a href="#description">description</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="adequacyDecision">adequacyDecision</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="341" height="62" viewBox="0 0 341 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M291 31h0"></path><rect x="50" y="20" width="241" height="22"></rect><a xlink:href="#ifAvailableThenDescription"><text x="170.5" y="35">ifAvailableThenDescription</text></a></g><path d="M291 31h10"></path><path d="M 301 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">adequacyDecision</span> = <a class="ebnf-non-terminal" href="#ifAvailableThenDescription">ifAvailableThenDescription</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>adequacyDecision</strong>:<p>
+<ul>
+<li><a href="#thirdCountryTransfers">thirdCountryTransfers</a></li>
+</ul>
+  <p><strong>adequacyDecision</strong> is referencing:<p>
+<ul>
+<li><a href="#ifAvailableThenDescription">ifAvailableThenDescription</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="appropriateGuarantees">appropriateGuarantees</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="341" height="62" viewBox="0 0 341 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M291 31h0"></path><rect x="50" y="20" width="241" height="22"></rect><a xlink:href="#ifAvailableThenDescription"><text x="170.5" y="35">ifAvailableThenDescription</text></a></g><path d="M291 31h10"></path><path d="M 301 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">appropriateGuarantees</span> = <a class="ebnf-non-terminal" href="#ifAvailableThenDescription">ifAvailableThenDescription</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>appropriateGuarantees</strong>:<p>
+<ul>
+<li><a href="#thirdCountryTransfers">thirdCountryTransfers</a></li>
+</ul>
+  <p><strong>appropriateGuarantees</strong> is referencing:<p>
+<ul>
+<li><a href="#ifAvailableThenDescription">ifAvailableThenDescription</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="presenceOfEnforceableRightsAndEffectiveRemedies">presenceOfEnforceableRightsAndEffectiveRemedies</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="341" height="62" viewBox="0 0 341 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M291 31h0"></path><rect x="50" y="20" width="241" height="22"></rect><a xlink:href="#ifAvailableThenDescription"><text x="170.5" y="35">ifAvailableThenDescription</text></a></g><path d="M291 31h10"></path><path d="M 301 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">presenceOfEnforceableRightsAndEffectiveRemedies</span> = <a class="ebnf-non-terminal" href="#ifAvailableThenDescription">ifAvailableThenDescription</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>presenceOfEnforceableRightsAndEffectiveRemedies</strong>:<p>
+<ul>
+<li><a href="#thirdCountryTransfers">thirdCountryTransfers</a></li>
+</ul>
+  <p><strong>presenceOfEnforceableRightsAndEffectiveRemedies</strong> is referencing:<p>
+<ul>
+<li><a href="#ifAvailableThenDescription">ifAvailableThenDescription</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="standardDataProtectionClause">standardDataProtectionClause</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="341" height="62" viewBox="0 0 341 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M291 31h0"></path><rect x="50" y="20" width="241" height="22"></rect><a xlink:href="#ifAvailableThenDescription"><text x="170.5" y="35">ifAvailableThenDescription</text></a></g><path d="M291 31h10"></path><path d="M 301 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">standardDataProtectionClause</span> = <a class="ebnf-non-terminal" href="#ifAvailableThenDescription">ifAvailableThenDescription</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>standardDataProtectionClause</strong>:<p>
+<ul>
+<li><a href="#thirdCountryTransfers">thirdCountryTransfers</a></li>
+</ul>
+  <p><strong>standardDataProtectionClause</strong> is referencing:<p>
+<ul>
+<li><a href="#ifAvailableThenDescription">ifAvailableThenDescription</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="accessAndDataPortability">accessAndDataPortability</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="438" height="142" viewBox="0 0 438 142"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M50 31h10"></path><g><path d="M60 31h11.25"></path><path d="M366.75 31h11.25"></path><g class="non-terminal"><path d="M71.25 31h0"></path><path d="M167.75 31h0"></path><rect x="71.25" y="20" width="96.5" height="22"></rect><a xlink:href="#available"><text x="119.5" y="35">available</text></a></g><path d="M167.75 31h10"></path><path d="M177.75 31h10"></path><g class="non-terminal"><path d="M187.75 31h0"></path><path d="M301.25 31h0"></path><rect x="187.75" y="20" width="113.5" height="22"></rect><a xlink:href="#description"><text x="244.5" y="35">description</text></a></g><path d="M301.25 31h10"></path><path d="M311.25 31h10"></path><g class="non-terminal"><path d="M321.25 31h0"></path><path d="M366.75 31h0"></path><rect x="321.25" y="20" width="45.5" height="22"></rect><a xlink:href="#url"><text x="344" y="35">url</text></a></g></g><path d="M378 31a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-318a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 71h10"></path><path d="M368 71h10"></path><g class="non-terminal"><path d="M70 71h0"></path><path d="M132.5 71h0"></path><rect x="70" y="60" width="62.5" height="22"></rect><a xlink:href="#email"><text x="101.25" y="75">email</text></a></g><path d="M132.5 71h10"></path><path d="M142.5 71h10"></path><g class="non-terminal"><path d="M152.5 71h0"></path><path d="M368 71h0"></path><rect x="152.5" y="60" width="215.5" height="22"></rect><a xlink:href="#identificationEvidences"><text x="260.25" y="75">identificationEvidences</text></a></g></g><path d="M378 71a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-318a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M60 111h10"></path><path d="M368 111h10"></path><g class="non-terminal"><path d="M70 111h0"></path><path d="M234.5 111h0"></path><rect x="70" y="100" width="164.5" height="22"></rect><a xlink:href="#administrativeFee"><text x="152.25" y="115">administrativeFee</text></a></g><path d="M234.5 111h10"></path><path d="M244.5 111h10"></path><g class="non-terminal"><path d="M254.5 111h0"></path><path d="M368 111h0"></path><rect x="254.5" y="100" width="113.5" height="22"></rect><a xlink:href="#dataFormats"><text x="311.25" y="115">dataFormats</text></a></g></g><path d="M378 111h10"></path><path d="M388 111h0"></path></g><path d="M388 111h10"></path><path d="M 398 111 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">accessAndDataPortability</span> = <a class="ebnf-non-terminal" href="#available">available</a> , <a class="ebnf-non-terminal" href="#description">description</a> ,
+  <a class="ebnf-non-terminal" href="#url">url</a> , <a class="ebnf-non-terminal" href="#email">email</a> , <a class="ebnf-non-terminal" href="#identificationEvidences">identificationEvidences</a> , <a class="ebnf-non-terminal" href="#administrativeFee">administrativeFee</a> ,
+  <a class="ebnf-non-terminal" href="#dataFormats">dataFormats</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>accessAndDataPortability</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>accessAndDataPortability</strong> is referencing:<p>
+<ul>
+<li><a href="#available">available</a></li><li><a href="#description">description</a></li><li><a href="#url">url</a></li><li><a href="#email">email</a></li><li><a href="#identificationEvidences">identificationEvidences</a></li><li><a href="#administrativeFee">administrativeFee</a></li><li><a href="#dataFormats">dataFormats</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="identificationEvidences">identificationEvidences</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="335.5" height="92" viewBox="0 0 335.5 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M295.5 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h72.25"></path><path d="M203.25 31h72.25"></path><rect x="132.25" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="167.75" y="35">string</text></a></g><path d="M275.5 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h0"></path><path d="M275.5 61h0"></path><rect x="60" y="50" width="215.5" height="22"></rect><a xlink:href="#identificationEvidences"><text x="167.75" y="65">identificationEvidences</text></a></g><path d="M275.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 295.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">identificationEvidences</span> = <a class="ebnf-non-terminal" href="#string">string</a> | <a class="ebnf-non-terminal" href="#identificationEvidences">identificationEvidences</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>identificationEvidences</strong>:<p>
+<ul>
+<li><a href="#accessAndDataPortability">accessAndDataPortability</a></li><li><a href="#right">right</a></li>
+</ul>
+  <p><strong>identificationEvidences</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li><li><a href="#identificationEvidences">identificationEvidences</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="administrativeFee">administrativeFee</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="279" height="62" viewBox="0 0 279 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M229 31h0"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#amount"><text x="85.5" y="35">amount</text></a></g><path d="M121 31h10"></path><path d="M131 31h10"></path><g class="non-terminal"><path d="M141 31h0"></path><path d="M229 31h0"></path><rect x="141" y="20" width="88" height="22"></rect><a xlink:href="#currency"><text x="185" y="35">currency</text></a></g></g><path d="M229 31h10"></path><path d="M 239 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">administrativeFee</span> = <a class="ebnf-non-terminal" href="#amount">amount</a> , <a class="ebnf-non-terminal" href="#currency">currency</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>administrativeFee</strong>:<p>
+<ul>
+<li><a href="#accessAndDataPortability">accessAndDataPortability</a></li>
+</ul>
+  <p><strong>administrativeFee</strong> is referencing:<p>
+<ul>
+<li><a href="#amount">amount</a></li><li><a href="#currency">currency</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="amount">amount</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#number"><text x="85.5" y="35">number</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">amount</span> = <a class="ebnf-non-terminal" href="#number">number</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>amount</strong>:<p>
+<ul>
+<li><a href="#administrativeFee">administrativeFee</a></li>
+</ul>
+  <p><strong>amount</strong> is referencing:<p>
+<ul>
+<li><a href="#number">number</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="currency">currency</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="239" height="62" viewBox="0 0 239 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M189 31h0"></path><rect x="50" y="20" width="139" height="22"></rect><a xlink:href="#stringCurrency"><text x="119.5" y="35">stringCurrency</text></a></g><path d="M189 31h10"></path><path d="M 199 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">currency</span> = <a class="ebnf-non-terminal" href="#stringCurrency">stringCurrency</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>currency</strong>:<p>
+<ul>
+<li><a href="#administrativeFee">administrativeFee</a></li>
+</ul>
+  <p><strong>currency</strong> is referencing:<p>
+<ul>
+<li><a href="#stringCurrency">stringCurrency</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="dataFormats">dataFormats</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="233.5" height="92" viewBox="0 0 233.5 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M193.5 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h21.25"></path><path d="M152.25 31h21.25"></path><rect x="81.25" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="116.75" y="35">string</text></a></g><path d="M173.5 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h0"></path><path d="M173.5 61h0"></path><rect x="60" y="50" width="113.5" height="22"></rect><a xlink:href="#dataFormats"><text x="116.75" y="65">dataFormats</text></a></g><path d="M173.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 193.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">dataFormats</span> = <a class="ebnf-non-terminal" href="#string">string</a> | <a class="ebnf-non-terminal" href="#dataFormats">dataFormats</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>dataFormats</strong>:<p>
+<ul>
+<li><a href="#accessAndDataPortability">accessAndDataPortability</a></li>
+</ul>
+  <p><strong>dataFormats</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li><li><a href="#dataFormats">dataFormats</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="sources">sources</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="458" height="92" viewBox="0 0 458 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M418 31h0"></path><path d="M40 31h20"></path><g><path d="M60 31h0"></path><path d="M398 31h0"></path><g class="non-terminal"><path d="M60 31h0"></path><path d="M97 31h0"></path><rect x="60" y="20" width="37" height="22"></rect><a xlink:href="#id"><text x="78.5" y="35">id</text></a></g><path d="M97 31h10"></path><path d="M107 31h10"></path><g class="non-terminal"><path d="M117 31h0"></path><path d="M239 31h0"></path><rect x="117" y="20" width="122" height="22"></rect><a xlink:href="#dataCategory"><text x="178" y="35">dataCategory</text></a></g><path d="M239 31h10"></path><path d="M249 31h10"></path><g class="non-terminal"><path d="M259 31h0"></path><path d="M398 31h0"></path><rect x="259" y="20" width="139" height="22"></rect><a xlink:href="#sourcesSources"><text x="328.5" y="35">sourcesSources</text></a></g></g><path d="M398 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h129.25"></path><path d="M268.75 61h129.25"></path><rect x="189.25" y="50" width="79.5" height="22"></rect><a xlink:href="#sources"><text x="229" y="65">sources</text></a></g><path d="M398 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 418 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">sources</span>
+  = ( <a class="ebnf-non-terminal" href="#id">id</a> , <a class="ebnf-non-terminal" href="#dataCategory">dataCategory</a> , <a class="ebnf-non-terminal" href="#sourcesSources">sourcesSources</a> )
+  | <a class="ebnf-non-terminal" href="#sources">sources</a>
+  <span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>sources</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>sources</strong> is referencing:<p>
+<ul>
+<li><a href="#id">id</a></li><li><a href="#dataCategory">dataCategory</a></li><li><a href="#sourcesSources">sourcesSources</a></li><li><a href="#sources">sources</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="dataCategory">dataCategory</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">dataCategory</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>dataCategory</strong>:<p>
+<ul>
+<li><a href="#sources">sources</a></li>
+</ul>
+  <p><strong>dataCategory</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="sourcesSources">sourcesSources</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="463.5" height="62" viewBox="0 0 463.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M413.5 31h0"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M163.5 31h0"></path><rect x="50" y="20" width="113.5" height="22"></rect><a xlink:href="#description"><text x="106.75" y="35">description</text></a></g><path d="M163.5 31h10"></path><path d="M173.5 31h10"></path><g class="non-terminal"><path d="M183.5 31h0"></path><path d="M229 31h0"></path><rect x="183.5" y="20" width="45.5" height="22"></rect><a xlink:href="#url"><text x="206.25" y="35">url</text></a></g><path d="M229 31h10"></path><path d="M239 31h10"></path><g class="non-terminal"><path d="M249 31h0"></path><path d="M413.5 31h0"></path><rect x="249" y="20" width="164.5" height="22"></rect><a xlink:href="#publiclyAvailable"><text x="331.25" y="35">publiclyAvailable</text></a></g></g><path d="M413.5 31h10"></path><path d="M 423.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">sourcesSources</span> = <a class="ebnf-non-terminal" href="#description">description</a> , <a class="ebnf-non-terminal" href="#url">url</a> , <a class="ebnf-non-terminal" href="#publiclyAvailable">publiclyAvailable</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>sourcesSources</strong>:<p>
+<ul>
+<li><a href="#sources">sources</a></li>
+</ul>
+  <p><strong>sourcesSources</strong> is referencing:<p>
+<ul>
+<li><a href="#description">description</a></li><li><a href="#url">url</a></li><li><a href="#publiclyAvailable">publiclyAvailable</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="publiclyAvailable">publiclyAvailable</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="179.5" height="62" viewBox="0 0 179.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M129.5 31h0"></path><rect x="50" y="20" width="79.5" height="22"></rect><a xlink:href="#boolean"><text x="89.75" y="35">boolean</text></a></g><path d="M129.5 31h10"></path><path d="M 139.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">publiclyAvailable</span> = <a class="ebnf-non-terminal" href="#boolean">boolean</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>publiclyAvailable</strong>:<p>
+<ul>
+<li><a href="#sourcesSources">sourcesSources</a></li>
+</ul>
+  <p><strong>publiclyAvailable</strong> is referencing:<p>
+<ul>
+<li><a href="#boolean">boolean</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="rightToInformation">rightToInformation</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="162.5" height="62" viewBox="0 0 162.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M112.5 31h0"></path><rect x="50" y="20" width="62.5" height="22"></rect><a xlink:href="#right"><text x="81.25" y="35">right</text></a></g><path d="M112.5 31h10"></path><path d="M 122.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">rightToInformation</span> = <a class="ebnf-non-terminal" href="#right">right</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>rightToInformation</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>rightToInformation</strong> is referencing:<p>
+<ul>
+<li><a href="#right">right</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="rightToRectificationOrDeletion">rightToRectificationOrDeletion</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="162.5" height="62" viewBox="0 0 162.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M112.5 31h0"></path><rect x="50" y="20" width="62.5" height="22"></rect><a xlink:href="#right"><text x="81.25" y="35">right</text></a></g><path d="M112.5 31h10"></path><path d="M 122.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">rightToRectificationOrDeletion</span> = <a class="ebnf-non-terminal" href="#right">right</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>rightToRectificationOrDeletion</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>rightToRectificationOrDeletion</strong> is referencing:<p>
+<ul>
+<li><a href="#right">right</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="rightToDataPortability">rightToDataPortability</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="162.5" height="62" viewBox="0 0 162.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M112.5 31h0"></path><rect x="50" y="20" width="62.5" height="22"></rect><a xlink:href="#right"><text x="81.25" y="35">right</text></a></g><path d="M112.5 31h10"></path><path d="M 122.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">rightToDataPortability</span> = <a class="ebnf-non-terminal" href="#right">right</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>rightToDataPortability</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>rightToDataPortability</strong> is referencing:<p>
+<ul>
+<li><a href="#right">right</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="rightToWithdrawConsent">rightToWithdrawConsent</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="162.5" height="62" viewBox="0 0 162.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M112.5 31h0"></path><rect x="50" y="20" width="62.5" height="22"></rect><a xlink:href="#right"><text x="81.25" y="35">right</text></a></g><path d="M112.5 31h10"></path><path d="M 122.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">rightToWithdrawConsent</span> = <a class="ebnf-non-terminal" href="#right">right</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>rightToWithdrawConsent</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>rightToWithdrawConsent</strong> is referencing:<p>
+<ul>
+<li><a href="#right">right</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="rightToComplain">rightToComplain</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="372.5" height="62" viewBox="0 0 372.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M322.5 31h0"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M112.5 31h0"></path><rect x="50" y="20" width="62.5" height="22"></rect><a xlink:href="#right"><text x="81.25" y="35">right</text></a></g><path d="M112.5 31h10"></path><path d="M122.5 31h10"></path><g class="non-terminal"><path d="M132.5 31h0"></path><path d="M322.5 31h0"></path><rect x="132.5" y="20" width="190" height="22"></rect><a xlink:href="#supervisoryAuthority"><text x="227.5" y="35">supervisoryAuthority</text></a></g></g><path d="M322.5 31h10"></path><path d="M 332.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">rightToComplain</span> = <a class="ebnf-non-terminal" href="#right">right</a> , <a class="ebnf-non-terminal" href="#supervisoryAuthority">supervisoryAuthority</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>rightToComplain</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>rightToComplain</strong> is referencing:<p>
+<ul>
+<li><a href="#right">right</a></li><li><a href="#supervisoryAuthority">supervisoryAuthority</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="supervisoryAuthority">supervisoryAuthority</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="518" height="62" viewBox="0 0 518 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g><path d="M50 31h0"></path><path d="M468 31h0"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M104 31h0"></path><rect x="50" y="20" width="54" height="22"></rect><a xlink:href="#name"><text x="77" y="35">name</text></a></g><path d="M104 31h10"></path><path d="M114 31h10"></path><g class="non-terminal"><path d="M124 31h0"></path><path d="M203.5 31h0"></path><rect x="124" y="20" width="79.5" height="22"></rect><a xlink:href="#address"><text x="163.75" y="35">address</text></a></g><path d="M203.5 31h10"></path><path d="M213.5 31h10"></path><g class="non-terminal"><path d="M223.5 31h0"></path><path d="M303 31h0"></path><rect x="223.5" y="20" width="79.5" height="22"></rect><a xlink:href="#country"><text x="263.25" y="35">country</text></a></g><path d="M303 31h10"></path><path d="M313 31h10"></path><g class="non-terminal"><path d="M323 31h0"></path><path d="M385.5 31h0"></path><rect x="323" y="20" width="62.5" height="22"></rect><a xlink:href="#email"><text x="354.25" y="35">email</text></a></g><path d="M385.5 31h10"></path><path d="M395.5 31h10"></path><g class="non-terminal"><path d="M405.5 31h0"></path><path d="M468 31h0"></path><rect x="405.5" y="20" width="62.5" height="22"></rect><a xlink:href="#phone"><text x="436.75" y="35">phone</text></a></g></g><path d="M468 31h10"></path><path d="M 478 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">supervisoryAuthority</span> = <a class="ebnf-non-terminal" href="#name">name</a> , <a class="ebnf-non-terminal" href="#address">address</a> , <a class="ebnf-non-terminal" href="#country">country</a> ,
+  <a class="ebnf-non-terminal" href="#email">email</a> , <a class="ebnf-non-terminal" href="#phone">phone</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>supervisoryAuthority</strong>:<p>
+<ul>
+<li><a href="#rightToComplain">rightToComplain</a></li>
+</ul>
+  <p><strong>supervisoryAuthority</strong> is referencing:<p>
+<ul>
+<li><a href="#name">name</a></li><li><a href="#address">address</a></li><li><a href="#country">country</a></li><li><a href="#email">email</a></li><li><a href="#phone">phone</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="right">right</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="568" height="110" viewBox="0 0 568 110"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><path d="M40 40h10"></path><g><path d="M50 40h0"></path><g><path d="M50 40h10"></path><path d="M508 80h10"></path><g class="non-terminal"><path d="M60 40h0"></path><path d="M156.5 40h0"></path><rect x="60" y="29" width="96.5" height="22"></rect><a xlink:href="#available"><text x="108.25" y="44">available</text></a></g><path d="M156.5 40h10"></path><g><path d="M166.5 40h0"></path><path d="M508 80h0"></path><path d="M166.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M186.5 20h301.5"></path></g><path d="M488 20a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><path d="M166.5 40h20"></path><g><path d="M186.5 40h0"></path><path d="M186.5 40h10"></path><g><path d="M196.5 40h10"></path><path d="M468 40h10"></path><g class="non-terminal"><path d="M206.5 40h0"></path><path d="M320 40h0"></path><rect x="206.5" y="29" width="113.5" height="22"></rect><a xlink:href="#description"><text x="263.25" y="44">description</text></a></g><path d="M320 40h10"></path><path d="M330 40h10"></path><g class="non-terminal"><path d="M340 40h0"></path><path d="M385.5 40h0"></path><rect x="340" y="29" width="45.5" height="22"></rect><a xlink:href="#url"><text x="362.75" y="44">url</text></a></g><path d="M385.5 40h10"></path><path d="M395.5 40h10"></path><g class="non-terminal"><path d="M405.5 40h0"></path><path d="M468 40h0"></path><rect x="405.5" y="29" width="62.5" height="22"></rect><a xlink:href="#email"><text x="436.75" y="44">email</text></a></g></g><path d="M478 40a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-281.5a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M196.5 80h33"></path><path d="M445 80h33"></path><g class="non-terminal"><path d="M229.5 80h0"></path><path d="M445 80h0"></path><rect x="229.5" y="69" width="215.5" height="22"></rect><a xlink:href="#identificationEvidences"><text x="337.25" y="84">identificationEvidences</text></a></g></g><path d="M478 80h10"></path><path d="M488 80h0"></path></g><path d="M488 80h20"></path></g></g><path d="M518 80h0"></path></g><path d="M518 80h10"></path><path d="M 528 80 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">right</span> = <a class="ebnf-non-terminal" href="#available">available</a> , [ <a class="ebnf-non-terminal" href="#description">description</a> , <a class="ebnf-non-terminal" href="#url">url</a> , <a class="ebnf-non-terminal" href="#email">email</a> ,
+  <a class="ebnf-non-terminal" href="#identificationEvidences">identificationEvidences</a> ]<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>right</strong>:<p>
+<ul>
+<li><a href="#rightToInformation">rightToInformation</a></li><li><a href="#rightToRectificationOrDeletion">rightToRectificationOrDeletion</a></li><li><a href="#rightToDataPortability">rightToDataPortability</a></li><li><a href="#rightToWithdrawConsent">rightToWithdrawConsent</a></li><li><a href="#rightToComplain">rightToComplain</a></li>
+</ul>
+  <p><strong>right</strong> is referencing:<p>
+<ul>
+<li><a href="#available">available</a></li><li><a href="#description">description</a></li><li><a href="#url">url</a></li><li><a href="#email">email</a></li><li><a href="#identificationEvidences">identificationEvidences</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="automatedDecisionMaking">automatedDecisionMaking</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="598.5" height="71" viewBox="0 0 598.5 71"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><path d="M40 40h10"></path><g><path d="M50 40h0"></path><g><path d="M50 40h10"></path><path d="M538.5 40h10"></path><g class="non-terminal"><path d="M60 40h0"></path><path d="M122.5 40h0"></path><rect x="60" y="29" width="62.5" height="22"></rect><a xlink:href="#inUse"><text x="91.25" y="44">inUse</text></a></g><path d="M122.5 40h10"></path><g><path d="M132.5 40h0"></path><path d="M538.5 40h0"></path><path d="M132.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M152.5 20h366"></path></g><path d="M518.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M132.5 40h20"></path><g><path d="M152.5 40h0"></path><path d="M518.5 40h0"></path><g class="non-terminal"><path d="M152.5 40h0"></path><path d="M283 40h0"></path><rect x="152.5" y="29" width="130.5" height="22"></rect><a xlink:href="#logicInvolved"><text x="217.75" y="44">logicInvolved</text></a></g><path d="M283 40h10"></path><path d="M293 40h10"></path><g class="non-terminal"><path d="M303 40h0"></path><path d="M518.5 40h0"></path><rect x="303" y="29" width="215.5" height="22"></rect><a xlink:href="#scopeAndIntendedEffects"><text x="410.75" y="44">scopeAndIntendedEffects</text></a></g></g><path d="M518.5 40h20"></path></g></g><path d="M548.5 40h0"></path></g><path d="M548.5 40h10"></path><path d="M 558.5 40 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">automatedDecisionMaking</span> = <a class="ebnf-non-terminal" href="#inUse">inUse</a> , [ <a class="ebnf-non-terminal" href="#logicInvolved">logicInvolved</a> ,
+  <a class="ebnf-non-terminal" href="#scopeAndIntendedEffects">scopeAndIntendedEffects</a> ]<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>automatedDecisionMaking</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>automatedDecisionMaking</strong> is referencing:<p>
+<ul>
+<li><a href="#inUse">inUse</a></li><li><a href="#logicInvolved">logicInvolved</a></li><li><a href="#scopeAndIntendedEffects">scopeAndIntendedEffects</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="inUse">inUse</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="179.5" height="62" viewBox="0 0 179.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M129.5 31h0"></path><rect x="50" y="20" width="79.5" height="22"></rect><a xlink:href="#boolean"><text x="89.75" y="35">boolean</text></a></g><path d="M129.5 31h10"></path><path d="M 139.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">inUse</span> = <a class="ebnf-non-terminal" href="#boolean">boolean</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>inUse</strong>:<p>
+<ul>
+<li><a href="#automatedDecisionMaking">automatedDecisionMaking</a></li>
+</ul>
+  <p><strong>inUse</strong> is referencing:<p>
+<ul>
+<li><a href="#boolean">boolean</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="logicInvolved">logicInvolved</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">logicInvolved</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>logicInvolved</strong>:<p>
+<ul>
+<li><a href="#automatedDecisionMaking">automatedDecisionMaking</a></li>
+</ul>
+  <p><strong>logicInvolved</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="scopeAndIntendedEffects">scopeAndIntendedEffects</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="171" height="62" viewBox="0 0 171 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M121 31h0"></path><rect x="50" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="85.5" y="35">string</text></a></g><path d="M121 31h10"></path><path d="M 131 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">scopeAndIntendedEffects</span> = <a class="ebnf-non-terminal" href="#string">string</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>scopeAndIntendedEffects</strong>:<p>
+<ul>
+<li><a href="#automatedDecisionMaking">automatedDecisionMaking</a></li>
+</ul>
+  <p><strong>scopeAndIntendedEffects</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="changesOfPurpose">changesOfPurpose</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="529" height="110" viewBox="0 0 529 110"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><g><path d="M40 40h0"></path><path d="M489 80h0"></path><path d="M40 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M60 20h409"></path></g><path d="M469 20a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><path d="M40 40h20"></path><g><path d="M60 40h0"></path><path d="M469 80h0"></path><path d="M60 40h10"></path><g><path d="M70 40h0"></path><path d="M70 40h10"></path><g><path d="M80 40h31.25"></path><path d="M417.75 40h31.25"></path><g class="non-terminal"><path d="M111.25 40h0"></path><path d="M224.75 40h0"></path><rect x="111.25" y="29" width="113.5" height="22"></rect><a xlink:href="#description"><text x="168" y="44">description</text></a></g><path d="M224.75 40h10"></path><path d="M234.75 40h10"></path><g class="non-terminal"><path d="M244.75 40h0"></path><path d="M417.75 40h0"></path><rect x="244.75" y="29" width="173" height="22"></rect><a xlink:href="#affectedCategories"><text x="331.25" y="44">affectedCategories</text></a></g></g><path d="M449 40a10 10 0 0 1 10 10v0a10 10 0 0 1 -10 10h-369a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M80 80h10"></path><path d="M439 80h10"></path><g class="non-terminal"><path d="M90 80h0"></path><path d="M271.5 80h0"></path><rect x="90" y="69" width="181.5" height="22"></rect><a xlink:href="#plannedDateOfChange"><text x="180.75" y="84">plannedDateOfChange</text></a></g><path d="M271.5 80h10"></path><path d="M281.5 80h10"></path><g class="non-terminal"><path d="M291.5 80h0"></path><path d="M439 80h0"></path><rect x="291.5" y="69" width="147.5" height="22"></rect><a xlink:href="#urlOfNewVersion"><text x="365.25" y="84">urlOfNewVersion</text></a></g></g><path d="M449 80h10"></path><path d="M459 80h0"></path></g><path d="M459 80h10"></path><path d="M70 40a10 10 0 0 0 -10 10v39a10 10 0 0 0 10 10"></path><g><path d="M70 99h389"></path></g><path d="M459 99a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path></g><path d="M469 80h20"></path></g><path d="M 489 80 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">changesOfPurpose</span> = { <a class="ebnf-non-terminal" href="#description">description</a> , <a class="ebnf-non-terminal" href="#affectedCategories">affectedCategories</a> ,
+  <a class="ebnf-non-terminal" href="#plannedDateOfChange">plannedDateOfChange</a> , <a class="ebnf-non-terminal" href="#urlOfNewVersion">urlOfNewVersion</a> }<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>changesOfPurpose</strong>:<p>
+<ul>
+<li><a href="#properties">properties</a></li>
+</ul>
+  <p><strong>changesOfPurpose</strong> is referencing:<p>
+<ul>
+<li><a href="#description">description</a></li><li><a href="#affectedCategories">affectedCategories</a></li><li><a href="#plannedDateOfChange">plannedDateOfChange</a></li><li><a href="#urlOfNewVersion">urlOfNewVersion</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="affectedCategories">affectedCategories</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="293" height="92" viewBox="0 0 293 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M253 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h51"></path><path d="M182 31h51"></path><rect x="111" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="146.5" y="35">string</text></a></g><path d="M233 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h0"></path><path d="M233 61h0"></path><rect x="60" y="50" width="173" height="22"></rect><a xlink:href="#affectedCategories"><text x="146.5" y="65">affectedCategories</text></a></g><path d="M233 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 253 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">affectedCategories</span> = <a class="ebnf-non-terminal" href="#string">string</a> | <a class="ebnf-non-terminal" href="#affectedCategories">affectedCategories</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>affectedCategories</strong>:<p>
+<ul>
+<li><a href="#changesOfPurpose">changesOfPurpose</a></li>
+</ul>
+  <p><strong>affectedCategories</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li><li><a href="#affectedCategories">affectedCategories</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="plannedDateOfChange">plannedDateOfChange</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="205" height="62" viewBox="0 0 205 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M155 31h0"></path><rect x="50" y="20" width="105" height="22"></rect><a xlink:href="#stringDate"><text x="102.5" y="35">stringDate</text></a></g><path d="M155 31h10"></path><path d="M 165 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">plannedDateOfChange</span> = <a class="ebnf-non-terminal" href="#stringDate">stringDate</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>plannedDateOfChange</strong>:<p>
+<ul>
+<li><a href="#changesOfPurpose">changesOfPurpose</a></li>
+</ul>
+  <p><strong>plannedDateOfChange</strong> is referencing:<p>
+<ul>
+<li><a href="#stringDate">stringDate</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="urlOfNewVersion">urlOfNewVersion</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="196.5" height="62" viewBox="0 0 196.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><path d="M40 31h10"></path><g class="non-terminal"><path d="M50 31h0"></path><path d="M146.5 31h0"></path><rect x="50" y="20" width="96.5" height="22"></rect><a xlink:href="#stringUrl"><text x="98.25" y="35">stringUrl</text></a></g><path d="M146.5 31h10"></path><path d="M 156.5 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">urlOfNewVersion</span> = <a class="ebnf-non-terminal" href="#stringUrl">stringUrl</a><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>urlOfNewVersion</strong>:<p>
+<ul>
+<li><a href="#changesOfPurpose">changesOfPurpose</a></li>
+</ul>
+  <p><strong>urlOfNewVersion</strong> is referencing:<p>
+<ul>
+<li><a href="#stringUrl">stringUrl</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="addProp">addProp</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="219.5" height="80" viewBox="0 0 219.5 80"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><g><path d="M40 40h0"></path><path d="M179.5 40h0"></path><path d="M40 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M60 20h99.5"></path></g><path d="M159.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M40 40h20"></path><g><path d="M60 40h0"></path><path d="M159.5 40h0"></path><path d="M60 40h10"></path><g class="non-terminal"><path d="M70 40h0"></path><path d="M149.5 40h0"></path><rect x="70" y="29" width="79.5" height="22"></rect><a xlink:href="#addProp"><text x="109.75" y="44">addProp</text></a></g><path d="M149.5 40h10"></path><path d="M70 40a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M70 60h79.5"></path></g><path d="M149.5 60a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path></g><path d="M159.5 40h20"></path></g><path d="M 179.5 40 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">addProp</span> = { <a class="ebnf-non-terminal" href="#addProp">addProp</a> }<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>addProp</strong>:<p>
+<ul>
+<li><a href="#tilt">tilt</a></li><li><a href="#header">header</a></li><li><a href="#properties">properties</a></li><li><a href="#dataDisclosed">dataDisclosed</a></li>
+</ul>
+  <p><strong>addProp</strong> is referencing:<p>
+<ul>
+<li><a href="#addProp">addProp</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="stringDate">stringDate</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="188" height="62" viewBox="0 0 188 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><path d="M40 31h10"></path><g class="terminal"><path d="M50 31h0"></path><path d="M138 31h0"></path><rect x="50" y="20" width="88" height="22" rx="10" ry="10"></rect><text x="94" y="35">ISO 8601</text></g><path d="M138 31h10"></path><path d="M 148 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">stringDate</span> = <span class="ebnf-terminal">"ISO 8601"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>stringDate</strong>:<p>
+<ul>
+<li><a href="#created">created</a></li><li><a href="#modified">modified</a></li><li><a href="#ttl">ttl</a></li><li><a href="#plannedDateOfChange">plannedDateOfChange</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="stringUrl">stringUrl</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="188" height="62" viewBox="0 0 188 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><path d="M40 31h10"></path><g class="terminal"><path d="M50 31h0"></path><path d="M138 31h0"></path><rect x="50" y="20" width="88" height="22" rx="10" ry="10"></rect><text x="94" y="35">RFC 3986</text></g><path d="M138 31h10"></path><path d="M 148 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">stringUrl</span> = <span class="ebnf-terminal">"RFC 3986"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>stringUrl</strong>:<p>
+<ul>
+<li><a href="#url">url</a></li><li><a href="#urlOfNewVersion">urlOfNewVersion</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="stringCountryCode">stringCountryCode</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="188" height="62" viewBox="0 0 188 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><path d="M40 31h10"></path><g class="terminal"><path d="M50 31h0"></path><path d="M138 31h0"></path><rect x="50" y="20" width="88" height="22" rx="10" ry="10"></rect><text x="94" y="35">&#91;A-Z&#93;{2}</text></g><path d="M138 31h10"></path><path d="M 148 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">stringCountryCode</span> = <span class="ebnf-terminal">"[A-Z]{2}"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>stringCountryCode</strong>:<p>
+<ul>
+<li><a href="#country">country</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="stringEmail">stringEmail</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="179.5" height="62" viewBox="0 0 179.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><path d="M40 31h10"></path><g class="terminal"><path d="M50 31h0"></path><path d="M129.5 31h0"></path><rect x="50" y="20" width="79.5" height="22" rx="10" ry="10"></rect><text x="89.75" y="35">RFC5322</text></g><path d="M129.5 31h10"></path><path d="M 139.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">stringEmail</span> = <span class="ebnf-terminal">"RFC5322"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>stringEmail</strong>:<p>
+<ul>
+<li><a href="#email">email</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="stringPhone">stringPhone</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="511" height="62" viewBox="0 0 511 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><path d="M40 31h10"></path><g class="terminal"><path d="M50 31h0"></path><path d="M461 31h0"></path><rect x="50" y="20" width="411" height="22" rx="10" ry="10"></rect><text x="255.5" y="35">^&#91;+&#93;&#42;&#91;(&#93;{0,1}&#91;0-9&#93;{1,4}&#91;)&#93;{0,1}&#91;-\\s\\./0-9&#93;&#42;$</text></g><path d="M461 31h10"></path><path d="M 471 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">stringPhone</span> = <span class="ebnf-terminal">"^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>stringPhone</strong>:<p>
+<ul>
+<li><a href="#phone">phone</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="stringReference">stringReference</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="358" height="62" viewBox="0 0 358 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><path d="M40 31h10"></path><g class="terminal"><path d="M50 31h0"></path><path d="M308 31h0"></path><rect x="50" y="20" width="258" height="22" rx="10" ry="10"></rect><text x="179" y="35">^&#91;A-Z&#93;&#42;(&#91;-&#93;?&#91;0-9&#93;&#42;|&#91;a-z&#93;&#42;)&#42;$</text></g><path d="M308 31h10"></path><path d="M 318 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">stringReference</span> = <span class="ebnf-terminal">"^[A-Z]*([-]?[0-9]*|[a-z]*)*$"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>stringReference</strong>:<p>
+<ul>
+<li><a href="#reference">reference</a></li><li><a href="#legalBasisConditional">legalBasisConditional</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="stringHash">stringHash</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="213.5" height="62" viewBox="0 0 213.5 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><path d="M40 31h10"></path><g class="terminal"><path d="M50 31h0"></path><path d="M163.5 31h0"></path><rect x="50" y="20" width="113.5" height="22" rx="10" ry="10"></rect><text x="106.75" y="35">SHA256 Hash</text></g><path d="M163.5 31h10"></path><path d="M 173.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">stringHash</span> = <span class="ebnf-terminal">"SHA256 Hash"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>stringHash</strong>:<p>
+<ul>
+<li><a href="#hash">hash</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="stringCurrency">stringCurrency</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="188" height="62" viewBox="0 0 188 62"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><path d="M40 31h10"></path><g class="terminal"><path d="M50 31h0"></path><path d="M138 31h0"></path><rect x="50" y="20" width="88" height="22" rx="10" ry="10"></rect><text x="94" y="35">&#91;A-Z&#93;{3}</text></g><path d="M138 31h10"></path><path d="M 148 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">stringCurrency</span> = <span class="ebnf-terminal">"[A-Z]{3}"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>stringCurrency</strong>:<p>
+<ul>
+<li><a href="#currency">currency</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="boolean">boolean</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="182.5" height="92" viewBox="0 0 182.5 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m10 -20v20m-10 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M142.5 31h0"></path><path d="M40 31h20"></path><g class="terminal"><path d="M60 31h4.25"></path><path d="M118.25 31h4.25"></path><rect x="64.25" y="20" width="54" height="22" rx="10" ry="10"></rect><text x="91.25" y="35">true</text></g><path d="M122.5 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M60 61h0"></path><path d="M122.5 61h0"></path><rect x="60" y="50" width="62.5" height="22" rx="10" ry="10"></rect><text x="91.25" y="65">false</text></g><path d="M122.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 142.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">boolean</span> = <span class="ebnf-terminal">"true"</span> | <span class="ebnf-terminal">"false"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>boolean</strong>:<p>
+<ul>
+<li><a href="#exists">exists</a></li><li><a href="#legalRequirement">legalRequirement</a></li><li><a href="#contractualRegulation">contractualRegulation</a></li><li><a href="#obligationToProvide">obligationToProvide</a></li><li><a href="#available">available</a></li><li><a href="#publiclyAvailable">publiclyAvailable</a></li><li><a href="#inUse">inUse</a></li>
+</ul>
+</section>
+<p>In the following, the JSON specification is used: </p><section>
+  <h4 id="json">json</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="191" height="92" viewBox="0 0 191 92"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M151 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h0"></path><path d="M131 31h0"></path><rect x="60" y="20" width="71" height="22"></rect><a xlink:href="#object"><text x="95.5" y="35">object</text></a></g><path d="M131 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h4.25"></path><path d="M126.75 61h4.25"></path><rect x="64.25" y="50" width="62.5" height="22"></rect><a xlink:href="#array"><text x="95.5" y="65">array</text></a></g><path d="M131 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 151 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">json</span> = <a class="ebnf-non-terminal" href="#object">object</a> | <a class="ebnf-non-terminal" href="#array">array</a><span class="ebnf-end">;</span></code>
+  <p><strong>json</strong> is referencing:<p>
+<ul>
+<li><a href="#object">object</a></li><li><a href="#array">array</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="object">object</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="439" height="101" viewBox="0 0 439 101"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><path d="M40 40h10"></path><g><path d="M50 40h0"></path><path d="M389 40h0"></path><g class="terminal"><path d="M50 40h0"></path><path d="M78.5 40h0"></path><rect x="50" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="64.25" y="44">{</text></g><path d="M78.5 40h10"></path><g><path d="M88.5 40h0"></path><path d="M350.5 40h0"></path><path d="M88.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M108.5 20h222"></path></g><path d="M330.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M88.5 40h20"></path><g><path d="M108.5 40h0"></path><path d="M330.5 40h0"></path><path d="M108.5 40h10"></path><g><path d="M118.5 40h0"></path><path d="M320.5 40h0"></path><g class="non-terminal"><path d="M118.5 40h0"></path><path d="M189.5 40h0"></path><rect x="118.5" y="29" width="71" height="22"></rect><a xlink:href="#string"><text x="154" y="44">string</text></a></g><path d="M189.5 40h10"></path><path d="M199.5 40h10"></path><g class="terminal"><path d="M209.5 40h0"></path><path d="M238 40h0"></path><rect x="209.5" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="223.75" y="44">:</text></g><path d="M238 40h10"></path><path d="M248 40h10"></path><g class="non-terminal"><path d="M258 40h0"></path><path d="M320.5 40h0"></path><rect x="258" y="29" width="62.5" height="22"></rect><a xlink:href="#value"><text x="289.25" y="44">value</text></a></g></g><path d="M320.5 40h10"></path><path d="M118.5 40a10 10 0 0 0 -10 10v10a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M118.5 70h86.75"></path><path d="M233.75 70h86.75"></path><rect x="205.25" y="59" width="28.5" height="22" rx="10" ry="10"></rect><text x="219.5" y="74">,</text></g><path d="M320.5 70a10 10 0 0 0 10 -10v-10a10 10 0 0 0 -10 -10"></path></g><path d="M330.5 40h20"></path></g><path d="M350.5 40h10"></path><g class="terminal"><path d="M360.5 40h0"></path><path d="M389 40h0"></path><rect x="360.5" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="374.75" y="44">}</text></g></g><path d="M389 40h10"></path><path d="M 399 40 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">object</span> = <span class="ebnf-terminal">"{"</span> , [ <a class="ebnf-non-terminal" href="#string">string</a> , <span class="ebnf-terminal">":"</span> , <a class="ebnf-non-terminal" href="#value">value</a> , { <span class="ebnf-terminal">","</span> , <a class="ebnf-non-terminal" href="#string">string</a> ,
+  <span class="ebnf-terminal">":"</span> , <a class="ebnf-non-terminal" href="#value">value</a> } ] , <span class="ebnf-terminal">"}"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>object</strong>:<p>
+<ul>
+<li><a href="#json">json</a></li><li><a href="#value">value</a></li>
+</ul>
+  <p><strong>object</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li><li><a href="#value">value</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="array">array</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="299.5" height="101" viewBox="0 0 299.5 101"><g transform="translate(.5 .5)"><g><path d="M20 30v20m0 -10h20"></path></g><path d="M40 40h10"></path><g><path d="M50 40h0"></path><path d="M249.5 40h0"></path><g class="terminal"><path d="M50 40h0"></path><path d="M78.5 40h0"></path><rect x="50" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="64.25" y="44">&#91;</text></g><path d="M78.5 40h10"></path><g><path d="M88.5 40h0"></path><path d="M211 40h0"></path><path d="M88.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M108.5 20h82.5"></path></g><path d="M191 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M88.5 40h20"></path><g><path d="M108.5 40h0"></path><path d="M191 40h0"></path><path d="M108.5 40h10"></path><g><path d="M118.5 40h0"></path><path d="M181 40h0"></path><g class="non-terminal"><path d="M118.5 40h0"></path><path d="M181 40h0"></path><rect x="118.5" y="29" width="62.5" height="22"></rect><a xlink:href="#value"><text x="149.75" y="44">value</text></a></g></g><path d="M181 40h10"></path><path d="M118.5 40a10 10 0 0 0 -10 10v10a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M118.5 70h17"></path><path d="M164 70h17"></path><rect x="135.5" y="59" width="28.5" height="22" rx="10" ry="10"></rect><text x="149.75" y="74">,</text></g><path d="M181 70a10 10 0 0 0 10 -10v-10a10 10 0 0 0 -10 -10"></path></g><path d="M191 40h20"></path></g><path d="M211 40h10"></path><g class="terminal"><path d="M221 40h0"></path><path d="M249.5 40h0"></path><rect x="221" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="235.25" y="44">&#93;</text></g></g><path d="M249.5 40h10"></path><path d="M 259.5 40 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">array</span> = <span class="ebnf-terminal">"["</span> , [ <a class="ebnf-non-terminal" href="#value">value</a> , { <span class="ebnf-terminal">","</span> , <a class="ebnf-non-terminal" href="#value">value</a> } ] , <span class="ebnf-terminal">"]"</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>array</strong>:<p>
+<ul>
+<li><a href="#json">json</a></li><li><a href="#value">value</a></li>
+</ul>
+  <p><strong>array</strong> is referencing:<p>
+<ul>
+<li><a href="#value">value</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="value">value</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="191" height="242" viewBox="0 0 191 242"><g transform="translate(.5 .5)"><g><path d="M20 21v20m0 -10h20"></path></g><g><path d="M40 31h0"></path><path d="M151 31h0"></path><path d="M40 31h20"></path><g class="non-terminal"><path d="M60 31h0"></path><path d="M131 31h0"></path><rect x="60" y="20" width="71" height="22"></rect><a xlink:href="#string"><text x="95.5" y="35">string</text></a></g><path d="M131 31h20"></path><path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 61h0"></path><path d="M131 61h0"></path><rect x="60" y="50" width="71" height="22"></rect><a xlink:href="#number"><text x="95.5" y="65">number</text></a></g><path d="M131 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 91h0"></path><path d="M131 91h0"></path><rect x="60" y="80" width="71" height="22"></rect><a xlink:href="#object"><text x="95.5" y="95">object</text></a></g><path d="M131 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10"></path><g class="non-terminal"><path d="M60 121h4.25"></path><path d="M126.75 121h4.25"></path><rect x="64.25" y="110" width="62.5" height="22"></rect><a xlink:href="#array"><text x="95.5" y="125">array</text></a></g><path d="M131 121a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v100a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M60 151h8.5"></path><path d="M122.5 151h8.5"></path><rect x="68.5" y="140" width="54" height="22" rx="10" ry="10"></rect><text x="95.5" y="155">true</text></g><path d="M131 151a10 10 0 0 0 10 -10v-100a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v130a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M60 181h4.25"></path><path d="M126.75 181h4.25"></path><rect x="64.25" y="170" width="62.5" height="22" rx="10" ry="10"></rect><text x="95.5" y="185">false</text></g><path d="M131 181a10 10 0 0 0 10 -10v-130a10 10 0 0 1 10 -10"></path><path d="M40 31a10 10 0 0 1 10 10v160a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M60 211h8.5"></path><path d="M122.5 211h8.5"></path><rect x="68.5" y="200" width="54" height="22" rx="10" ry="10"></rect><text x="95.5" y="215">null</text></g><path d="M131 211a10 10 0 0 0 10 -10v-160a10 10 0 0 1 10 -10"></path></g><path d="M 151 31 h 20 m 0 -10 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">value</span>
+  = <a class="ebnf-non-terminal" href="#string">string</a>  | <a class="ebnf-non-terminal" href="#number">number</a> | <a class="ebnf-non-terminal" href="#object">object</a> | <a class="ebnf-non-terminal" href="#array">array</a> | <span class="ebnf-terminal">"true"</span>
+  | <span class="ebnf-terminal">"false"</span> | <span class="ebnf-terminal">"null"</span>
+  <span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>value</strong>:<p>
+<ul>
+<li><a href="#object">object</a></li><li><a href="#array">array</a></li>
+</ul>
+  <p><strong>value</strong> is referencing:<p>
+<ul>
+<li><a href="#string">string</a></li><li><a href="#number">number</a></li><li><a href="#object">object</a></li><li><a href="#array">array</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="string">string</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="790" height="379" viewBox="0 0 790 379"><g transform="translate(.5 .5)"><g><path d="M20 30v20m10 -20v20m-10 -10h20"></path></g><path d="M40 40h10"></path><g><path d="M50 40h0"></path><path d="M740 40h0"></path><g class="terminal"><path d="M50 40h0"></path><path d="M78.5 40h0"></path><rect x="50" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="64.25" y="44">"</text></g><path d="M78.5 40h10"></path><g><path d="M88.5 40h0"></path><path d="M701.5 40h0"></path><path d="M88.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M108.5 20h573"></path></g><path d="M681.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M88.5 40h20"></path><g><path d="M108.5 40h0"></path><path d="M681.5 40h0"></path><path d="M108.5 40h10"></path><g><path d="M118.5 40h0"></path><path d="M671.5 40h0"></path><path d="M118.5 40h20"></path><g class="special-sequence"><path d="M138.5 40h0"></path><path d="M651.5 40h0"></path><rect x="138.5" y="29" width="513" height="22"></rect><text x="395" y="44"> Any unicode character except " or \ or control character </text></g><path d="M651.5 40h20"></path><path d="M118.5 40a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g><path d="M138.5 70h92.25"></path><path d="M559.25 70h92.25"></path><g class="terminal"><path d="M230.75 70h0"></path><path d="M259.25 70h0"></path><rect x="230.75" y="59" width="28.5" height="22" rx="10" ry="10"></rect><text x="245" y="74">\</text></g><path d="M259.25 70h10"></path><g><path d="M269.25 70h0"></path><path d="M559.25 70h0"></path><path d="M269.25 70h20"></path><g><path d="M289.25 70h39.75"></path><path d="M499.5 70h39.75"></path><g class="terminal"><path d="M329 70h0"></path><path d="M357.5 70h0"></path><rect x="329" y="59" width="28.5" height="22" rx="10" ry="10"></rect><text x="343.25" y="74">"</text></g><path d="M357.5 70h10"></path><path d="M367.5 70h10"></path><g><path d="M377.5 70h0"></path><path d="M499.5 70h0"></path><text x="438.5" y="75" class="comment"> quotation mark </text></g></g><path d="M539.25 70h20"></path><path d="M269.25 70a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g><path d="M289.25 100h36.25"></path><path d="M503 100h36.25"></path><g class="terminal"><path d="M325.5 100h0"></path><path d="M354 100h0"></path><rect x="325.5" y="89" width="28.5" height="22" rx="10" ry="10"></rect><text x="339.75" y="104">\</text></g><path d="M354 100h10"></path><path d="M364 100h10"></path><g><path d="M374 100h0"></path><path d="M503 100h0"></path><text x="438.5" y="105" class="comment"> reverse solidus </text></g></g><path d="M539.25 100a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path><path d="M269.25 70a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><g><path d="M289.25 130h64.25"></path><path d="M475 130h64.25"></path><g class="terminal"><path d="M353.5 130h0"></path><path d="M382 130h0"></path><rect x="353.5" y="119" width="28.5" height="22" rx="10" ry="10"></rect><text x="367.75" y="134">/</text></g><path d="M382 130h10"></path><path d="M392 130h10"></path><g><path d="M402 130h0"></path><path d="M475 130h0"></path><text x="438.5" y="135" class="comment"> solidus </text></g></g><path d="M539.25 130a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10"></path><path d="M269.25 70a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10"></path><g><path d="M289.25 160h57.25"></path><path d="M482 160h57.25"></path><g class="terminal"><path d="M346.5 160h0"></path><path d="M375 160h0"></path><rect x="346.5" y="149" width="28.5" height="22" rx="10" ry="10"></rect><text x="360.75" y="164">b</text></g><path d="M375 160h10"></path><path d="M385 160h10"></path><g><path d="M395 160h0"></path><path d="M482 160h0"></path><text x="438.5" y="165" class="comment"> backspace </text></g></g><path d="M539.25 160a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10"></path><path d="M269.25 70a10 10 0 0 1 10 10v100a10 10 0 0 0 10 10"></path><g><path d="M289.25 190h60.75"></path><path d="M478.5 190h60.75"></path><g class="terminal"><path d="M350 190h0"></path><path d="M378.5 190h0"></path><rect x="350" y="179" width="28.5" height="22" rx="10" ry="10"></rect><text x="364.25" y="194">f</text></g><path d="M378.5 190h10"></path><path d="M388.5 190h10"></path><g><path d="M398.5 190h0"></path><path d="M478.5 190h0"></path><text x="438.5" y="195" class="comment"> formfeed </text></g></g><path d="M539.25 190a10 10 0 0 0 10 -10v-100a10 10 0 0 1 10 -10"></path><path d="M269.25 70a10 10 0 0 1 10 10v130a10 10 0 0 0 10 10"></path><g><path d="M289.25 220h64.25"></path><path d="M475 220h64.25"></path><g class="terminal"><path d="M353.5 220h0"></path><path d="M382 220h0"></path><rect x="353.5" y="209" width="28.5" height="22" rx="10" ry="10"></rect><text x="367.75" y="224">n</text></g><path d="M382 220h10"></path><path d="M392 220h10"></path><g><path d="M402 220h0"></path><path d="M475 220h0"></path><text x="438.5" y="225" class="comment"> newline </text></g></g><path d="M539.25 220a10 10 0 0 0 10 -10v-130a10 10 0 0 1 10 -10"></path><path d="M269.25 70a10 10 0 0 1 10 10v160a10 10 0 0 0 10 10"></path><g><path d="M289.25 250h36.25"></path><path d="M503 250h36.25"></path><g class="terminal"><path d="M325.5 250h0"></path><path d="M354 250h0"></path><rect x="325.5" y="239" width="28.5" height="22" rx="10" ry="10"></rect><text x="339.75" y="254">r</text></g><path d="M354 250h10"></path><path d="M364 250h10"></path><g><path d="M374 250h0"></path><path d="M503 250h0"></path><text x="438.5" y="255" class="comment"> carriage return </text></g></g><path d="M539.25 250a10 10 0 0 0 10 -10v-160a10 10 0 0 1 10 -10"></path><path d="M269.25 70a10 10 0 0 1 10 10v190a10 10 0 0 0 10 10"></path><g><path d="M289.25 280h39.75"></path><path d="M499.5 280h39.75"></path><g class="terminal"><path d="M329 280h0"></path><path d="M357.5 280h0"></path><rect x="329" y="269" width="28.5" height="22" rx="10" ry="10"></rect><text x="343.25" y="284">t</text></g><path d="M357.5 280h10"></path><path d="M367.5 280h10"></path><g><path d="M377.5 280h0"></path><path d="M499.5 280h0"></path><text x="438.5" y="285" class="comment"> horizontal tab </text></g></g><path d="M539.25 280a10 10 0 0 0 10 -10v-190a10 10 0 0 1 10 -10"></path><path d="M269.25 70a10 10 0 0 1 10 10v220a10 10 0 0 0 10 10"></path><g><path d="M289.25 310h0"></path><path d="M539.25 310h0"></path><g class="terminal"><path d="M289.25 310h0"></path><path d="M317.75 310h0"></path><rect x="289.25" y="299" width="28.5" height="22" rx="10" ry="10"></rect><text x="303.5" y="314">u</text></g><path d="M317.75 310h10"></path><path d="M327.75 310h10"></path><g><path d="M337.75 310h0"></path><path d="M539.25 310h0"></path><path d="M337.75 310h10"></path><g class="special-sequence"><path d="M347.75 310h0"></path><path d="M529.25 310h0"></path><rect x="347.75" y="299" width="181.5" height="22"></rect><text x="438.5" y="314"> hexadeximal digit </text></g><path d="M529.25 310h10"></path><path d="M347.75 310a10 10 0 0 0 -10 10v10a10 10 0 0 0 10 10"></path><g><path d="M347.75 340h75.25"></path><path d="M454 340h75.25"></path><text x="438.5" y="345" class="comment">4 ×</text></g><path d="M529.25 340a10 10 0 0 0 10 -10v-10a10 10 0 0 0 -10 -10"></path></g></g><path d="M539.25 310a10 10 0 0 0 10 -10v-220a10 10 0 0 1 10 -10"></path></g></g><path d="M651.5 70a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M671.5 40h10"></path><path d="M118.5 40a10 10 0 0 0 -10 10v299a10 10 0 0 0 10 10"></path><g><path d="M118.5 359h553"></path></g><path d="M671.5 359a10 10 0 0 0 10 -10v-299a10 10 0 0 0 -10 -10"></path></g><path d="M681.5 40h20"></path></g><path d="M701.5 40h10"></path><g class="terminal"><path d="M711.5 40h0"></path><path d="M740 40h0"></path><rect x="711.5" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="725.75" y="44">"</text></g></g><path d="M740 40h10"></path><path d="M 750 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">string</span> = <span class="ebnf-terminal">'"'</span> ,
+  { <span class="ebnf-special-sequence">? Any unicode character except " or \ or control character ?</span>
+  | <span class="ebnf-terminal">"\"</span> ,
+    ( <span class="ebnf-terminal">'"'</span> <span class="ebnf-comment">(* quotation mark *)</span>        | <span class="ebnf-terminal">"\"</span> <span class="ebnf-comment">(* reverse solidus *)</span>
+    | <span class="ebnf-terminal">"/"</span> <span class="ebnf-comment">(* solidus *)</span>               | <span class="ebnf-terminal">"b"</span> <span class="ebnf-comment">(* backspace *)</span>
+    | <span class="ebnf-terminal">"f"</span> <span class="ebnf-comment">(* formfeed *)</span>              | <span class="ebnf-terminal">"n"</span> <span class="ebnf-comment">(* newline *)</span>
+    | <span class="ebnf-terminal">"r"</span> <span class="ebnf-comment">(* carriage return *)</span>       | <span class="ebnf-terminal">"t"</span> <span class="ebnf-comment">(* horizontal tab *)</span>
+    | <span class="ebnf-terminal">"u"</span> , <span class="ebnf-multiplier">4 *</span> <span class="ebnf-special-sequence">? hexadeximal digit ?</span>
+    )
+  } , <span class="ebnf-terminal">'"'</span><span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>string</strong>:<p>
+<ul>
+<li><a href="#id">id</a></li><li><a href="#version">version</a></li><li><a href="#language">language</a></li><li><a href="#status">status</a></li><li><a href="#name">name</a></li><li><a href="#division">division</a></li><li><a href="#address">address</a></li><li><a href="#category">category</a></li><li><a href="#purpose">purpose</a></li><li><a href="#description">description</a></li><li><a href="#reasoning">reasoning</a></li><li><a href="#purposeConditional">purposeConditional</a></li><li><a href="#consequences">consequences</a></li><li><a href="#identificationEvidences">identificationEvidences</a></li><li><a href="#dataFormats">dataFormats</a></li><li><a href="#dataCategory">dataCategory</a></li><li><a href="#logicInvolved">logicInvolved</a></li><li><a href="#scopeAndIntendedEffects">scopeAndIntendedEffects</a></li><li><a href="#affectedCategories">affectedCategories</a></li><li><a href="#object">object</a></li><li><a href="#value">value</a></li>
+</ul>
+</section>
+<section>
+  <h4 id="number">number</h4>
+  <div class="diagram-container">
+  <svg class="railroad-diagram" width="946" height="121" viewBox="0 0 946 121"><g transform="translate(.5 .5)"><g><path d="M20 30v20m10 -20v20m-10 -10h20"></path></g><path d="M40 40h10"></path><g><path d="M50 40h0"></path><path d="M896 40h0"></path><g><path d="M50 40h0"></path><path d="M118.5 40h0"></path><path d="M50 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M70 20h28.5"></path></g><path d="M98.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M50 40h20"></path><g class="terminal"><path d="M70 40h0"></path><path d="M98.5 40h0"></path><rect x="70" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="84.25" y="44">-</text></g><path d="M98.5 40h20"></path></g><g><path d="M118.5 40h0"></path><path d="M421.5 40h0"></path><path d="M118.5 40h20"></path><g class="terminal"><path d="M138.5 40h117.25"></path><path d="M284.25 40h117.25"></path><rect x="255.75" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="270" y="44">0</text></g><path d="M401.5 40h20"></path><path d="M118.5 40a10 10 0 0 1 10 10v19a10 10 0 0 0 10 10"></path><g><path d="M138.5 79h0"></path><path d="M401.5 79h0"></path><g class="special-sequence"><path d="M138.5 79h0"></path><path d="M252 79h0"></path><rect x="138.5" y="68" width="113.5" height="22"></rect><text x="195.25" y="83"> digit 1-9 </text></g><path d="M252 79h10"></path><g><path d="M262 79h0"></path><path d="M401.5 79h0"></path><path d="M262 79a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M282 59h99.5"></path></g><path d="M381.5 59a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M262 79h20"></path><g><path d="M282 79h0"></path><path d="M381.5 79h0"></path><path d="M282 79h10"></path><g class="special-sequence"><path d="M292 79h0"></path><path d="M371.5 79h0"></path><rect x="292" y="68" width="79.5" height="22"></rect><text x="331.75" y="83"> digit </text></g><path d="M371.5 79h10"></path><path d="M292 79a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M292 99h79.5"></path></g><path d="M371.5 99a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path></g><path d="M381.5 79h20"></path></g></g><path d="M401.5 79a10 10 0 0 0 10 -10v-19a10 10 0 0 1 10 -10"></path></g><g><path d="M421.5 40h0"></path><path d="M609.5 40h0"></path><path d="M421.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M441.5 20h148"></path></g><path d="M589.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M421.5 40h20"></path><g><path d="M441.5 40h0"></path><path d="M589.5 40h0"></path><g class="terminal"><path d="M441.5 40h0"></path><path d="M470 40h0"></path><rect x="441.5" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="455.75" y="44">.</text></g><path d="M470 40h10"></path><path d="M480 40h10"></path><g><path d="M490 40h0"></path><path d="M589.5 40h0"></path><path d="M490 40h10"></path><g class="special-sequence"><path d="M500 40h0"></path><path d="M579.5 40h0"></path><rect x="500" y="29" width="79.5" height="22"></rect><text x="539.75" y="44"> digit </text></g><path d="M579.5 40h10"></path><path d="M500 40a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M500 60h79.5"></path></g><path d="M579.5 60a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path></g></g><path d="M589.5 40h20"></path></g><g><path d="M609.5 40h0"></path><path d="M896 40h0"></path><path d="M609.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g><path d="M629.5 20h246.5"></path></g><path d="M876 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M609.5 40h20"></path><g><path d="M629.5 40h0"></path><path d="M876 40h0"></path><g><path d="M629.5 40h0"></path><path d="M698 40h0"></path><path d="M629.5 40h20"></path><g class="terminal"><path d="M649.5 40h0"></path><path d="M678 40h0"></path><rect x="649.5" y="29" width="28.5" height="22" rx="10" ry="10"></rect><text x="663.75" y="44">e</text></g><path d="M678 40h20"></path><path d="M629.5 40a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M649.5 70h0"></path><path d="M678 70h0"></path><rect x="649.5" y="59" width="28.5" height="22" rx="10" ry="10"></rect><text x="663.75" y="74">E</text></g><path d="M678 70a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><g><path d="M698 40h0"></path><path d="M766.5 40h0"></path><path d="M698 40h20"></path><g><path d="M718 40h28.5"></path></g><path d="M746.5 40h20"></path><path d="M698 40a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M718 60h0"></path><path d="M746.5 60h0"></path><rect x="718" y="49" width="28.5" height="22" rx="10" ry="10"></rect><text x="732.25" y="64">+</text></g><path d="M746.5 60a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><path d="M698 40a10 10 0 0 1 10 10v30a10 10 0 0 0 10 10"></path><g class="terminal"><path d="M718 90h0"></path><path d="M746.5 90h0"></path><rect x="718" y="79" width="28.5" height="22" rx="10" ry="10"></rect><text x="732.25" y="94">-</text></g><path d="M746.5 90a10 10 0 0 0 10 -10v-30a10 10 0 0 1 10 -10"></path></g><path d="M766.5 40h10"></path><g><path d="M776.5 40h0"></path><path d="M876 40h0"></path><path d="M776.5 40h10"></path><g class="special-sequence"><path d="M786.5 40h0"></path><path d="M866 40h0"></path><rect x="786.5" y="29" width="79.5" height="22"></rect><text x="826.25" y="44"> digit </text></g><path d="M866 40h10"></path><path d="M786.5 40a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path><g><path d="M786.5 60h79.5"></path></g><path d="M866 60a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path></g></g><path d="M876 40h20"></path></g></g><path d="M896 40h10"></path><path d="M 906 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>
+  </div>
+  <code class="ebnf"><span class="ebnf-identifier">number</span> = [ <span class="ebnf-terminal">"-"</span> ] , ( <span class="ebnf-terminal">"0"</span> | <span class="ebnf-special-sequence">? digit 1-9 ?</span> , { <span class="ebnf-special-sequence">? digit ?</span> } ) , [ <span class="ebnf-terminal">"."</span> ,
+  <span class="ebnf-special-sequence">? digit ?</span> , { <span class="ebnf-special-sequence">? digit ?</span> } ] , [ ( <span class="ebnf-terminal">"e"</span> | <span class="ebnf-terminal">"E"</span> ) ,
+  [ <span class="ebnf-terminal">"+"</span> | <span class="ebnf-terminal">"-"</span> ] , <span class="ebnf-special-sequence">? digit ?</span> , { <span class="ebnf-special-sequence">? digit ?</span> } ]<span class="ebnf-end">;</span></code>
+  <p>Items referencing <strong>number</strong>:<p>
+<ul>
+<li><a href="#amount">amount</a></li><li><a href="#value">value</a></li>
+</ul>
+</section>
+
+  </article>
+  <footer>
+    <p>Date: 2020-08-04T23:33 - <a href="?theme=dark">Dark</a> - <a href="?theme=light">Light</a></p>
+  </footer>
+  </main>
+  <script type="text/javascript">
+    document.querySelector("header button").addEventListener("click", function() {
+      document.getElementsByTagName("html")[0].classList.toggle("menu-open");
+    });
+    document.querySelector("nav").addEventListener("click", function(event) {
+      if (event.target.tagName !== "A") return;
+      htmlTag.classList.remove("menu-open");
+    });
+  </script>
+
+</body>
+</html>
