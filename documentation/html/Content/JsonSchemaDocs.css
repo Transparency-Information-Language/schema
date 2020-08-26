@@ -1,0 +1,178 @@
+﻿
+
+/****************************************************
+    Property Grid Layout and formatting 
+*****************************************************/
+.row {
+    /*margin-top: 40px;*/
+    padding: 0 10px;
+}
+
+/* The main page heading row */
+.heading-row .row {
+    margin-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0px solid lightgray;
+}
+
+/* The formatting for each property row */
+.property-row > .row {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Draw a line above all property rows (except the first one) */
+.property-row + .property-row > .row:first-child {
+    border-top: 1px solid lightgray;
+}
+
+/* The style for the property row heading */
+.property-heading {
+    font-weight: bold;
+}
+
+.value-type-row + .value-type-row {
+    padding-top: 0.5rem;
+    border-top: 1px solid lightgray;
+    padding-bottom: 0.5rem;
+}
+
+.valign-center {
+    /* Causes issues on chrome
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    */
+}
+
+
+/* Causes all the columns with a row to be made the same height*/
+.row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .row.is-flex > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+
+/*
+* And with max cross-browser enabled.
+* Nobody should ever write this by hand. 
+* Use a preprocesser with autoprefixing.
+*/
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+    .row.is-flex > [class*='col-'] {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+
+/****************************************************
+    Styles for formatting JSON Source Code
+*****************************************************/
+pre.json {
+    max-height: 40pc;
+}
+
+pre {
+    /* outline: 1px solid #ccc;*/
+    padding: 5px;
+    margin: 5px;
+}
+
+.string {
+    color: green;
+}
+
+.number {
+    color: darkorange;
+}
+
+.boolean {
+    color: blue;
+}
+
+.null {
+    color: magenta;
+}
+
+.key {
+    color: red;
+}
+
+/****************************************************
+    Styles for collapsible sections
+*****************************************************/
+
+.clickable {
+    cursor: pointer;
+}
+
+/****************************************************
+    Styles for the roll over tool tips
+*****************************************************/
+
+[tooltip]:before {
+    /* needed - do not touch */
+    content: attr(tooltip);
+    position: absolute;
+    opacity: 0;
+    /* customizable */
+    transition: opacity 0.2s ease;
+    padding: 10px;
+    color: #333;
+    border-radius: 3px;
+    box-shadow: 2px 2px 1px silver;
+    z-index: 1000;
+}
+
+[tooltip]:hover:before {
+    /* needed - do not touch */
+    opacity: 1;
+    /* customizable */
+    /*background:url() white;
+            margin-top: -50px;
+            margin-left: 20px;*/
+}
+
+[tooltip]:not([tooltip-persistent]):before {
+    pointer-events: none;
+    background: url() white;
+    border: 1px solid darkgray;
+    margin-top: -50px;
+    margin-left: 20px;
+}
+
+
+h2,
+.h2 {
+    margin-top: 10px;
+}
+
+h3,
+.h3 {
+    margin-top: 10px;
+}
+
+.list-group-item {
+    padding: 5px 15px;
+}
