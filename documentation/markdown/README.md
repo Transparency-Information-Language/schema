@@ -1,4 +1,5 @@
 # README
+Created with https://github.com/adobe/jsonschema2md
 
 ## Top-level Schemas
 
