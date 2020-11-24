@@ -9,8 +9,13 @@ An [*in*valid](tilt-NOT-valid.json) exemplary document standalone.
 ## Documentation
 **[For a full documentation, please see here. ⤴️](documentation/markdown/tilt-schema.md)**
 
+
+![](media/main.png)
+![](media/dataDisclosed.png)
+
+
 ## Author
 [Elias Grünewald](mailto:gruenewald@tu-berlin.de)
 
 ## License
-GNU General Public License, Version 3
+[MIT License](LICENSE)
