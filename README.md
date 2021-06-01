@@ -7,7 +7,9 @@ The [valid](tilt.json) exemplary document standalone.<br>
 An [*in*valid](tilt-NOT-valid.json) exemplary document standalone.
 
 ## Documentation
-**[For a full documentation, please see here. ⤴️](documentation/markdown/tilt-schema.md)**
+**[For a full documentation, please see here. ⤴️](https://transparency-information-language.github.io/schema/index.html)**
+[For a full written documentation in Markdown, please see here. ⤴️](documentation/markdown/tilt-schema.md)
+
 
 
 ![](media/main.png)
