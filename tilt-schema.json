@@ -1,8 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "x-stoplight": {
-    "id": "xzcsxt9ai7dsz"
-  },
   "$id": "https://github.com/Transparency-Information-Language/schema",
   "type": "object",
   "title": "Root schema of a Transparency Information Language",
@@ -732,7 +729,7 @@
                 "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/category",
                 "type": "array",
                 "title": "Category",
-                "description": "The data (category) the data disclosed are referred to.",
+                "description": "The data (category/categories) the data disclosed are referred to. Can be multiple",
                 "examples": [
                   "E-mail address"
                 ],
@@ -1345,17 +1342,7 @@
                   }
                 }
               }
-            },
-            "required": [
-              "_id",
-              "category",
-              "purposes",
-              "legalBases",
-              "legitimateInterests",
-              "recipients",
-              "storage",
-              "nonDisclosure"
-            ]
+            }
           }
         ],
         "$id": "#/properties/dataDisclosed/items",
