@@ -474,7 +474,8 @@
           "type": "string",
           "description": "The industry of the controller according to UN ISIC Rev. 4",
           "example": "J",
-          "maxLength": 1
+          "maxLength": 1,
+          "pattern": "[A-Z]"
         }
       }
     },
@@ -2660,6 +2661,5 @@
     "rightToComplain",
     "automatedDecisionMaking",
     "changesOfPurpose"
-  ],
-  "x-internal": false
+  ]
 }
