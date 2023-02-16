@@ -336,12 +336,7 @@
           "sector": "J"
         }
       ],
-      "required": [
-        "name",
-        "address",
-        "country",
-        "representative"
-      ],
+      "required": ["name", "address", "country", "representative"],
       "properties": {
         "name": {
           "$id": "#/properties/controller/properties/name",
@@ -387,10 +382,7 @@
               "phone": "0049 151 1234 5678"
             }
           ],
-          "required": [
-            "name",
-            "email"
-          ],
+          "required": ["name", "email"],
           "properties": {
             "name": {
               "$id": "#/properties/controller/properties/representative/properties/name",
@@ -441,12 +433,7 @@
           "phone": "0049 151 1234 5678"
         }
       ],
-      "required": [
-        "name",
-        "address",
-        "country",
-        "email"
-      ],
+      "required": ["name", "address", "country", "email"],
       "properties": {
         "name": {
           "$id": "#/properties/dataProtectionOfficer/properties/name",
@@ -705,10 +692,7 @@
                           ]
                         }
                       },
-                      "required": [
-                        "purpose",
-                        "description"
-                      ]
+                      "required": ["purpose", "description"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items",
@@ -763,9 +747,7 @@
                           ]
                         }
                       },
-                      "required": [
-                        "reference"
-                      ]
+                      "required": ["reference"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items",
@@ -803,14 +785,10 @@
                             "const": true
                           }
                         },
-                        "required": [
-                          "exists"
-                        ]
+                        "required": ["exists"]
                       },
                       "then": {
-                        "required": [
-                          "reasoning"
-                        ]
+                        "required": ["reasoning"]
                       },
                       "properties": {
                         "exists": {
@@ -959,9 +937,7 @@
                           "examples": ["Marketing content provider"]
                         }
                       },
-                      "required": [
-                        "category"
-                      ]
+                      "required": ["category"]
                     },
                     {
                       "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/1",
@@ -980,9 +956,7 @@
                           "examples": ["Responsible Statistical Institutes"]
                         }
                       },
-                      "required": [
-                        "category"
-                      ]
+                      "required": ["category"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items",
@@ -1089,10 +1063,7 @@
                                     ]
                                   }
                                 },
-                                "required": [
-                                  "description",
-                                  "ttl"
-                                ]
+                                "required": ["description", "ttl"]
                               }
                             ],
                             "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal/items",
@@ -1154,9 +1125,7 @@
                           "examples": ["max"]
                         }
                       },
-                      "required": [
-                        "aggregationFunction"
-                      ]
+                      "required": ["aggregationFunction"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items",
@@ -1492,9 +1461,7 @@
           "dataFormat": "json"
         }
       ],
-      "required": [
-        "available"
-      ],
+      "required": ["available"],
       "properties": {
         "available": {
           "$id": "#/properties/accessAndDataPortability/properties/available",
@@ -1580,10 +1547,7 @@
               "examples": ["EUR"]
             }
           },
-          "required": [
-            "amount",
-            "currency"
-          ]
+          "required": ["amount", "currency"]
         },
         "dataFormats": {
           "$id": "#/properties/accessAndDataPortability/properties/dataFormats",
@@ -1714,11 +1678,7 @@
                           "examples": [false, true]
                         }
                       },
-                      "required": [
-                        "description",
-                        "url",
-                        "publiclyAvailable"
-                      ]
+                      "required": ["description", "url", "publiclyAvailable"]
                     }
                   ],
                   "$id": "#/properties/sources/items/anyOf/0/properties/sources/items",
@@ -1726,11 +1686,7 @@
                 }
               }
             },
-            "required": [
-              "_id",
-              "dataCategory",
-              "sources"
-            ]
+            "required": ["_id", "dataCategory", "sources"]
           }
         ],
         "$id": "#/properties/sources/items",
@@ -2175,9 +2131,7 @@
               "examples": ["0049 444 222 111"]
             }
           },
-          "required": [
-            "name"
-          ]
+          "required": ["name"]
         }
       }
     },
