@@ -811,10 +811,6 @@
                         "required": [
                           "reasoning"
                         ]
-                        "required": ["exists"]
-                      },
-                      "then": {
-                        "required": ["reasoning"]
                       },
                       "properties": {
                         "exists": {
