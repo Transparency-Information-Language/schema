@@ -332,7 +332,8 @@
             "name": "Jane Super",
             "email": "contact@greencompany.de",
             "phone": "0049 151 1234 5678"
-          }
+          },
+          "sector": "J"
         }
       ],
       "required": ["name", "address", "country", "representative"],
@@ -407,6 +408,14 @@
               "examples": ["+49 151 1234 5678"]
             }
           }
+        },
+        "sector": {
+          "$id": "#/properties/controller/properties/sector",
+          "type": "string",
+          "description": "The industry of the controller according to UN ISIC Rev. 4",
+          "example": "J",
+          "maxLength": 1,
+          "pattern": "[A-Z]"
         }
       }
     },
@@ -550,7 +559,6 @@
         "anyOf": [
           {
             "$id": "#/properties/dataDisclosed/items/anyOf/0",
-            "type": "object",
             "title": "AnyOf schema",
             "description": "The description of data disclosed.",
             "examples": [
@@ -623,17 +631,6 @@
                 }
               }
             ],
-            "required": [
-              "_id",
-              "category",
-              "purposes",
-              "legalBases",
-              "legitimateInterests",
-              "recipients",
-              "storage",
-              "nonDisclosure"
-            ],
-            "additionalProperties": true,
             "properties": {
               "_id": {
                 "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/_id",
@@ -694,10 +691,12 @@
                             "Newsletter will be sent out once a month."
                           ]
                         }
-                      }
+                      },
+                      "required": ["purpose", "description"]
                     }
                   ],
-                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items"
+                  "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items",
+                  "type": "object"
                 }
               },
               "legalBases": {
@@ -722,7 +721,6 @@
                   "anyOf": [
                     {
                       "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items/anyOf/0",
-                      "type": "object",
                       "title": "AnyOf schema for the legal bases of the data disclosed.",
                       "examples": [
                         {
@@ -1189,7 +1187,17 @@
                   }
                 }
               }
-            }
+            },
+            "required": [
+              "_id",
+              "category",
+              "purposes",
+              "legalBases",
+              "legitimateInterests",
+              "recipients",
+              "storage",
+              "nonDisclosure"
+            ]
           }
         ],
         "$id": "#/properties/dataDisclosed/items",
