@@ -398,7 +398,7 @@
           "required": [
             "name",
             "email"
-          ]
+          ],
           "properties": {
             "name": {
               "$id": "#/properties/controller/properties/representative/properties/name",
