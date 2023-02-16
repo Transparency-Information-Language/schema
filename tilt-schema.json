@@ -341,15 +341,10 @@
             "email": "contact@greencompany.de",
             "phone": "0049 151 1234 5678"
           },
-        "url": ["https://green-bikes.de", "https://bikes-that-are-green.de"]
+          "url": ["https://green-bikes.de", "https://bikes-that-are-green.de"]
         }
       ],
-      "required": [
-        "name",
-        "address",
-        "country",
-        "representative"
-      ],
+      "required": ["name", "address", "country", "representative"],
       "properties": {
         "name": {
           "$id": "#/properties/controller/properties/name",
@@ -395,10 +390,7 @@
               "phone": "0049 151 1234 5678"
             }
           ],
-          "required": [
-            "name",
-            "email"
-          ],
+          "required": ["name", "email"],
           "properties": {
             "name": {
               "$id": "#/properties/controller/properties/representative/properties/name",
@@ -435,7 +427,10 @@
             "format": "uri-reference",
             "example": "https://green-bikes.de"
           },
-          "examples": ["https://green-bikes.de", "https://bikes-that-are-green.de"]
+          "examples": [
+            "https://green-bikes.de",
+            "https://bikes-that-are-green.de"
+          ]
         }
       }
     },
@@ -453,12 +448,7 @@
           "phone": "0049 151 1234 5678"
         }
       ],
-      "required": [
-        "name",
-        "address",
-        "country",
-        "email"
-      ],
+      "required": ["name", "address", "country", "email"],
       "properties": {
         "name": {
           "$id": "#/properties/dataProtectionOfficer/properties/name",
@@ -717,10 +707,7 @@
                           ]
                         }
                       },
-                      "required": [
-                        "purpose",
-                        "description"
-                      ]
+                      "required": ["purpose", "description"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items",
@@ -775,9 +762,7 @@
                           ]
                         }
                       },
-                      "required": [
-                        "reference"
-                      ]
+                      "required": ["reference"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items",
@@ -815,14 +800,10 @@
                             "const": true
                           }
                         },
-                        "required": [
-                          "exists"
-                        ]
+                        "required": ["exists"]
                       },
                       "then": {
-                        "required": [
-                          "reasoning"
-                        ]
+                        "required": ["reasoning"]
                       },
                       "properties": {
                         "exists": {
@@ -968,9 +949,7 @@
                           "type": "string",
                           "title": "Category",
                           "description": "The category of the the recipient.",
-                          "examples": [
-                            "Marketing content provider"
-                          ]
+                          "examples": ["Marketing content provider"]
                         },
                         "url": {
                           "type": "array",
@@ -983,9 +962,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "category"
-                      ]
+                      "required": ["category"]
                     },
                     {
                       "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/1",
@@ -1004,9 +981,7 @@
                           "examples": ["Responsible Statistical Institutes"]
                         }
                       },
-                      "required": [
-                        "category"
-                      ]
+                      "required": ["category"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items",
@@ -1113,10 +1088,7 @@
                                     ]
                                   }
                                 },
-                                "required": [
-                                  "description",
-                                  "ttl"
-                                ]
+                                "required": ["description", "ttl"]
                               }
                             ],
                             "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal/items",
@@ -1178,9 +1150,7 @@
                           "examples": ["max"]
                         }
                       },
-                      "required": [
-                        "aggregationFunction"
-                      ]
+                      "required": ["aggregationFunction"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items",
@@ -1516,9 +1486,7 @@
           "dataFormat": "json"
         }
       ],
-      "required": [
-        "available"
-      ],
+      "required": ["available"],
       "properties": {
         "available": {
           "$id": "#/properties/accessAndDataPortability/properties/available",
@@ -1544,9 +1512,7 @@
           "title": "Url",
           "description": "URL to relevant resources such as access portals.",
           "format": "uri-reference",
-          "examples": [
-            "https://green-bikes.de/access"
-          ],
+          "examples": ["https://green-bikes.de/access"],
           "uniqueItems": true,
           "items": {
             "type": "string",
@@ -1612,10 +1578,7 @@
               "examples": ["EUR"]
             }
           },
-          "required": [
-            "amount",
-            "currency"
-          ]
+          "required": ["amount", "currency"]
         },
         "dataFormats": {
           "$id": "#/properties/accessAndDataPortability/properties/dataFormats",
@@ -1735,9 +1698,7 @@
                           "title": "Url",
                           "description": "URL (reference) where the data is taken from.",
                           "format": "uri-reference",
-                          "examples": [
-                            "https://blueCompany.org"
-                          ],
+                          "examples": ["https://blueCompany.org"],
                           "items": {
                             "type": "string",
                             "format": "uri-reference",
@@ -1753,11 +1714,7 @@
                           "examples": [false, true]
                         }
                       },
-                      "required": [
-                        "description",
-                        "url",
-                        "publiclyAvailable"
-                      ]
+                      "required": ["description", "url", "publiclyAvailable"]
                     }
                   ],
                   "$id": "#/properties/sources/items/anyOf/0/properties/sources/items",
@@ -1765,11 +1722,7 @@
                 }
               }
             },
-            "required": [
-              "_id",
-              "dataCategory",
-              "sources"
-            ]
+            "required": ["_id", "dataCategory", "sources"]
           }
         ],
         "$id": "#/properties/sources/items",
@@ -1825,9 +1778,7 @@
           "title": "Url",
           "description": "URL to an online portal.",
           "format": "uri-reference",
-          "examples": [
-            "https://greencompany.org/rightToInformation"
-          ],
+          "examples": ["https://greencompany.org/rightToInformation"],
           "minItems": 1,
           "items": {
             "type": "string",
@@ -1909,9 +1860,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": [
-            "https://greencompany.org/rights"
-          ],
+          "examples": ["https://greencompany.org/rights"],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -1991,9 +1940,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": [
-            "https://greencompany.org/rights"
-          ],
+          "examples": ["https://greencompany.org/rights"],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2038,9 +1985,7 @@
         {
           "available": true,
           "description": "For the right to withdraw consent please use this contact form and...",
-          "url": [
-            "https://greencompany.org/rights"
-            ],
+          "url": ["https://greencompany.org/rights"],
           "email": "contact@greencompany.de",
           "identificationEvidences": ["Email verification"]
         }
@@ -2077,9 +2022,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": [
-            "https://greencompany.org/rights"
-          ],
+          "examples": ["https://greencompany.org/rights"],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2169,9 +2112,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": [
-            "https://greencompany.org/rights"
-          ],
+          "examples": ["https://greencompany.org/rights"],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2260,9 +2201,7 @@
               "examples": ["0049 444 222 111"]
             }
           },
-          "required": [
-            "name"
-          ]
+          "required": ["name"]
         }
       }
     },
@@ -2410,4 +2349,3 @@
     "changesOfPurpose"
   ]
 }
-
