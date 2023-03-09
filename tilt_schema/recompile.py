@@ -7,6 +7,7 @@ def reconstruct():
     func:   Constructs the tilt-schema out of a number of constituent parts.
     """
 
+    print(os.getcwd())
     
     properties_sections = sorted(glob.glob('properties/*.json'))
 
@@ -50,7 +51,7 @@ def reconstruct():
     # Write the combined data to a new JSON file
     with open('../combined.json', 'w') as f:
         json.dump(combined_data, f)
-        print('successfully created new json')
+        print('successfully created new json: ../combined.json')
 
     os.remove("06_properties.json")
 
