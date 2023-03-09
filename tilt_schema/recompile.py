@@ -1,8 +1,7 @@
-import os
-import json
-import glob
-
 def reconstruct():
+    import os
+    import json
+    import glob 
 
     """
     func:   Constructs the tilt-schema out of a number of constituent parts.
@@ -57,3 +56,5 @@ def reconstruct():
 
     return
 
+if __name__== "__main__":
+    reconstruct()
