@@ -27,17 +27,17 @@ jobs:
           # This part is also where you can pass other options, for example:
           prettier_options: --write **/tilt-schema.json
 
-combine:
-  runs-on: ubuntu-latest
+  combine:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-          with:
-            # Make sure the actual branch is checked out when running on pull requests
-            ref: ${{ github.head_ref }}
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+            with:
+              # Make sure the actual branch is checked out when running on pull requests
+              ref: ${{ github.head_ref }}
 
-        - name: Combine
-          uses: ../tilt_schema/recompile.py
+          - name: Combine
+            uses: ../tilt_schema/recompile.py
 
     
