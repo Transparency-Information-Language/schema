@@ -8,10 +8,13 @@ def reconstruct():
     """
 
     print(os.getcwd())
+
+    os.chdir('tilt_schema/')
     
     properties_sections = sorted(glob.glob('properties/*.json'))
 
-    
+    print(os.getcwd())
+
     print(properties_sections)
     
     # Update the properties file with the underlying values 
@@ -27,7 +30,7 @@ def reconstruct():
         combo_props.update(item)
         
     # Write the combined data to a the properties file
-    with open('06_properties.json', 'w') as f:
+    with open('tilt_schema/06_properties.json', 'w') as f:
         json.dump({'properties':combo_props}, f)
     
     meta_sections = sorted(glob.glob("*.json"))
