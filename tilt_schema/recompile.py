@@ -56,6 +56,12 @@ def reconstruct():
         json.dump(combined_data, f)
         print('successfully created new json: ../combined.json')
 
+    
+        # Write the combined data to a new JSON file
+    with open('../newfilefortesting.json', 'w') as f:
+        json.dump(combined_data, f)
+        print('successfully created new json')
+
     os.remove("06_properties.json")
 
     return
