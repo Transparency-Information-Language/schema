@@ -29,8 +29,8 @@ def reconstruct():
     for item in data_props:
         combo_props.update(item)
         
-    # Write the combined data to a the properties file
-    with open('tilt_schema/06_properties.json', 'w') as f:
+    # Write the combined data to  the properties file
+    with open('06_properties.json', 'w') as f:
         json.dump({'properties':combo_props}, f)
     
     meta_sections = sorted(glob.glob("*.json"))
