@@ -1,17 +1,20 @@
-import os
-import json
-import glob
-
 def reconstruct():
+    import os
+    import json
+    import glob 
 
     """
     func:   Constructs the tilt-schema out of a number of constituent parts.
     """
 
+    print(os.getcwd())
+
+    os.chdir('tilt_schema/')
     
     properties_sections = sorted(glob.glob('properties/*.json'))
 
-    
+    print(os.getcwd())
+
     print(properties_sections)
     
     # Update the properties file with the underlying values 
@@ -26,7 +29,7 @@ def reconstruct():
     for item in data_props:
         combo_props.update(item)
         
-    # Write the combined data to a the properties file
+    # Write the combined data to  the properties file
     with open('06_properties.json', 'w') as f:
         json.dump({'properties':combo_props}, f)
     
@@ -51,9 +54,11 @@ def reconstruct():
     # Write the combined data to a new JSON file
     with open('../combined.json', 'w') as f:
         json.dump(combined_data, f)
-        print('successfully created new json')
+        print('successfully created new json: ../combined.json')
 
     os.remove("06_properties.json")
 
     return
 
+if __name__== "__main__":
+    reconstruct()
