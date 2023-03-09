@@ -40,6 +40,6 @@ jobs:
         python-version: '3.9'
 
     - name: Run Python script
-      run: python ../tilt_schema/recompile.py
+      run: python tilt_schema/recompile.py
 
     
