@@ -62,7 +62,7 @@ def reconstruct():
         json.dump(combined_data, f)
         print('successfully created new json')
 
-    os.remove("06_properties.json")
+    #os.remove("06_properties.json")
 
     return
 
