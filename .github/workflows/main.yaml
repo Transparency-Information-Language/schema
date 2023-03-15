@@ -47,6 +47,5 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: --write *.json
-          only_changed: True
+          prettier_options: --write [combined, tilt-schema].json
     
