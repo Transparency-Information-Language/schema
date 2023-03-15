@@ -33,7 +33,7 @@ jobs:
         git commit --allow-empty -m "combined the file"
         git push
 
-prettier:
+  prettier:
     runs-on: ubuntu-latest
 
     steps:
