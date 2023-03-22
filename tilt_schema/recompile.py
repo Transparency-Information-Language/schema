@@ -4,10 +4,17 @@ def reconstruct():
     import glob 
 
     """
-    func:   Constructs the tilt-schema out of a number of constituent parts.
+    func:       Constructs the tilt-schema out of a number of constituent parts.
+
+    requires:   A directory called tilt_schema with files that combined make up the entire tile
+                Files are at best named in a way that preserves the order of a tilt document.
+                There also needs to be a subdirectory called properties that includes the substantial parts of the tilt document. 
+                There is no single json file called properties as it is deleted whenever the subfolder is established. 
+                All changes to the tilt should be made in the lowest-level of the directory possible. 
+    returns:    A fully constructed tilt-schema document. 
     """
 
-    print(os.getcwd())
+    #print(os.getcwd())
 
     os.chdir('tilt_schema/')
     

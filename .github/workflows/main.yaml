@@ -12,7 +12,7 @@ on:
 
 jobs: 
 
-  run:
+  reconstruct:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
         git commit --allow-empty -m "combined the file"
         git push
 
-  prettier:
+  prettify:
     needs: run
     runs-on: ubuntu-latest
 
