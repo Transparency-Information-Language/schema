@@ -35,7 +35,7 @@ jobs:
         git push
 
   prettify:
-    needs: run
+    needs: reconstruct
     runs-on: ubuntu-latest
 
     steps:
