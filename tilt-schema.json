@@ -146,7 +146,8 @@
             {
               "description": "This information could be retrieved from...",
               "url": "https://blueCompany.org",
-              "publiclyAvailable": false
+              "publiclyAvailable": false,
+              "origin": ["received", "observed", "inferred"]
             }
           ]
         }
@@ -1576,7 +1577,8 @@
               {
                 "description": "This information could be retrieved from...",
                 "url": "https://blueCompany.org",
-                "publiclyAvailable": false
+                "publiclyAvailable": false,
+                "origin": "received"
               }
             ]
           }
@@ -1596,7 +1598,8 @@
                   {
                     "description": "This information could be retrieved from...",
                     "url": "https://blueCompany.org",
-                    "publiclyAvailable": false
+                    "publiclyAvailable": false,
+                    "origin": "received"
                   }
                 ]
               }
@@ -1626,7 +1629,8 @@
                     {
                       "description": "This information could be retrieved from...",
                       "url": "https://blueCompany.org",
-                      "publiclyAvailable": false
+                      "publiclyAvailable": false,
+                      "origin": "received"
                     }
                   ]
                 ],
@@ -1640,7 +1644,8 @@
                         {
                           "description": "This information could be retrieved from...",
                           "url": "https://blueCompany.org",
-                          "publiclyAvailable": false
+                          "publiclyAvailable": false,
+                          "origin": "received"
                         }
                       ],
                       "properties": {
@@ -1668,9 +1673,16 @@
                           "description": "Are these data publicly available?",
                           "default": false,
                           "examples": [false, true]
+                        },
+                        "origin":{
+                          "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/origin",
+                          "type": "enum",
+                          "title": "Origin",
+                          "description" : "How was the data obtained?",
+                          "examples": ["received", "observed", "inferred"]
                         }
                       },
-                      "required": ["description", "url", "publiclyAvailable"]
+                      "required": ["description", "url", "publiclyAvailable", "origin"]
                     }
                   ],
                   "$id": "#/properties/sources/items/anyOf/0/properties/sources/items",
