@@ -341,7 +341,8 @@
             "email": "contact@greencompany.de",
             "phone": "0049 151 1234 5678"
           },
-          "url": ["https://green-bikes.de", "https://bikes-that-are-green.de"]
+          "url": ["https://green-bikes.de", "https://bikes-that-are-green.de"],
+          "sector": "J"
         }
       ],
       "required": ["name", "address", "country", "representative"],
@@ -431,6 +432,14 @@
             "https://green-bikes.de",
             "https://bikes-that-are-green.de"
           ]
+        },
+        "sector": {
+          "$id": "#/properties/controller/properties/sector",
+          "type": "string",
+          "description": "The industry of the controller according to UN ISIC Rev. 4",
+          "example": "J",
+          "maxLength": 1,
+          "pattern": "[A-Z]"
         }
       }
     },
