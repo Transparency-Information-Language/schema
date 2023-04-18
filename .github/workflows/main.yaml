@@ -1,11 +1,14 @@
 name: Linting JSONs
 
-# This action works with pull requests and pushes to the v2 branch
+# This action activates whenever there is a push or pull request into the v2 branch. 
+# It validates and automatically prettifys the tilt-schema.json. 
+
+# This action works with pull requests and pushes to the v2 branch 
 on:
   pull_request:
   push:
     branches:
-      - v2
+      - v2 # !! Update this once we merge to master !! 
 
 jobs:
   prettier:
@@ -19,7 +22,7 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Prettify code
-        uses: creyD/prettier_action@v4.2
+        uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
           prettier_options: --write **/tilt-schema.json
