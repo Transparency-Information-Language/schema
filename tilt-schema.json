@@ -1676,10 +1676,11 @@
                         },
                         "origin":{
                           "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/origin",
-                          "type": "enum",
+                          "type": "string",
                           "title": "Origin",
                           "description" : "How was the data obtained?",
-                          "examples": ["received", "observed", "inferred"]
+                          "enum": ["received", "observed", "inferred"],
+                          "examples": ["received"]
                         }
                       },
                       "required": ["description", "url", "publiclyAvailable", "origin"]
