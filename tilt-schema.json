@@ -1727,16 +1727,21 @@
                           "default": false,
                           "examples": [false, true]
                         },
-                        "origin":{
+                        "origin": {
                           "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/origin",
                           "type": "string",
                           "title": "Origin",
-                          "description" : "How was the data obtained?",
+                          "description": "How was the data obtained?",
                           "enum": ["received", "observed", "inferred"],
                           "examples": ["received"]
                         }
                       },
-                      "required": ["description", "url", "publiclyAvailable", "origin"]
+                      "required": [
+                        "description",
+                        "url",
+                        "publiclyAvailable",
+                        "origin"
+                      ]
                     }
                   ],
                   "$id": "#/properties/sources/items/anyOf/0/properties/sources/items",
