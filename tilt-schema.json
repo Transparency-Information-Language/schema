@@ -1036,7 +1036,7 @@
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/domain",
                           "type": "string",
                           "title": "Domain",
-                          "description": "The domain of the third party (recipient) as a simple url starting with protocol.",
+                          "description": "The domain of the third party (recipient) as a url starting with protocol.",
                           "pattern": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$",
                           "examples": [
                             "https://yellowcompany.es"
