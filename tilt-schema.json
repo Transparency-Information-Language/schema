@@ -147,7 +147,7 @@
           "sources": [
             {
               "description": "This information could be retrieved from...",
-              "url": "https://blueCompany.org",
+              "url": ["https://blueCompany.org"],
               "publiclyAvailable": false,
               "origin": ["received", "observed", "inferred"]
             }
@@ -1637,7 +1637,7 @@
             "sources": [
               {
                 "description": "This information could be retrieved from...",
-                "url": "https://blueCompany.org",
+                "url": ["https://blueCompany.org"],
                 "publiclyAvailable": false,
                 "origin": "received"
               }
@@ -1658,7 +1658,7 @@
                 "sources": [
                   {
                     "description": "This information could be retrieved from...",
-                    "url": "https://blueCompany.org",
+                    "url": ["https://blueCompany.org"],
                     "publiclyAvailable": false,
                     "origin": "received"
                   }
@@ -1689,7 +1689,7 @@
                   [
                     {
                       "description": "This information could be retrieved from...",
-                      "url": "https://blueCompany.org",
+                      "url": ["https://blueCompany.org"],
                       "publiclyAvailable": false,
                       "origin": "received"
                     }
@@ -1704,7 +1704,7 @@
                       "examples": [
                         {
                           "description": "This information could be retrieved from...",
-                          "url": "https://blueCompany.org",
+                          "url": ["https://blueCompany.org"],
                           "publiclyAvailable": false,
                           "origin": "received"
                         }
