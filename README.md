@@ -15,6 +15,12 @@ An [*in*valid](tilt-NOT-valid.json) exemplary document standalone.
 ![](media/main.png)
 ![](media/dataDisclosed.png)
 
+### ▶️ GitHub Actions
+| Name | Description |
+| ----------- | ----------- |
+| Linting JSONs | Validates and automatically prettifys the tilt-schema.json. |
+| Generating human readable TILT-schema | Creates a new index.html file based on latest tilt-schema.json.| 
+| pages-build-deployment | Creates [GitHub Page](https://transparency-information-language.github.io/schema/index.html) based on docs/index.html. |
 
 ## Author
 [Elias Grünewald](mailto:gruenewald@tu-berlin.de)
