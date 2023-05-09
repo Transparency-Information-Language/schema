@@ -27,7 +27,8 @@
           "email": "contact@greencompany.de",
           "phone": "0049 151 1234 5678"
         },
-        "url": ["https://green-bikes.de", "https://bikes-that-are-green.de"]
+        "url": ["https://green-bikes.de", "https://bikes-that-are-green.de"],
+        "sector": "J"
       },
       "dataProtectionOfficer": {
         "name": "Jane Super",
@@ -222,12 +223,12 @@
           "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
           "name": "Green Company",
           "created": "2020-04-03T15:53:05.929588",
-          "modified": "2020-04-03T15: 53: 05.929588",
+          "modified": "2020-04-03T15:53:05.929588",
           "version": 2,
           "language": "de",
           "status": "active",
           "url": ["https://green-bikes.de/privacy"],
-          "_hash": "d732a793562a3e5dc57645a8"
+          "_hash": "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
         }
       ],
       "required": [
@@ -270,7 +271,7 @@
           "title": "Modified",
           "description": "Last modified date of the document as an ISO-8601 time code.",
           "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-          "examples": ["2020-04-03T15: 53: 05.929588"]
+          "examples": ["2020-04-03T15:53:05.929588"]
         },
         "version": {
           "$id": "#/properties/meta/properties/version",
@@ -305,7 +306,7 @@
           "title": "Url",
           "description": "URL(s) to the privacy policy of this schema. Multiple URLs can be used in case of potential sub-entities pointing to the same entity",
           "format": "uri-reference",
-          "examples": ["https://green-bikes.de/privacy"],
+          "examples": [["https://green-bikes.de/privacy"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -430,16 +431,16 @@
             "format": "uri-reference",
             "example": "https://green-bikes.de"
           },
-          "examples": [
+          "examples": [[
             "https://green-bikes.de",
             "https://bikes-that-are-green.de"
-          ]
+          ]]
         },
         "sector": {
           "$id": "#/properties/controller/properties/sector",
           "type": "string",
           "description": "The industry of the controller according to UN ISIC Rev. 4",
-          "example": "J",
+          "examples": ["J"],
           "maxLength": 1,
           "pattern": "[A-Z]"
         }
@@ -512,7 +513,7 @@
         [
           {
             "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
-            "category": "E-mail address",
+            "category": ["E-mail address"],
             "purposes": [
               {
                 "purpose": "Marketing",
@@ -672,7 +673,7 @@
                 "type": "array",
                 "title": "Category",
                 "description": "The data (category/categories) the data disclosed are referred to. Can be multiple",
-                "examples": ["E-mail address"],
+                "examples": [["E-mail address"]],
                 "items": {
                   "type": "string"
                 }
@@ -1535,7 +1536,7 @@
           "title": "Url",
           "description": "URL to relevant resources such as access portals.",
           "format": "uri-reference",
-          "examples": ["https://green-bikes.de/access"],
+          "examples": [["https://green-bikes.de/access"]],
           "uniqueItems": true,
           "items": {
             "type": "string",
@@ -1609,7 +1610,7 @@
           "title": "DataFormat",
           "description": "An explanation about the data format(s) the data is provided in.",
           "default": ["json"],
-          "examples": ["json", "xml"],
+          "examples": [["json", "xml"]],
           "items": {
             "anyOf": [
               {
@@ -1818,7 +1819,7 @@
           "title": "Url",
           "description": "URL to an online portal.",
           "format": "uri-reference",
-          "examples": ["https://greencompany.org/rightToInformation"],
+          "examples": [["https://greencompany.org/rightToInformation"]],
           "minItems": 1,
           "items": {
             "type": "string",
@@ -1900,7 +1901,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": ["https://greencompany.org/rights"],
+          "examples": [["https://greencompany.org/rights"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -1980,7 +1981,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": ["https://greencompany.org/rights"],
+          "examples": [["https://greencompany.org/rights"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2062,7 +2063,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": ["https://greencompany.org/rights"],
+          "examples": [["https://greencompany.org/rights"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2152,7 +2153,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": ["https://greencompany.org/rights"],
+          "examples": [["https://greencompany.org/rights"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
