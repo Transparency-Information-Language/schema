@@ -59,9 +59,9 @@ def reconstruct():
 
     
     # Write the combined data to a new JSON file
-    with open('../combined.json', 'w') as f:
+    with open('../tilt-schema.json', 'w') as f:
         json.dump(combined_data, f)
-        print('successfully created new json: ../combined.json')
+        print('successfully created new json: ../tilt-schema.json')
 
     os.remove("06_properties.json")
 
