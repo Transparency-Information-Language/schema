@@ -20,7 +20,7 @@ An [*in*valid](tilt-NOT-valid.json) exemplary document standalone.
 ### Data Origin
 According to Art. 20 (1) a "data subject has the right to receive the personal data concerning him or her, which he or she has provided to a controller".
 Because of that, upon a data subject's Right to Data Portability request it is necessary to distinguish between multiple possible data origins. TILT
-Version 2.0 adds an `origin` field to `sources` with three possible options: `received`, `overserved` or `inferred`. This is based on the work of Syrmoudis et al. "Data Portability between Online Services".
+Version 2.0 adds an `origin` field to `sources` with three possible options: `received`, `overserved` or `inferred`.
 
 ### Industry Sector
 To classify data controllers according to the kind of economic activities TILT Version 2.0 uses the industry classification according to UN ISIC Rev. 4. A `sector` field is added to `controller`.
