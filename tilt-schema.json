@@ -431,10 +431,9 @@
             "format": "uri-reference",
             "example": "https://green-bikes.de"
           },
-          "examples": [[
-            "https://green-bikes.de",
-            "https://bikes-that-are-green.de"
-          ]]
+          "examples": [
+            ["https://green-bikes.de", "https://bikes-that-are-green.de"]
+          ]
         },
         "sector": {
           "$id": "#/properties/controller/properties/sector",
