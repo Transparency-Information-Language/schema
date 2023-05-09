@@ -16,6 +16,25 @@ An [*in*valid](tilt-NOT-valid.json) exemplary document standalone.
 ![](media/dataDisclosed.png)
 
 
+## 📝 Release notes: TILT Version 2.0
+### Data Origin
+According to Art. 20 (1) a "data subject has the right to receive the personal data concerning him or her, which he or she has provided to a controller".
+Because of that, upon a data subject's Right to Data Portability request it is necessary to distinguish between multiple possible data origins. TILT
+Version 2.0 adds an `origin` field to `sources` with three possible options: `received`, `overserved` or `inferred`.
+
+### Industry Sector
+To classify data controllers according to the kind of economic activities TILT Version 2.0 uses the industry classification according to UN ISIC Rev. 4. A `sector` field is added to `controller`.
+
+### URL Array
+TILT Version 2.0 changes the `url` field to an array to allow for multiple URLs. This change was made to accommodate cases where there may be multiple sub-
+entities that point to the same main entity.
+
+### dataDisclosed Category Array
+TILT Version 2.0 changes the `category` field to an array to allow for multiple categories. This change enables greater flexibility and specificity in categorizing the data disclosed.
+
+### Domain for Recipients
+TILT Version 2.0 adds a new `domain` field to the `recipients` of `dataDisclosed`. This allows a more detailed identification of the third party.
+
 ## Author
 [Elias Grünewald](mailto:gruenewald@tu-berlin.de)
 
