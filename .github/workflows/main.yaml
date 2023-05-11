@@ -30,7 +30,7 @@ jobs:
     - name: Run Python script
       run: |
         python scripts/recompile.py
-        python scripts/extract_example.py
+        python scripts/extract-example.py
         git config user.name github-actions
         git config user.email github-actions@github.com
         git pull
