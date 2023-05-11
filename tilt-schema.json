@@ -14,9 +14,7 @@
         "version": 2,
         "language": "de",
         "status": "active",
-        "url": [
-          "https://green-bikes.de/privacy"
-        ],
+        "url": ["https://green-bikes.de/privacy"],
         "_hash": "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
       },
       "controller": {
@@ -29,10 +27,7 @@
           "email": "contact@greencompany.de",
           "phone": "0049 151 1234 5678"
         },
-        "url": [
-          "https://green-bikes.de",
-          "https://bikes-that-are-green.de"
-        ],
+        "url": ["https://green-bikes.de", "https://bikes-that-are-green.de"],
         "sector": "J"
       },
       "dataProtectionOfficer": {
@@ -45,9 +40,7 @@
       "dataDisclosed": [
         {
           "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
-          "category": [
-            "E-mail address"
-          ],
+          "category": ["E-mail address"],
           "purposes": [
             {
               "purpose": "Marketing",
@@ -103,9 +96,7 @@
               "purposeConditional": [
                 "Data is stored until the end of the ordering process."
               ],
-              "legalBasisConditional": [
-                "SGB-100-42"
-              ],
+              "legalBasisConditional": ["SGB-100-42"],
               "aggregationFunction": "max"
             }
           ],
@@ -141,14 +132,9 @@
       "accessAndDataPortability": {
         "available": true,
         "description": "Data access is possible through...",
-        "url": [
-          "https://green-bikes.de/access"
-        ],
+        "url": ["https://green-bikes.de/access"],
         "email": "access@greencompany.de",
-        "identificationEvidences": [
-          "ID card copy",
-          "Email verification"
-        ],
+        "identificationEvidences": ["ID card copy", "Email verification"],
         "administrativeFee": {
           "amount": 0,
           "currency": "EUR"
@@ -162,9 +148,7 @@
           "sources": [
             {
               "description": "This information could be retrieved from...",
-              "url": [
-                "https://blueCompany.org"
-              ],
+              "url": ["https://blueCompany.org"],
               "publiclyAvailable": false,
               "origin": "received"
             }
@@ -174,60 +158,37 @@
       "rightToInformation": {
         "available": true,
         "description": "For the right to information please use this contact form and...",
-        "url": [
-          "https://greencompany.org/rightToInformation"
-        ],
+        "url": ["https://greencompany.org/rightToInformation"],
         "email": "contact@greencompany.de",
-        "identificationEvidences": [
-          "ID card copy",
-          "Email verification"
-        ]
+        "identificationEvidences": ["ID card copy", "Email verification"]
       },
       "rightToRectificationOrDeletion": {
         "available": true,
         "description": "For the right to rectification please use this contact form and...",
-        "url": [
-          "https://greencompany.org/rights"
-        ],
+        "url": ["https://greencompany.org/rights"],
         "email": "contact@greencompany.de",
-        "identificationEvidences": [
-          "ID card copy",
-          "Email verification"
-        ]
+        "identificationEvidences": ["ID card copy", "Email verification"]
       },
       "rightToDataPortability": {
         "available": false,
         "description": "Data portability is only possible when...",
-        "url": [
-          "https://greencompany.org/rights"
-        ],
+        "url": ["https://greencompany.org/rights"],
         "email": "contact@greencompany.de",
-        "identificationEvidences": [
-          "ID card copy"
-        ]
+        "identificationEvidences": ["ID card copy"]
       },
       "rightToWithdrawConsent": {
         "available": true,
         "description": "For the right to withdraw consent please use this contact form and...",
-        "url": [
-          "https://greencompany.org/rights"
-        ],
+        "url": ["https://greencompany.org/rights"],
         "email": "contact@greencompany.de",
-        "identificationEvidences": [
-          "Email verification"
-        ]
+        "identificationEvidences": ["Email verification"]
       },
       "rightToComplain": {
         "available": true,
         "description": "For the right to complain please use this contact form and...",
-        "url": [
-          "https://greencompany.org/rights"
-        ],
+        "url": ["https://greencompany.org/rights"],
         "email": "contact@greencompany.de",
-        "identificationEvidences": [
-          "ID card copy",
-          "Email verification"
-        ],
+        "identificationEvidences": ["ID card copy", "Email verification"],
         "supervisoryAuthority": {
           "name": "Commissioner for Data Protection",
           "address": "Friedrichstrasse 219, 10969 Berlin",
@@ -244,10 +205,7 @@
       "changesOfPurpose": [
         {
           "description": "Due to techncial requirements...",
-          "affectedDataCategories": [
-            "Email adress",
-            "Credit score"
-          ],
+          "affectedDataCategories": ["Email adress", "Credit score"],
           "plannedDateOfChange": "2020-08-20",
           "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
         }
@@ -269,9 +227,7 @@
           "version": 2,
           "language": "de",
           "status": "active",
-          "url": [
-            "https://green-bikes.de/privacy"
-          ],
+          "url": ["https://green-bikes.de/privacy"],
           "_hash": "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
         }
       ],
@@ -292,18 +248,14 @@
           "type": "string",
           "title": "_id",
           "description": "The ID follows the database-specific implementation and does not have to be set in advance; but should offer as much entropy as possible for globally unique identifiers.",
-          "examples": [
-            "f1424f86-ca0f-4f0c-9438-43cc00509931"
-          ]
+          "examples": ["f1424f86-ca0f-4f0c-9438-43cc00509931"]
         },
         "name": {
           "$id": "#/properties/meta/properties/name",
           "type": "string",
           "title": "Name",
           "description": "Name of the data controller.",
-          "examples": [
-            "Green Company"
-          ]
+          "examples": ["Green Company"]
         },
         "created": {
           "$id": "#/properties/meta/properties/created",
@@ -311,9 +263,7 @@
           "title": "Created",
           "description": "Creation date of the document as an ISO-8601 time code.",
           "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-          "examples": [
-            "2020-04-03T15:53:05.929588"
-          ]
+          "examples": ["2020-04-03T15:53:05.929588"]
         },
         "modified": {
           "$id": "#/properties/meta/properties/modified",
@@ -321,9 +271,7 @@
           "title": "Modified",
           "description": "Last modified date of the document as an ISO-8601 time code.",
           "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-          "examples": [
-            "2020-04-03T15:53:05.929588"
-          ]
+          "examples": ["2020-04-03T15:53:05.929588"]
         },
         "version": {
           "$id": "#/properties/meta/properties/version",
@@ -332,9 +280,7 @@
           "description": "This number serves to version documents of a controller.",
           "default": 1,
           "minimum": 1,
-          "examples": [
-            2
-          ]
+          "examples": [2]
         },
         "language": {
           "$id": "#/properties/meta/properties/language",
@@ -343,9 +289,7 @@
           "description": "All language abbreviation codes follow the established ISO 639-1 standard as identifiers for names of languages.",
           "pattern": "^(aa|ab|ae|af|ak|am|an|ar|as|av|ay|az|az|ba|be|bg|bh|bi|bm|bn|bo|br|bs|ca|ce|ch|co|cr|cs|cu|cv|cy|da|de|dv|dz|ee|el|en|eo|es|et|eu|fa|ff|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|gv|ha|he|hi|ho|hr|ht|hu|hy|hz|ia|id|ie|ig|ii|ik|io|is|it|iu|ja|jv|ka|kg|ki|kj|kk|kl|km|kn|ko|kr|ks|ku|kv|kw|ky|la|lb|lg|li|ln|lo|lt|lu|lv|mg|mh|mi|mk|ml|mn|mr|ms|mt|my|na|nb|nd|ne|ng|nl|nn|no|nr|nv|ny|oc|oj|om|or|os|pa|pi|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sc|sd|se|sg|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|ty|ug|uk|ur|uz|ve|vi|vo|wa|wo|xh|yi|yo|za|zh|zu)$",
           "default": "en",
-          "examples": [
-            "de"
-          ]
+          "examples": ["de"]
         },
         "status": {
           "$id": "#/properties/meta/properties/status",
@@ -354,10 +298,7 @@
           "description": "The status of an instance can be active or inactive depending on the policy's legal force.",
           "default": "active",
           "pattern": "^(active|inactive)$",
-          "examples": [
-            "active",
-            "inactive"
-          ]
+          "examples": ["active", "inactive"]
         },
         "url": {
           "$id": "#/properties/meta/properties/url",
@@ -365,11 +306,7 @@
           "title": "Url",
           "description": "URL(s) to the privacy policy of this schema. Multiple URLs can be used in case of potential sub-entities pointing to the same entity",
           "format": "uri-reference",
-          "examples": [
-            [
-              "https://green-bikes.de/privacy"
-            ]
-          ],
+          "examples": [["https://green-bikes.de/privacy"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -407,46 +344,32 @@
             "email": "contact@greencompany.de",
             "phone": "0049 151 1234 5678"
           },
-          "url": [
-            "https://green-bikes.de",
-            "https://bikes-that-are-green.de"
-          ],
+          "url": ["https://green-bikes.de", "https://bikes-that-are-green.de"],
           "sector": "J"
         }
       ],
-      "required": [
-        "name",
-        "address",
-        "country",
-        "representative"
-      ],
+      "required": ["name", "address", "country", "representative"],
       "properties": {
         "name": {
           "$id": "#/properties/controller/properties/name",
           "type": "string",
           "title": "Name",
           "description": "Name of the controller.",
-          "examples": [
-            "Green Company AG"
-          ]
+          "examples": ["Green Company AG"]
         },
         "division": {
           "$id": "#/properties/controller/properties/division",
           "type": "string",
           "title": "Division",
           "description": "Serves to differentiate between different areas of a company; particularly relevant for large companies.",
-          "examples": [
-            "Product line e-mobility"
-          ]
+          "examples": ["Product line e-mobility"]
         },
         "address": {
           "$id": "#/properties/controller/properties/address",
           "type": "string",
           "title": "Address",
           "description": "Address of the controller.",
-          "examples": [
-            "Wolfsburger Ring 2, 38440 Berlin"
-          ]
+          "examples": ["Wolfsburger Ring 2, 38440 Berlin"]
         },
         "country": {
           "$id": "#/properties/controller/properties/country",
@@ -457,9 +380,7 @@
           "minLength": 2,
           "maxLength": 2,
           "pattern": "^[A-Z][A-Z]$",
-          "examples": [
-            "DE"
-          ]
+          "examples": ["DE"]
         },
         "representative": {
           "$id": "#/properties/controller/properties/representative",
@@ -473,19 +394,14 @@
               "phone": "0049 151 1234 5678"
             }
           ],
-          "required": [
-            "name",
-            "email"
-          ],
+          "required": ["name", "email"],
           "properties": {
             "name": {
               "$id": "#/properties/controller/properties/representative/properties/name",
               "type": "string",
               "title": "Name",
               "description": "Name of the controller's representative.",
-              "examples": [
-                "Jane Super"
-              ]
+              "examples": ["Jane Super"]
             },
             "email": {
               "$id": "#/properties/controller/properties/representative/properties/email",
@@ -493,9 +409,7 @@
               "title": "Email",
               "description": "Email address of the controller's representative.",
               "format": "email",
-              "examples": [
-                "contact@greencompany.de"
-              ]
+              "examples": ["contact@greencompany.de"]
             },
             "phone": {
               "$id": "#/properties/controller/properties/representative/properties/phone",
@@ -503,9 +417,7 @@
               "title": "Phone",
               "description": "Phone number of the controller's representative.",
               "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
-              "examples": [
-                "+49 151 1234 5678"
-              ]
+              "examples": ["+49 151 1234 5678"]
             }
           }
         },
@@ -520,19 +432,14 @@
             "example": "https://green-bikes.de"
           },
           "examples": [
-            [
-              "https://green-bikes.de",
-              "https://bikes-that-are-green.de"
-            ]
+            ["https://green-bikes.de", "https://bikes-that-are-green.de"]
           ]
         },
         "sector": {
           "$id": "#/properties/controller/properties/sector",
           "type": "string",
           "description": "The industry of the controller according to UN ISIC Rev. 4",
-          "examples": [
-            "J"
-          ],
+          "examples": ["J"],
           "maxLength": 1,
           "pattern": "[A-Z]"
         }
@@ -552,30 +459,21 @@
           "phone": "0049 151 1234 5678"
         }
       ],
-      "required": [
-        "name",
-        "address",
-        "country",
-        "email"
-      ],
+      "required": ["name", "address", "country", "email"],
       "properties": {
         "name": {
           "$id": "#/properties/dataProtectionOfficer/properties/name",
           "type": "string",
           "title": "Name",
           "description": "The full name of the Data Protection Officer.",
-          "examples": [
-            "Jane Super"
-          ]
+          "examples": ["Jane Super"]
         },
         "address": {
           "$id": "#/properties/dataProtectionOfficer/properties/address",
           "type": "string",
           "title": "Address",
           "description": "Address of the DPO.",
-          "examples": [
-            "Wolfsburger Ring 2, 38440 Berlin"
-          ]
+          "examples": ["Wolfsburger Ring 2, 38440 Berlin"]
         },
         "country": {
           "$id": "#/properties/dataProtectionOfficer/properties/country",
@@ -585,9 +483,7 @@
           "minLength": 2,
           "maxLength": 2,
           "pattern": "^[A-Z][A-Z]$",
-          "examples": [
-            "DE"
-          ]
+          "examples": ["DE"]
         },
         "email": {
           "$id": "#/properties/dataProtectionOfficer/properties/email",
@@ -595,9 +491,7 @@
           "title": "Email",
           "description": "The contact email address of the Data Protection Officer.",
           "format": "email",
-          "examples": [
-            "contact@greencompany.de"
-          ]
+          "examples": ["contact@greencompany.de"]
         },
         "phone": {
           "$id": "#/properties/dataProtectionOfficer/properties/phone",
@@ -605,9 +499,7 @@
           "title": "Phone",
           "description": "The phone number of the Data Protection Officer (may include country prefix).",
           "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
-          "examples": [
-            "0049 151 1234 5678"
-          ]
+          "examples": ["0049 151 1234 5678"]
         }
       }
     },
@@ -620,9 +512,7 @@
         [
           {
             "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
-            "category": [
-              "E-mail address"
-            ],
+            "category": ["E-mail address"],
             "purposes": [
               {
                 "purpose": "Marketing",
@@ -678,9 +568,7 @@
                 "purposeConditional": [
                   "Data is stored until the end of the ordering process."
                 ],
-                "legalBasisConditional": [
-                  "SGB-100-42"
-                ],
+                "legalBasisConditional": ["SGB-100-42"],
                 "aggregationFunction": "max"
               }
             ],
@@ -759,9 +647,7 @@
                     "purposeConditional": [
                       "Data is stored until the end of the ordering process."
                     ],
-                    "legalBasisConditional": [
-                      "SGB-100-42"
-                    ],
+                    "legalBasisConditional": ["SGB-100-42"],
                     "aggregationFunction": "max"
                   }
                 ],
@@ -779,20 +665,14 @@
                 "type": "string",
                 "title": "_id",
                 "description": "The id of a data item that is disclosed. The id is necessary to distinguish several processing tasks of the same data item (locally unique ID that can be based on the database implementation).",
-                "examples": [
-                  "f1424f86-ca0f-4f0c-9438-43cc00509931"
-                ]
+                "examples": ["f1424f86-ca0f-4f0c-9438-43cc00509931"]
               },
               "category": {
                 "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/category",
                 "type": "array",
                 "title": "Category",
                 "description": "The data (category/categories) the data disclosed are referred to. Can be multiple",
-                "examples": [
-                  [
-                    "E-mail address"
-                  ]
-                ],
+                "examples": [["E-mail address"]],
                 "items": {
                   "type": "string"
                 }
@@ -828,9 +708,7 @@
                           "type": "string",
                           "title": "Purpose",
                           "description": "In this schema the purpose is specified (i.e. a headline or purpose category).",
-                          "examples": [
-                            "Marketing"
-                          ]
+                          "examples": ["Marketing"]
                         },
                         "description": {
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items/anyOf/0/properties/description",
@@ -842,10 +720,7 @@
                           ]
                         }
                       },
-                      "required": [
-                        "purpose",
-                        "description"
-                      ]
+                      "required": ["purpose", "description"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/purposes/items",
@@ -888,9 +763,7 @@
                           "title": "Reference",
                           "description": "This field refers to the reference in legal regulations (laws, orders, declaration etc.). The format is set to uppercase letters for the legal text followed by hyphened numbers and lowercase letters for the exact location.",
                           "pattern": "^[A-Z]*([-]?[0-9]*|[a-z]*)*$",
-                          "examples": [
-                            "GDPR-99-1-a"
-                          ]
+                          "examples": ["GDPR-99-1-a"]
                         },
                         "description": {
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items/anyOf/0/properties/description",
@@ -902,9 +775,7 @@
                           ]
                         }
                       },
-                      "required": [
-                        "reference"
-                      ]
+                      "required": ["reference"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legalBases/items",
@@ -942,14 +813,10 @@
                             "const": true
                           }
                         },
-                        "required": [
-                          "exists"
-                        ]
+                        "required": ["exists"]
                       },
                       "then": {
-                        "required": [
-                          "reasoning"
-                        ]
+                        "required": ["reasoning"]
                       },
                       "properties": {
                         "exists": {
@@ -958,10 +825,7 @@
                           "title": "Exists",
                           "description": "The legitimate interest only has to be stated if the processing is carried out in accordance with Art. 13 (1d). This field refers to the existence of such an interest.",
                           "default": false,
-                          "examples": [
-                            true,
-                            false
-                          ]
+                          "examples": [true, false]
                         },
                         "reasoning": {
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/legitimateInterests/items/anyOf/0/properties/reasoning",
@@ -1031,27 +895,21 @@
                           "type": "string",
                           "title": "Name",
                           "description": "The name of the third party (recipient).",
-                          "examples": [
-                            "Yellow Company AG"
-                          ]
+                          "examples": ["Yellow Company AG"]
                         },
                         "division": {
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/division",
                           "type": "string",
                           "title": "Division",
                           "description": "The division of the third party (recipient) for structuring controllers into smaller entities.",
-                          "examples": [
-                            "Product line e-mobility"
-                          ]
+                          "examples": ["Product line e-mobility"]
                         },
                         "address": {
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/address",
                           "type": "string",
                           "title": "Address",
                           "description": "The address of the third party (recipient).",
-                          "examples": [
-                            "Triana 123, 9999 Seville"
-                          ]
+                          "examples": ["Triana 123, 9999 Seville"]
                         },
                         "country": {
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/country",
@@ -1061,9 +919,7 @@
                           "minLength": 2,
                           "maxLength": 2,
                           "pattern": "^[A-Z][A-Z]$",
-                          "examples": [
-                            "ES"
-                          ]
+                          "examples": ["ES"]
                         },
                         "domain": {
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/domain",
@@ -1071,9 +927,7 @@
                           "title": "Domain",
                           "description": "The domain of the third party (recipient) as a url starting with protocol.",
                           "pattern": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$",
-                          "examples": [
-                            "https://yellowcompany.es"
-                          ]
+                          "examples": ["https://yellowcompany.es"]
                         },
                         "representative": {
                           "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/representative",
@@ -1093,9 +947,7 @@
                               "type": "string",
                               "title": "Name",
                               "description": "The name of the representative of the third party (recipient).",
-                              "examples": [
-                                "Jane Super"
-                              ]
+                              "examples": ["Jane Super"]
                             },
                             "email": {
                               "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/representative/properties/email",
@@ -1103,9 +955,7 @@
                               "title": "Email",
                               "description": "The email address of the representative of the third party (recipient).",
                               "format": "email",
-                              "examples": [
-                                "contact@yellowcompany.de"
-                              ]
+                              "examples": ["contact@yellowcompany.de"]
                             },
                             "phone": {
                               "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/representative/properties/phone",
@@ -1113,9 +963,7 @@
                               "title": "Phone",
                               "description": "The phone number of the representative of the third party (recipient).",
                               "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
-                              "examples": [
-                                "0049 151 1234 9876"
-                              ]
+                              "examples": ["0049 151 1234 9876"]
                             }
                           }
                         },
@@ -1124,9 +972,7 @@
                           "type": "string",
                           "title": "Category",
                           "description": "The category of the the recipient.",
-                          "examples": [
-                            "Marketing content provider"
-                          ]
+                          "examples": ["Marketing content provider"]
                         },
                         "url": {
                           "type": "array",
@@ -1139,9 +985,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "category"
-                      ]
+                      "required": ["category"]
                     },
                     {
                       "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/1",
@@ -1157,14 +1001,10 @@
                           "type": "string",
                           "title": "Category",
                           "description": "This category has to be given, even if the controller is not mentioned explicitly.",
-                          "examples": [
-                            "Responsible Statistical Institutes"
-                          ]
+                          "examples": ["Responsible Statistical Institutes"]
                         }
                       },
-                      "required": [
-                        "category"
-                      ]
+                      "required": ["category"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items",
@@ -1192,9 +1032,7 @@
                       "purposeConditional": [
                         "Data is stored until the end of the ordering process."
                       ],
-                      "legalBasisConditional": [
-                        "SGB-100-42"
-                      ],
+                      "legalBasisConditional": ["SGB-100-42"],
                       "aggregationFunction": "max"
                     }
                   ]
@@ -1220,9 +1058,7 @@
                           "purposeConditional": [
                             "Data is stored until the end of the ordering process."
                           ],
-                          "legalBasisConditional": [
-                            "SGB-100-42"
-                          ],
+                          "legalBasisConditional": ["SGB-100-42"],
                           "aggregationFunction": "max"
                         }
                       ],
@@ -1262,9 +1098,7 @@
                                     "type": "string",
                                     "title": "Description",
                                     "description": "The description why the data has to be stored..",
-                                    "examples": [
-                                      "Creating backups."
-                                    ]
+                                    "examples": ["Creating backups."]
                                   },
                                   "ttl": {
                                     "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal/items/anyOf/0/properties/ttl",
@@ -1277,10 +1111,7 @@
                                     ]
                                   }
                                 },
-                                "required": [
-                                  "description",
-                                  "ttl"
-                                ]
+                                "required": ["description", "ttl"]
                               }
                             ],
                             "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/temporal/items",
@@ -1317,11 +1148,7 @@
                           "type": "array",
                           "title": "LegalBasisConditional",
                           "description": "If the storage is required by law, the respective one has to specified in here.",
-                          "examples": [
-                            [
-                              "SGB-100-42"
-                            ]
-                          ],
+                          "examples": [["SGB-100-42"]],
                           "additionalItems": true,
                           "items": {
                             "anyOf": [
@@ -1329,9 +1156,7 @@
                                 "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/legalBasisConditional/items/anyOf/0",
                                 "title": "First anyOf",
                                 "pattern": "^[A-Z]*([-]?[0-9]*|[a-z]*)*$",
-                                "examples": [
-                                  "SGB-100-42"
-                                ]
+                                "examples": ["SGB-100-42"]
                               }
                             ],
                             "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items/anyOf/0/properties/legalBasisConditional/items",
@@ -1344,20 +1169,11 @@
                           "title": "AggregationFunction",
                           "description": "The aggregation function describes the calculation basis when specifying several time intervals. For example, if there is storage for 2 weeks for technical reasons (e.g. backup), but there is a legally longer retention period, the maximum aggregation function (max) would be selected (standard case). Aggregation functions available: min, max, sum, avg",
                           "default": "max",
-                          "enum": [
-                            "min",
-                            "max",
-                            "sum",
-                            "avg"
-                          ],
-                          "examples": [
-                            "max"
-                          ]
+                          "enum": ["min", "max", "sum", "avg"],
+                          "examples": ["max"]
                         }
                       },
-                      "required": [
-                        "aggregationFunction"
-                      ]
+                      "required": ["aggregationFunction"]
                     }
                   ],
                   "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/storage/items",
@@ -1390,10 +1206,7 @@
                     "title": "LegalRequirement",
                     "description": "Is there a legal requirement to collect these data?",
                     "default": false,
-                    "examples": [
-                      false,
-                      true
-                    ]
+                    "examples": [false, true]
                   },
                   "contractualRegulation": {
                     "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/nonDisclosure/properties/contractualRegulation",
@@ -1401,10 +1214,7 @@
                     "title": "ContractualRegulation",
                     "description": "Is there a contractual regulation to collect these data?",
                     "default": false,
-                    "examples": [
-                      false,
-                      true
-                    ]
+                    "examples": [false, true]
                   },
                   "obligationToProvide": {
                     "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/nonDisclosure/properties/obligationToProvide",
@@ -1412,10 +1222,7 @@
                     "title": "ObligationToProvide",
                     "description": "Is there an obligation for the data subject to provide these data?",
                     "default": false,
-                    "examples": [
-                      false,
-                      true
-                    ]
+                    "examples": [false, true]
                   },
                   "consequences": {
                     "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/nonDisclosure/properties/consequences",
@@ -1509,9 +1316,7 @@
                 "minLength": 2,
                 "maxLength": 2,
                 "pattern": "^[A-Z][A-Z]$",
-                "examples": [
-                  "ES"
-                ]
+                "examples": ["ES"]
               },
               "adequacyDecision": {
                 "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/adequacyDecision",
@@ -1529,14 +1334,10 @@
                       "const": true
                     }
                   },
-                  "required": [
-                    "available"
-                  ]
+                  "required": ["available"]
                 },
                 "then": {
-                  "required": [
-                    "description"
-                  ]
+                  "required": ["description"]
                 },
                 "properties": {
                   "available": {
@@ -1545,10 +1346,7 @@
                     "title": "Available",
                     "description": "Adequacy decision by the European commission exists?",
                     "default": false,
-                    "examples": [
-                      true,
-                      false
-                    ]
+                    "examples": [true, false]
                   },
                   "description": {
                     "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/adequacyDecision/properties/description",
@@ -1578,14 +1376,10 @@
                       "const": true
                     }
                   },
-                  "required": [
-                    "available"
-                  ]
+                  "required": ["available"]
                 },
                 "then": {
-                  "required": [
-                    "description"
-                  ]
+                  "required": ["description"]
                 },
                 "properties": {
                   "available": {
@@ -1594,10 +1388,7 @@
                     "title": "Available",
                     "description": "Do suitable guarantees according to Art. 45 exist?",
                     "default": false,
-                    "examples": [
-                      true,
-                      false
-                    ]
+                    "examples": [true, false]
                   },
                   "description": {
                     "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/appropriateGuarantees/properties/description",
@@ -1627,14 +1418,10 @@
                       "const": true
                     }
                   },
-                  "required": [
-                    "available"
-                  ]
+                  "required": ["available"]
                 },
                 "then": {
-                  "required": [
-                    "description"
-                  ]
+                  "required": ["description"]
                 },
                 "properties": {
                   "available": {
@@ -1643,19 +1430,14 @@
                     "title": "Available",
                     "description": "Presence of enforceable rights and effective remedies?",
                     "default": false,
-                    "examples": [
-                      true,
-                      false
-                    ]
+                    "examples": [true, false]
                   },
                   "description": {
                     "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/presenceOfEnforceableRightsAndEffectiveRemedies/properties/description",
                     "type": "string",
                     "title": "Description",
                     "description": "Description of enforceable rights and effective remedies.",
-                    "examples": [
-                      "These rights are given because of..."
-                    ]
+                    "examples": ["These rights are given because of..."]
                   }
                 }
               },
@@ -1676,14 +1458,10 @@
                       "const": true
                     }
                   },
-                  "required": [
-                    "available"
-                  ]
+                  "required": ["available"]
                 },
                 "then": {
-                  "required": [
-                    "description"
-                  ]
+                  "required": ["description"]
                 },
                 "properties": {
                   "available": {
@@ -1692,10 +1470,7 @@
                     "title": "Available",
                     "description": "Does a standard data protection clause exist?",
                     "default": false,
-                    "examples": [
-                      true,
-                      false
-                    ]
+                    "examples": [true, false]
                   },
                   "description": {
                     "$id": "#/properties/thirdCountryTransfers/items/anyOf/0/properties/standardDataProtectionClause/properties/description",
@@ -1724,14 +1499,9 @@
         {
           "available": true,
           "description": "Data access is possible through...",
-          "url": [
-            "https://green-bikes.de/access"
-          ],
+          "url": ["https://green-bikes.de/access"],
           "email": "access@greencompany.de",
-          "identificationEvidences": [
-            "ID card copy",
-            "Email verification"
-          ],
+          "identificationEvidences": ["ID card copy", "Email verification"],
           "administrativeFee": {
             "amount": 0,
             "currency": "EUR"
@@ -1739,9 +1509,7 @@
           "dataFormat": "json"
         }
       ],
-      "required": [
-        "available"
-      ],
+      "required": ["available"],
       "properties": {
         "available": {
           "$id": "#/properties/accessAndDataPortability/properties/available",
@@ -1749,9 +1517,7 @@
           "title": "Available",
           "description": "The information is subject to the requirements of Art. 20 (right to data portability) GDPR.",
           "default": true,
-          "examples": [
-            true
-          ]
+          "examples": [true]
         },
         "description": {
           "$id": "#/properties/accessAndDataPortability/properties/description",
@@ -1769,11 +1535,7 @@
           "title": "Url",
           "description": "URL to relevant resources such as access portals.",
           "format": "uri-reference",
-          "examples": [
-            [
-              "https://green-bikes.de/access"
-            ]
-          ],
+          "examples": [["https://green-bikes.de/access"]],
           "uniqueItems": true,
           "items": {
             "type": "string",
@@ -1787,31 +1549,21 @@
           "title": "Email",
           "description": "Contact email address",
           "format": "email",
-          "examples": [
-            "access@greencompany.de"
-          ]
+          "examples": ["access@greencompany.de"]
         },
         "identificationEvidences": {
           "$id": "#/properties/accessAndDataPortability/properties/identificationEvidences",
           "type": "array",
           "title": "IdentificationEvidences",
           "description": "ID evidences",
-          "examples": [
-            [
-              "ID card copy",
-              "Email verification"
-            ]
-          ],
+          "examples": [["ID card copy", "Email verification"]],
           "additionalItems": true,
           "items": {
             "anyOf": [
               {
                 "$id": "#/properties/accessAndDataPortability/properties/identificationEvidences/items/anyOf/0",
                 "title": "First anyOf",
-                "examples": [
-                  "ID card copy",
-                  "Email verification"
-                ]
+                "examples": ["ID card copy", "Email verification"]
               }
             ],
             "$id": "#/properties/accessAndDataPortability/properties/identificationEvidences/items",
@@ -1836,9 +1588,7 @@
               "title": "Amount",
               "description": "The amount of money to be paid for a copy.",
               "default": 0,
-              "examples": [
-                0
-              ]
+              "examples": [0]
             },
             "currency": {
               "$id": "#/properties/accessAndDataPortability/properties/administrativeFee/properties/currency",
@@ -1848,39 +1598,24 @@
               "default": "EUR",
               "minLength": 3,
               "maxLength": 3,
-              "examples": [
-                "EUR"
-              ]
+              "examples": ["EUR"]
             }
           },
-          "required": [
-            "amount",
-            "currency"
-          ]
+          "required": ["amount", "currency"]
         },
         "dataFormats": {
           "$id": "#/properties/accessAndDataPortability/properties/dataFormats",
           "type": "array",
           "title": "DataFormat",
           "description": "An explanation about the data format(s) the data is provided in.",
-          "default": [
-            "json"
-          ],
-          "examples": [
-            [
-              "json",
-              "xml"
-            ]
-          ],
+          "default": ["json"],
+          "examples": [["json", "xml"]],
           "items": {
             "anyOf": [
               {
                 "$id": "#/properties/accessAndDataPortability/properties/dataFormats/items/anyOf/0",
                 "title": "First anyOf",
-                "examples": [
-                  "json",
-                  "xml"
-                ]
+                "examples": ["json", "xml"]
               }
             ],
             "$id": "#/properties/accessAndDataPortability/properties/dataFormats/items",
@@ -1902,9 +1637,7 @@
             "sources": [
               {
                 "description": "This information could be retrieved from...",
-                "url": [
-                  "https://blueCompany.org"
-                ],
+                "url": ["https://blueCompany.org"],
                 "publiclyAvailable": false,
                 "origin": "received"
               }
@@ -1925,9 +1658,7 @@
                 "sources": [
                   {
                     "description": "This information could be retrieved from...",
-                    "url": [
-                      "https://blueCompany.org"
-                    ],
+                    "url": ["https://blueCompany.org"],
                     "publiclyAvailable": false,
                     "origin": "received"
                   }
@@ -1940,18 +1671,14 @@
                 "type": "string",
                 "title": "_id",
                 "description": "This refers to an locally unique ID in an arbitrary but deterministic format.",
-                "examples": [
-                  "f1423cc00509931"
-                ]
+                "examples": ["f1423cc00509931"]
               },
               "dataCategory": {
                 "$id": "#/properties/sources/items/anyOf/0/properties/dataCategory",
                 "type": "string",
                 "title": "DataCategory",
                 "description": "The category the data refer to.",
-                "examples": [
-                  "Creditworthiness"
-                ]
+                "examples": ["Creditworthiness"]
               },
               "sources": {
                 "$id": "#/properties/sources/items/anyOf/0/properties/sources",
@@ -1962,9 +1689,7 @@
                   [
                     {
                       "description": "This information could be retrieved from...",
-                      "url": [
-                        "https://blueCompany.org"
-                      ],
+                      "url": ["https://blueCompany.org"],
                       "publiclyAvailable": false,
                       "origin": "received"
                     }
@@ -1979,9 +1704,7 @@
                       "examples": [
                         {
                           "description": "This information could be retrieved from...",
-                          "url": [
-                            "https://blueCompany.org"
-                          ],
+                          "url": ["https://blueCompany.org"],
                           "publiclyAvailable": false,
                           "origin": "received"
                         }
@@ -2002,15 +1725,11 @@
                           "title": "Url",
                           "description": "URL (reference) where the data is taken from.",
                           "format": "uri-reference",
-                          "examples": [
-                            "https://blueCompany.org"
-                          ],
+                          "examples": ["https://blueCompany.org"],
                           "items": {
                             "type": "string",
                             "format": "uri-reference",
-                            "example": [
-                              "https://blueCompany.org"
-                            ]
+                            "example": ["https://blueCompany.org"]
                           }
                         },
                         "publiclyAvailable": {
@@ -2019,24 +1738,15 @@
                           "title": "PubliclyAvailable",
                           "description": "Are these data publicly available?",
                           "default": false,
-                          "examples": [
-                            false,
-                            true
-                          ]
+                          "examples": [false, true]
                         },
                         "origin": {
                           "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/origin",
                           "type": "string",
                           "title": "Origin",
                           "description": "How was the data obtained?",
-                          "enum": [
-                            "received",
-                            "observed",
-                            "inferred"
-                          ],
-                          "examples": [
-                            "received"
-                          ]
+                          "enum": ["received", "observed", "inferred"],
+                          "examples": ["received"]
                         }
                       },
                       "required": [
@@ -2052,11 +1762,7 @@
                 }
               }
             },
-            "required": [
-              "_id",
-              "dataCategory",
-              "sources"
-            ]
+            "required": ["_id", "dataCategory", "sources"]
           }
         ],
         "$id": "#/properties/sources/items",
@@ -2072,14 +1778,9 @@
         {
           "available": true,
           "description": "For the right to information please use this contact form and...",
-          "url": [
-            "https://greencompany.org/rightToInformation"
-          ],
+          "url": ["https://greencompany.org/rightToInformation"],
           "email": "contact@greencompany.de",
-          "identificationEvidences": [
-            "ID card copy",
-            "Email verification"
-          ]
+          "identificationEvidences": ["ID card copy", "Email verification"]
         }
       ],
       "if": {
@@ -2088,14 +1789,10 @@
             "const": true
           }
         },
-        "required": [
-          "available"
-        ]
+        "required": ["available"]
       },
       "then": {
-        "required": [
-          "description"
-        ]
+        "required": ["description"]
       },
       "properties": {
         "available": {
@@ -2104,9 +1801,7 @@
           "title": "Available",
           "description": "Possibility available?",
           "default": true,
-          "examples": [
-            true
-          ]
+          "examples": [true]
         },
         "description": {
           "$id": "#/properties/rightToInformation/properties/description",
@@ -2123,11 +1818,7 @@
           "title": "Url",
           "description": "URL to an online portal.",
           "format": "uri-reference",
-          "examples": [
-            [
-              "https://greencompany.org/rightToInformation"
-            ]
-          ],
+          "examples": [["https://greencompany.org/rightToInformation"]],
           "minItems": 1,
           "items": {
             "type": "string",
@@ -2140,30 +1831,20 @@
           "type": "string",
           "title": "Email",
           "format": "email",
-          "examples": [
-            "contact@greencompany.de"
-          ]
+          "examples": ["contact@greencompany.de"]
         },
         "identificationEvidences": {
           "$id": "#/properties/rightToInformation/properties/identificationEvidences",
           "type": "array",
           "title": "IdentificationEvidences",
-          "examples": [
-            [
-              "ID card copy",
-              "Email verification"
-            ]
-          ],
+          "examples": [["ID card copy", "Email verification"]],
           "additionalItems": true,
           "items": {
             "anyOf": [
               {
                 "$id": "#/properties/rightToInformation/properties/identificationEvidences/items/anyOf/0",
                 "title": "First anyOf",
-                "examples": [
-                  "ID card copy",
-                  "Email verification"
-                ]
+                "examples": ["ID card copy", "Email verification"]
               }
             ],
             "$id": "#/properties/rightToInformation/properties/identificationEvidences/items",
@@ -2181,14 +1862,9 @@
         {
           "available": true,
           "description": "For the right to rectification please use this contact form and...",
-          "url": [
-            "https://greencompany.org/rights"
-          ],
+          "url": ["https://greencompany.org/rights"],
           "email": "contact@greencompany.de",
-          "identificationEvidences": [
-            "ID card copy",
-            "Email verification"
-          ]
+          "identificationEvidences": ["ID card copy", "Email verification"]
         }
       ],
       "if": {
@@ -2197,14 +1873,10 @@
             "const": true
           }
         },
-        "required": [
-          "available"
-        ]
+        "required": ["available"]
       },
       "then": {
-        "required": [
-          "description"
-        ]
+        "required": ["description"]
       },
       "properties": {
         "available": {
@@ -2213,10 +1885,7 @@
           "title": "Available",
           "description": "Possibility available?",
           "default": true,
-          "examples": [
-            true,
-            false
-          ]
+          "examples": [true, false]
         },
         "description": {
           "$id": "#/properties/rightToRectificationOrDeletion/properties/description",
@@ -2231,11 +1900,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": [
-            [
-              "https://greencompany.org/rights"
-            ]
-          ],
+          "examples": [["https://greencompany.org/rights"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2249,30 +1914,20 @@
           "type": "string",
           "title": "Email",
           "format": "email",
-          "examples": [
-            "contact@greencompany.de"
-          ]
+          "examples": ["contact@greencompany.de"]
         },
         "identificationEvidences": {
           "$id": "#/properties/rightToRectificationOrDeletion/properties/identificationEvidences",
           "type": "array",
           "title": "IdentificationEvidences",
-          "examples": [
-            [
-              "ID card copy",
-              "Email verification"
-            ]
-          ],
+          "examples": [["ID card copy", "Email verification"]],
           "additionalItems": true,
           "items": {
             "anyOf": [
               {
                 "$id": "#/properties/rightToRectificationOrDeletion/properties/identificationEvidences/items/anyOf/0",
                 "title": "First anyOf",
-                "examples": [
-                  "ID card copy",
-                  "Email verification"
-                ]
+                "examples": ["ID card copy", "Email verification"]
               }
             ],
             "$id": "#/properties/rightToRectificationOrDeletion/properties/identificationEvidences/items",
@@ -2290,13 +1945,9 @@
         {
           "available": true,
           "description": "Data portability is only possible when...",
-          "url": [
-            "https://greencompany.org/rights"
-          ],
+          "url": ["https://greencompany.org/rights"],
           "email": "contact@greencompany.de",
-          "identificationEvidences": [
-            "ID card copy"
-          ]
+          "identificationEvidences": ["ID card copy"]
         }
       ],
       "if": {
@@ -2305,14 +1956,10 @@
             "const": true
           }
         },
-        "required": [
-          "available"
-        ]
+        "required": ["available"]
       },
       "then": {
-        "required": [
-          "description"
-        ]
+        "required": ["description"]
       },
       "properties": {
         "available": {
@@ -2320,29 +1967,20 @@
           "type": "boolean",
           "title": "Available",
           "default": true,
-          "examples": [
-            false,
-            true
-          ]
+          "examples": [false, true]
         },
         "description": {
           "$id": "#/properties/rightToDataPortability/properties/description",
           "type": "string",
           "title": "Description",
-          "examples": [
-            "Data portability is only possible when..."
-          ]
+          "examples": ["Data portability is only possible when..."]
         },
         "url": {
           "$id": "#/properties/rightToDataPortability/properties/url",
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": [
-            [
-              "https://greencompany.org/rights"
-            ]
-          ],
+          "examples": [["https://greencompany.org/rights"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2356,28 +1994,20 @@
           "type": "string",
           "title": "Email",
           "format": "email",
-          "examples": [
-            "contact@greencompany.de"
-          ]
+          "examples": ["contact@greencompany.de"]
         },
         "identificationEvidences": {
           "$id": "#/properties/rightToDataPortability/properties/identificationEvidences",
           "type": "array",
           "title": "IdentificationEvidences",
-          "examples": [
-            [
-              "ID card copy"
-            ]
-          ],
+          "examples": [["ID card copy"]],
           "additionalItems": true,
           "items": {
             "anyOf": [
               {
                 "$id": "#/properties/rightToDataPortability/properties/identificationEvidences/items/anyOf/0",
                 "title": "First anyOf",
-                "examples": [
-                  "ID card copy"
-                ]
+                "examples": ["ID card copy"]
               }
             ],
             "$id": "#/properties/rightToDataPortability/properties/identificationEvidences/items",
@@ -2395,13 +2025,9 @@
         {
           "available": true,
           "description": "For the right to withdraw consent please use this contact form and...",
-          "url": [
-            "https://greencompany.org/rights"
-          ],
+          "url": ["https://greencompany.org/rights"],
           "email": "contact@greencompany.de",
-          "identificationEvidences": [
-            "Email verification"
-          ]
+          "identificationEvidences": ["Email verification"]
         }
       ],
       "if": {
@@ -2410,14 +2036,10 @@
             "const": true
           }
         },
-        "required": [
-          "available"
-        ]
+        "required": ["available"]
       },
       "then": {
-        "required": [
-          "description"
-        ]
+        "required": ["description"]
       },
       "properties": {
         "available": {
@@ -2425,10 +2047,7 @@
           "type": "boolean",
           "title": "Available",
           "default": true,
-          "examples": [
-            true,
-            false
-          ]
+          "examples": [true, false]
         },
         "description": {
           "$id": "#/properties/rightToWithdrawConsent/properties/description",
@@ -2443,11 +2062,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": [
-            [
-              "https://greencompany.org/rights"
-            ]
-          ],
+          "examples": [["https://greencompany.org/rights"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2461,28 +2076,20 @@
           "type": "string",
           "title": "Email",
           "format": "email",
-          "examples": [
-            "contact@greencompany.de"
-          ]
+          "examples": ["contact@greencompany.de"]
         },
         "identificationEvidences": {
           "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences",
           "type": "array",
           "title": "IdentificationEvidences",
-          "examples": [
-            [
-              "Email verification"
-            ]
-          ],
+          "examples": [["Email verification"]],
           "additionalItems": true,
           "items": {
             "anyOf": [
               {
                 "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items/anyOf/0",
                 "title": "First anyOf",
-                "examples": [
-                  "Email verification"
-                ]
+                "examples": ["Email verification"]
               }
             ],
             "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items",
@@ -2500,14 +2107,9 @@
         {
           "available": true,
           "description": "For the right to complain please use this contact form and...",
-          "url": [
-            "https://greencompany.org/rights"
-          ],
+          "url": ["https://greencompany.org/rights"],
           "email": "contact@greencompany.de",
-          "identificationEvidences": [
-            "ID card copy",
-            "Email verification"
-          ],
+          "identificationEvidences": ["ID card copy", "Email verification"],
           "supervisoryAuthority": {
             "name": "Commissioner for Data Protection",
             "address": "Friedrichstrasse 219, 10969 Berlin",
@@ -2523,15 +2125,10 @@
             "const": true
           }
         },
-        "required": [
-          "available"
-        ]
+        "required": ["available"]
       },
       "then": {
-        "required": [
-          "description",
-          "supervisoryAuthority"
-        ]
+        "required": ["description", "supervisoryAuthority"]
       },
       "properties": {
         "available": {
@@ -2540,10 +2137,7 @@
           "title": "Available",
           "description": "Is this right available?",
           "default": true,
-          "examples": [
-            true,
-            false
-          ]
+          "examples": [true, false]
         },
         "description": {
           "$id": "#/properties/rightToComplain/properties/description",
@@ -2558,11 +2152,7 @@
           "type": "array",
           "title": "Url",
           "format": "uri-reference",
-          "examples": [
-            [
-              "https://greencompany.org/rights"
-            ]
-          ],
+          "examples": [["https://greencompany.org/rights"]],
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -2576,30 +2166,20 @@
           "type": "string",
           "title": "Email",
           "format": "email",
-          "examples": [
-            "contact@greencompany.de"
-          ]
+          "examples": ["contact@greencompany.de"]
         },
         "identificationEvidences": {
           "$id": "#/properties/rightToComplain/properties/identificationEvidences",
           "type": "array",
           "title": "IdentificationEvidences",
-          "examples": [
-            [
-              "ID card copy",
-              "Email verification"
-            ]
-          ],
+          "examples": [["ID card copy", "Email verification"]],
           "additionalItems": true,
           "items": {
             "anyOf": [
               {
                 "$id": "#/properties/rightToComplain/properties/identificationEvidences/items/anyOf/0",
                 "title": "First anyOf",
-                "examples": [
-                  "ID card copy",
-                  "Email verification"
-                ]
+                "examples": ["ID card copy", "Email verification"]
               }
             ],
             "$id": "#/properties/rightToComplain/properties/identificationEvidences/items",
@@ -2626,18 +2206,14 @@
               "type": "string",
               "title": "Name",
               "description": "Name of the supervisory authority.",
-              "examples": [
-                "Commissioner for Data Protection"
-              ]
+              "examples": ["Commissioner for Data Protection"]
             },
             "address": {
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/address",
               "type": "string",
               "title": "Address",
               "description": "Adress of the supervisory authority.",
-              "examples": [
-                "Friedrichstrasse 219, 10969 Berlin"
-              ]
+              "examples": ["Friedrichstrasse 219, 10969 Berlin"]
             },
             "country": {
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/country",
@@ -2646,9 +2222,7 @@
               "description": "Country of the supervisory authority.",
               "minLength": 2,
               "maxLength": 2,
-              "examples": [
-                "DE"
-              ]
+              "examples": ["DE"]
             },
             "email": {
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/email",
@@ -2656,9 +2230,7 @@
               "title": "Email",
               "description": "Email adress of the supervisory authority.",
               "format": "email",
-              "examples": [
-                "mailbox@privacy-berlin.de"
-              ]
+              "examples": ["mailbox@privacy-berlin.de"]
             },
             "phone": {
               "$id": "#/properties/rightToComplain/properties/supervisoryAuthority/properties/phone",
@@ -2666,14 +2238,10 @@
               "title": "Phone",
               "description": "Phone number of the supervisory authority.",
               "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
-              "examples": [
-                "0049 444 222 111"
-              ]
+              "examples": ["0049 444 222 111"]
             }
           },
-          "required": [
-            "name"
-          ]
+          "required": ["name"]
         }
       }
     },
@@ -2695,15 +2263,10 @@
             "const": true
           }
         },
-        "required": [
-          "inUse"
-        ]
+        "required": ["inUse"]
       },
       "then": {
-        "required": [
-          "logicInvolved",
-          "scopeAndIntendedEffects"
-        ]
+        "required": ["logicInvolved", "scopeAndIntendedEffects"]
       },
       "properties": {
         "inUse": {
@@ -2712,28 +2275,21 @@
           "title": "InUse",
           "description": "Is automated decision making in use?",
           "default": true,
-          "examples": [
-            true,
-            false
-          ]
+          "examples": [true, false]
         },
         "logicInvolved": {
           "$id": "#/properties/automatedDecisionMaking/properties/logicInvolved",
           "type": "string",
           "title": "LogicInvolved",
           "description": "An explanation about the logic involved to automated decision making.",
-          "examples": [
-            "The personal data are processed as follows..."
-          ]
+          "examples": ["The personal data are processed as follows..."]
         },
         "scopeAndIntendedEffects": {
           "$id": "#/properties/automatedDecisionMaking/properties/scopeAndIntendedEffects",
           "type": "string",
           "title": "ScopeAndIntendedEffects",
           "description": "Scope and intended effects of such processing for the data subject.",
-          "examples": [
-            "From processing follows..."
-          ]
+          "examples": ["From processing follows..."]
         }
       }
     },
@@ -2746,10 +2302,7 @@
         [
           {
             "description": "Due to technical requirements...",
-            "affectedDataCategories": [
-              "Email adress",
-              "Credit score"
-            ],
+            "affectedDataCategories": ["Email adress", "Credit score"],
             "plannedDateOfChange": "2020-08-20",
             "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
           }
@@ -2764,10 +2317,7 @@
             "examples": [
               {
                 "description": "Due to technical requirements...",
-                "affectedDataCategories": [
-                  "Email adress",
-                  "Credit score"
-                ],
+                "affectedDataCategories": ["Email adress", "Credit score"],
                 "plannedDateOfChange": "2020-08-20",
                 "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
               }
@@ -2778,31 +2328,21 @@
                 "type": "string",
                 "title": "Description",
                 "description": "Description of the change of purpose.",
-                "examples": [
-                  "Due to technical requirements..."
-                ]
+                "examples": ["Due to technical requirements..."]
               },
               "affectedDataCategories": {
                 "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories",
                 "type": "array",
                 "title": "AffectedDataCategories",
                 "description": "Data categories that are affected from the change of purpose.",
-                "examples": [
-                  [
-                    "Email adress",
-                    "Credit score"
-                  ]
-                ],
+                "examples": [["Email adress", "Credit score"]],
                 "additionalItems": true,
                 "items": {
                   "anyOf": [
                     {
                       "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items/anyOf/0",
                       "title": "First anyOf",
-                      "examples": [
-                        "Email adress",
-                        "Credit score"
-                      ]
+                      "examples": ["Email adress", "Credit score"]
                     }
                   ],
                   "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items",
@@ -2815,18 +2355,14 @@
                 "title": "PlannedDateOfChange",
                 "description": "Specify the planned date to the changes as ISO 8601 string.",
                 "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                "examples": [
-                  "2020-08-20"
-                ]
+                "examples": ["2020-08-20"]
               },
               "urlOfNewVersion": {
                 "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/urlOfNewVersion",
                 "type": "string",
                 "title": "UrlOfNewVersion",
                 "description": "URL points to a document of the same as this one. That creates a chain of information requirements for seamless recognition of transparency information even over a longer period of time.",
-                "examples": [
-                  "https://greencomp.de/tilt/2"
-                ]
+                "examples": ["https://greencomp.de/tilt/2"]
               }
             }
           }
