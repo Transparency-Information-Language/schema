@@ -10,19 +10,33 @@ on:
     branches:
       - v2 # !! Update this once we merge to master !! 
 
-jobs:
-  prettier:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs: 
+
+  reconstruct:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        # Make sure the actual branch is checked out when running on pull requests
+        ref: ${{ github.head_ref }}
 
-      - name: Prettify code
-        uses: creyD/prettier_action@v4.3
-        with:
-          # This part is also where you can pass other options, for example:
-          prettier_options: --write **/tilt-schema.json
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Run Python script
+      run: |
+        python scripts/recompile.py
+        python scripts/extract-example.py
+
+    - name: Commit & Push
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Overwritten by Github Actions (Prettify tilt-schema.json)
+    

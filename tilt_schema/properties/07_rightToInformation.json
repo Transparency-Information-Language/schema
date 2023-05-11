@@ -1,0 +1,109 @@
+{
+  "$id": "#/properties/rightToInformation",
+  "type": "object",
+  "title": "RightToInformation",
+  "description": "Refers to the right of information.",
+  "examples": [
+    {
+      "available": true,
+      "description": "For the right to information please use this contact form and...",
+      "url": [
+        "https://greencompany.org/rightToInformation"
+      ],
+      "email": "contact@greencompany.de",
+      "identificationEvidences": [
+        "ID card copy",
+        "Email verification"
+      ]
+    }
+  ],
+  "if": {
+    "properties": {
+      "available": {
+        "const": true
+      }
+    },
+    "required": [
+      "available"
+    ]
+  },
+  "then": {
+    "required": [
+      "description"
+    ]
+  },
+  "properties": {
+    "available": {
+      "$id": "#/properties/rightToInformation/properties/available",
+      "type": "boolean",
+      "title": "Available",
+      "description": "Possibility available?",
+      "default": true,
+      "examples": [
+        true
+      ]
+    },
+    "description": {
+      "$id": "#/properties/rightToInformation/properties/description",
+      "type": "string",
+      "title": "Description",
+      "description": "Description of the right.",
+      "examples": [
+        "For the right to information please use this contact form and..."
+      ]
+    },
+    "url": {
+      "$id": "#/properties/rightToInformation/properties/url",
+      "type": "array",
+      "title": "Url",
+      "description": "URL to an online portal.",
+      "format": "uri-reference",
+      "examples": [
+        [
+          "https://greencompany.org/rightToInformation"
+        ]
+      ],
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "format": "uri-reference",
+        "example": "https://greencompany.org/rightToInformation"
+      }
+    },
+    "email": {
+      "$id": "#/properties/rightToInformation/properties/email",
+      "type": "string",
+      "title": "Email",
+      "format": "email",
+      "examples": [
+        "contact@greencompany.de"
+      ]
+    },
+    "identificationEvidences": {
+      "$id": "#/properties/rightToInformation/properties/identificationEvidences",
+      "type": "array",
+      "title": "IdentificationEvidences",
+      "examples": [
+        [
+          "ID card copy",
+          "Email verification"
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "anyOf": [
+          {
+            "$id": "#/properties/rightToInformation/properties/identificationEvidences/items/anyOf/0",
+            "title": "First anyOf",
+            "examples": [
+              "ID card copy",
+              "Email verification"
+            ]
+          }
+        ],
+        "$id": "#/properties/rightToInformation/properties/identificationEvidences/items",
+        "type": "string"
+      }
+    }
+  }
+}

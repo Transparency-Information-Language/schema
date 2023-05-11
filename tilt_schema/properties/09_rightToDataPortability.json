@@ -1,0 +1,105 @@
+{
+  "$id": "#/properties/rightToDataPortability",
+  "type": "object",
+  "title": "RightToDataPortability",
+  "description": "The right to data portability as stated in Art. 20 GDPR.",
+  "examples": [
+    {
+      "available": true,
+      "description": "Data portability is only possible when...",
+      "url": [
+        "https://greencompany.org/rights"
+      ],
+      "email": "contact@greencompany.de",
+      "identificationEvidences": [
+        "ID card copy"
+      ]
+    }
+  ],
+  "if": {
+    "properties": {
+      "available": {
+        "const": true
+      }
+    },
+    "required": [
+      "available"
+    ]
+  },
+  "then": {
+    "required": [
+      "description"
+    ]
+  },
+  "properties": {
+    "available": {
+      "$id": "#/properties/rightToDataPortability/properties/available",
+      "type": "boolean",
+      "title": "Available",
+      "default": true,
+      "examples": [
+        false,
+        true
+      ]
+    },
+    "description": {
+      "$id": "#/properties/rightToDataPortability/properties/description",
+      "type": "string",
+      "title": "Description",
+      "examples": [
+        "Data portability is only possible when..."
+      ]
+    },
+    "url": {
+      "$id": "#/properties/rightToDataPortability/properties/url",
+      "type": "array",
+      "title": "Url",
+      "format": "uri-reference",
+      "examples": [
+        [
+          "https://greencompany.org/rights"
+        ]
+      ],
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri-reference",
+        "example": "https://greencompany.org/rights"
+      }
+    },
+    "email": {
+      "$id": "#/properties/rightToDataPortability/properties/email",
+      "type": "string",
+      "title": "Email",
+      "format": "email",
+      "examples": [
+        "contact@greencompany.de"
+      ]
+    },
+    "identificationEvidences": {
+      "$id": "#/properties/rightToDataPortability/properties/identificationEvidences",
+      "type": "array",
+      "title": "IdentificationEvidences",
+      "examples": [
+        [
+          "ID card copy"
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "anyOf": [
+          {
+            "$id": "#/properties/rightToDataPortability/properties/identificationEvidences/items/anyOf/0",
+            "title": "First anyOf",
+            "examples": [
+              "ID card copy"
+            ]
+          }
+        ],
+        "$id": "#/properties/rightToDataPortability/properties/identificationEvidences/items",
+        "type": "string"
+      }
+    }
+  }
+}

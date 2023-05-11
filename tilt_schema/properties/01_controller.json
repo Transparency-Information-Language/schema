@@ -1,0 +1,147 @@
+{
+  "$id": "#/properties/controller",
+  "type": "object",
+  "title": "Controller",
+  "description": "The responsible controller is defined in here.",
+  "examples": [
+    {
+      "name": "Green Company AG",
+      "division": "Product line e-mobility",
+      "address": "Wolfsburger Ring 2, 38440 Berlin",
+      "country": "DE",
+      "representative": {
+        "name": "Jane Super",
+        "email": "contact@greencompany.de",
+        "phone": "0049 151 1234 5678"
+      },
+      "url": [
+        "https://green-bikes.de",
+        "https://bikes-that-are-green.de"
+      ],
+      "sector": "J"
+    }
+  ],
+  "required": [
+    "name",
+    "address",
+    "country",
+    "representative"
+  ],
+  "properties": {
+    "name": {
+      "$id": "#/properties/controller/properties/name",
+      "type": "string",
+      "title": "Name",
+      "description": "Name of the controller.",
+      "examples": [
+        "Green Company AG"
+      ]
+    },
+    "division": {
+      "$id": "#/properties/controller/properties/division",
+      "type": "string",
+      "title": "Division",
+      "description": "Serves to differentiate between different areas of a company; particularly relevant for large companies.",
+      "examples": [
+        "Product line e-mobility"
+      ]
+    },
+    "address": {
+      "$id": "#/properties/controller/properties/address",
+      "type": "string",
+      "title": "Address",
+      "description": "Address of the controller.",
+      "examples": [
+        "Wolfsburger Ring 2, 38440 Berlin"
+      ]
+    },
+    "country": {
+      "$id": "#/properties/controller/properties/country",
+      "type": "string",
+      "title": "Country",
+      "description": "All country codes follow the established ones ISO 3166 country abbreviation standard.",
+      "default": "DE",
+      "minLength": 2,
+      "maxLength": 2,
+      "pattern": "^[A-Z][A-Z]$",
+      "examples": [
+        "DE"
+      ]
+    },
+    "representative": {
+      "$id": "#/properties/controller/properties/representative",
+      "type": "object",
+      "title": "Representative",
+      "description": "The representative is a responsible real person that represents the controller.",
+      "examples": [
+        {
+          "name": "Jane Super",
+          "email": "contact@greencompany.de",
+          "phone": "0049 151 1234 5678"
+        }
+      ],
+      "required": [
+        "name",
+        "email"
+      ],
+      "properties": {
+        "name": {
+          "$id": "#/properties/controller/properties/representative/properties/name",
+          "type": "string",
+          "title": "Name",
+          "description": "Name of the controller's representative.",
+          "examples": [
+            "Jane Super"
+          ]
+        },
+        "email": {
+          "$id": "#/properties/controller/properties/representative/properties/email",
+          "type": "string",
+          "title": "Email",
+          "description": "Email address of the controller's representative.",
+          "format": "email",
+          "examples": [
+            "contact@greencompany.de"
+          ]
+        },
+        "phone": {
+          "$id": "#/properties/controller/properties/representative/properties/phone",
+          "type": "string",
+          "title": "Phone",
+          "description": "Phone number of the controller's representative.",
+          "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
+          "examples": [
+            "+49 151 1234 5678"
+          ]
+        }
+      }
+    },
+    "url": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "The URI(s) to identify this controller. Multiple URs are possible accomodating for multiple representation of the same entity",
+      "items": {
+        "type": "string",
+        "format": "uri-reference",
+        "example": "https://green-bikes.de"
+      },
+      "examples": [
+        [
+          "https://green-bikes.de",
+          "https://bikes-that-are-green.de"
+        ]
+      ]
+    },
+    "sector": {
+      "$id": "#/properties/controller/properties/sector",
+      "type": "string",
+      "description": "The industry of the controller according to UN ISIC Rev. 4",
+      "examples": [
+        "J"
+      ],
+      "maxLength": 1,
+      "pattern": "[A-Z]"
+    }
+  }
+}
