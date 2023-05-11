@@ -1,1 +1,125 @@
-{"meta": {"$id": "#/properties/meta", "type": "object", "title": "Meta", "description": "Meta information for the identification and verification of the document.", "examples": [{"_id": "f1424f86-ca0f-4f0c-9438-43cc00509931", "name": "Green Company", "created": "2020-04-03T15:53:05.929588", "modified": "2020-04-03T15:53:05.929588", "version": 2, "language": "de", "status": "active", "url": "https://green-bikes.de/privacy", "_hash": "d732a793562a3e5dc57645a8"}], "required": ["_id", "name", "created", "modified", "version", "language", "status", "url", "_hash"], "properties": {"_id": {"$id": "#/properties/meta/properties/_id", "type": "string", "title": "_id", "description": "The ID follows the database-specific implementation and does not have to be set in advance; but should offer as much entropy as possible for globally unique identifiers.", "examples": ["f1424f86-ca0f-4f0c-9438-43cc00509931"]}, "name": {"$id": "#/properties/meta/properties/name", "type": "string", "title": "Name", "description": "Name of the data controller.", "examples": ["Green Company"]}, "created": {"$id": "#/properties/meta/properties/created", "type": "string", "title": "Created", "description": "Creation date of the document as an ISO-8601 time code.", "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$", "examples": ["2020-04-03T15:53:05.929588"]}, "modified": {"$id": "#/properties/meta/properties/modified", "type": "string", "title": "Modified", "description": "Last modified date of the document as an ISO-8601 time code.", "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$", "examples": ["2020-04-03T15:53:05.929588"]}, "version": {"$id": "#/properties/meta/properties/version", "type": "integer", "title": "Version", "description": "This number serves to version documents of a controller.", "default": 1, "minimum": 1, "examples": [2]}, "language": {"$id": "#/properties/meta/properties/language", "type": "string", "title": "Language", "description": "All language abbreviation codes follow the established ISO 639-1 standard as identifiers for names of languages.", "pattern": "^(aa|ab|ae|af|ak|am|an|ar|as|av|ay|az|az|ba|be|bg|bh|bi|bm|bn|bo|br|bs|ca|ce|ch|co|cr|cs|cu|cv|cy|da|de|dv|dz|ee|el|en|eo|es|et|eu|fa|ff|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|gv|ha|he|hi|ho|hr|ht|hu|hy|hz|ia|id|ie|ig|ii|ik|io|is|it|iu|ja|jv|ka|kg|ki|kj|kk|kl|km|kn|ko|kr|ks|ku|kv|kw|ky|la|lb|lg|li|ln|lo|lt|lu|lv|mg|mh|mi|mk|ml|mn|mr|ms|mt|my|na|nb|nd|ne|ng|nl|nn|no|nr|nv|ny|oc|oj|om|or|os|pa|pi|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sc|sd|se|sg|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|ty|ug|uk|ur|uz|ve|vi|vo|wa|wo|xh|yi|yo|za|zh|zu)$", "default": "en", "examples": ["de"]}, "status": {"$id": "#/properties/meta/properties/status", "type": "string", "title": "Status", "description": "The status of an instance can be active or inactive depending on the policy's legal force.", "default": "active", "pattern": "^(active|inactive)$", "examples": ["active", "inactive"]}, "url": {"$id": "#/properties/meta/properties/url", "type": "string", "title": "Url", "description": "URL to this schema.", "format": "uri-reference", "examples": ["https://green-bikes.de/privacy"]}, "_hash": {"$id": "#/properties/meta/properties/_hash", "type": "string", "title": "_hash", "description": "The hash is based on one SHA256 calculation of the document.", "minLength": 64, "maxLength": 64, "examples": ["be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"]}}}}
+{
+  "$id": "#/properties/meta",
+  "type": "object",
+  "title": "Meta",
+  "description": "Meta information for the identification and verification of the document.",
+  "examples": [
+    {
+      "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
+      "name": "Green Company",
+      "created": "2020-04-03T15:53:05.929588",
+      "modified": "2020-04-03T15:53:05.929588",
+      "version": 2,
+      "language": "de",
+      "status": "active",
+      "url": "https://green-bikes.de/privacy",
+      "_hash": "d732a793562a3e5dc57645a8"
+    }
+  ],
+  "required": [
+    "_id",
+    "name",
+    "created",
+    "modified",
+    "version",
+    "language",
+    "status",
+    "url",
+    "_hash"
+  ],
+  "properties": {
+    "_id": {
+      "$id": "#/properties/meta/properties/_id",
+      "type": "string",
+      "title": "_id",
+      "description": "The ID follows the database-specific implementation and does not have to be set in advance; but should offer as much entropy as possible for globally unique identifiers.",
+      "examples": [
+        "f1424f86-ca0f-4f0c-9438-43cc00509931"
+      ]
+    },
+    "name": {
+      "$id": "#/properties/meta/properties/name",
+      "type": "string",
+      "title": "Name",
+      "description": "Name of the data controller.",
+      "examples": [
+        "Green Company"
+      ]
+    },
+    "created": {
+      "$id": "#/properties/meta/properties/created",
+      "type": "string",
+      "title": "Created",
+      "description": "Creation date of the document as an ISO-8601 time code.",
+      "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+      "examples": [
+        "2020-04-03T15:53:05.929588"
+      ]
+    },
+    "modified": {
+      "$id": "#/properties/meta/properties/modified",
+      "type": "string",
+      "title": "Modified",
+      "description": "Last modified date of the document as an ISO-8601 time code.",
+      "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+      "examples": [
+        "2020-04-03T15:53:05.929588"
+      ]
+    },
+    "version": {
+      "$id": "#/properties/meta/properties/version",
+      "type": "integer",
+      "title": "Version",
+      "description": "This number serves to version documents of a controller.",
+      "default": 1,
+      "minimum": 1,
+      "examples": [
+        2
+      ]
+    },
+    "language": {
+      "$id": "#/properties/meta/properties/language",
+      "type": "string",
+      "title": "Language",
+      "description": "All language abbreviation codes follow the established ISO 639-1 standard as identifiers for names of languages.",
+      "pattern": "^(aa|ab|ae|af|ak|am|an|ar|as|av|ay|az|az|ba|be|bg|bh|bi|bm|bn|bo|br|bs|ca|ce|ch|co|cr|cs|cu|cv|cy|da|de|dv|dz|ee|el|en|eo|es|et|eu|fa|ff|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|gv|ha|he|hi|ho|hr|ht|hu|hy|hz|ia|id|ie|ig|ii|ik|io|is|it|iu|ja|jv|ka|kg|ki|kj|kk|kl|km|kn|ko|kr|ks|ku|kv|kw|ky|la|lb|lg|li|ln|lo|lt|lu|lv|mg|mh|mi|mk|ml|mn|mr|ms|mt|my|na|nb|nd|ne|ng|nl|nn|no|nr|nv|ny|oc|oj|om|or|os|pa|pi|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sc|sd|se|sg|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|ty|ug|uk|ur|uz|ve|vi|vo|wa|wo|xh|yi|yo|za|zh|zu)$",
+      "default": "en",
+      "examples": [
+        "de"
+      ]
+    },
+    "status": {
+      "$id": "#/properties/meta/properties/status",
+      "type": "string",
+      "title": "Status",
+      "description": "The status of an instance can be active or inactive depending on the policy's legal force.",
+      "default": "active",
+      "pattern": "^(active|inactive)$",
+      "examples": [
+        "active",
+        "inactive"
+      ]
+    },
+    "url": {
+      "$id": "#/properties/meta/properties/url",
+      "type": "string",
+      "title": "Url",
+      "description": "URL to this schema.",
+      "format": "uri-reference",
+      "examples": [
+        "https://green-bikes.de/privacy"
+      ]
+    },
+    "_hash": {
+      "$id": "#/properties/meta/properties/_hash",
+      "type": "string",
+      "title": "_hash",
+      "description": "The hash is based on one SHA256 calculation of the document.",
+      "minLength": 64,
+      "maxLength": 64,
+      "examples": [
+        "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
+      ]
+    }
+  }
+}

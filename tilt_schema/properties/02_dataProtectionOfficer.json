@@ -1,1 +1,73 @@
-{"dataProtectionOfficer": {"$id": "#/properties/dataProtectionOfficer", "type": "object", "title": "DataProtectionOfficer", "description": "The Data Protection Officer (DPO) of the controller.", "examples": [{"name": "Jane Super", "address": "Wolfsburger Ring 2, 38440 Berlin", "country": "DE", "email": "contact@greencompany.de", "phone": "0049 151 1234 5678"}], "required": ["name", "address", "country", "email"], "properties": {"name": {"$id": "#/properties/dataProtectionOfficer/properties/name", "type": "string", "title": "Name", "description": "The full name of the Data Protection Officer.", "examples": ["Jane Super"]}, "address": {"$id": "#/properties/dataProtectionOfficer/properties/address", "type": "string", "title": "Address", "description": "Address of the DPO.", "examples": ["Wolfsburger Ring 2, 38440 Berlin"]}, "country": {"$id": "#/properties/dataProtectionOfficer/properties/country", "type": "string", "title": "Country", "description": "The country in which the Data Protection officer is located at.", "minLength": 2, "maxLength": 2, "pattern": "^[A-Z][A-Z]$", "examples": ["DE"]}, "email": {"$id": "#/properties/dataProtectionOfficer/properties/email", "type": "string", "title": "Email", "description": "The contact email address of the Data Protection Officer.", "format": "email", "examples": ["contact@greencompany.de"]}, "phone": {"$id": "#/properties/dataProtectionOfficer/properties/phone", "type": "string", "title": "Phone", "description": "The phone number of the Data Protection Officer (may include country prefix).", "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$", "examples": ["0049 151 1234 5678"]}}}}
+{
+  "$id": "#/properties/dataProtectionOfficer",
+  "type": "object",
+  "title": "DataProtectionOfficer",
+  "description": "The Data Protection Officer (DPO) of the controller.",
+  "examples": [
+    {
+      "name": "Jane Super",
+      "address": "Wolfsburger Ring 2, 38440 Berlin",
+      "country": "DE",
+      "email": "contact@greencompany.de",
+      "phone": "0049 151 1234 5678"
+    }
+  ],
+  "required": [
+    "name",
+    "address",
+    "country",
+    "email"
+  ],
+  "properties": {
+    "name": {
+      "$id": "#/properties/dataProtectionOfficer/properties/name",
+      "type": "string",
+      "title": "Name",
+      "description": "The full name of the Data Protection Officer.",
+      "examples": [
+        "Jane Super"
+      ]
+    },
+    "address": {
+      "$id": "#/properties/dataProtectionOfficer/properties/address",
+      "type": "string",
+      "title": "Address",
+      "description": "Address of the DPO.",
+      "examples": [
+        "Wolfsburger Ring 2, 38440 Berlin"
+      ]
+    },
+    "country": {
+      "$id": "#/properties/dataProtectionOfficer/properties/country",
+      "type": "string",
+      "title": "Country",
+      "description": "The country in which the Data Protection officer is located at.",
+      "minLength": 2,
+      "maxLength": 2,
+      "pattern": "^[A-Z][A-Z]$",
+      "examples": [
+        "DE"
+      ]
+    },
+    "email": {
+      "$id": "#/properties/dataProtectionOfficer/properties/email",
+      "type": "string",
+      "title": "Email",
+      "description": "The contact email address of the Data Protection Officer.",
+      "format": "email",
+      "examples": [
+        "contact@greencompany.de"
+      ]
+    },
+    "phone": {
+      "$id": "#/properties/dataProtectionOfficer/properties/phone",
+      "type": "string",
+      "title": "Phone",
+      "description": "The phone number of the Data Protection Officer (may include country prefix).",
+      "pattern": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
+      "examples": [
+        "0049 151 1234 5678"
+      ]
+    }
+  }
+}

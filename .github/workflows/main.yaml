@@ -29,32 +29,12 @@ jobs:
 
     - name: Run Python script
       run: |
-        python tilt_schema/recompile.py
+        python scripts/recompile.py
+        python scripts/extract_example.py
         git config user.name github-actions
         git config user.email github-actions@github.com
         git pull
         git add .
-        git commit --allow-empty -m "combined the file"
+        git commit -m "combined the file" || true
         git push
-
-  prettify:
-    needs: reconstruct
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
-          repository: ${{ github.repository }}
-
-      - name: Pull changes from remote repository
-        run: git pull
-
-      - name: Prettify code
-        uses: creyD/prettier_action@v4.3
-        with:
-          # This part is also where you can pass other options, for example:
-          prettier_options: --write combined.json tilt-schema.json  
     

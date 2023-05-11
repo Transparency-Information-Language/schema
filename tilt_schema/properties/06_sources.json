@@ -1,1 +1,140 @@
-{"sources": {"$id": "#/properties/sources", "type": "array", "title": "Sources", "description": "This duty to provide information is limited to the collection of personal data that does not take place from the data subject (Art. 14).", "examples": [[{"_id": "f1423cc00509931", "dataCategory": "Creditworthiness", "sources": [{"description": "This information could be retrieved from...", "url": "https://blueCompany.org", "publiclyAvailable": false}]}]], "additionalItems": true, "items": {"anyOf": [{"$id": "#/properties/sources/items/anyOf/0", "title": "First anyOf", "examples": [{"_id": "f1423cc00509931", "dataCategory": "Creditworthiness", "sources": [{"description": "This information could be retrieved from...", "url": "https://blueCompany.org", "publiclyAvailable": false}]}], "properties": {"_id": {"$id": "#/properties/sources/items/anyOf/0/properties/_id", "type": "string", "title": "_id", "description": "This refers to an locally unique ID in an arbitrary but deterministic format.", "examples": ["f1423cc00509931"]}, "dataCategory": {"$id": "#/properties/sources/items/anyOf/0/properties/dataCategory", "type": "string", "title": "DataCategory", "description": "The category the data refer to.", "examples": ["Creditworthiness"]}, "sources": {"$id": "#/properties/sources/items/anyOf/0/properties/sources", "type": "array", "title": "Sources", "description": "Specify the source(s) where the data come from.", "examples": [[{"description": "This information could be retrieved from...", "url": "https://blueCompany.org", "publiclyAvailable": false}]], "additionalItems": true, "items": {"anyOf": [{"$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0", "title": "First anyOf", "examples": [{"description": "This information could be retrieved from...", "url": "https://blueCompany.org", "publiclyAvailable": false}], "properties": {"description": {"$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/description", "type": "string", "title": "Description", "description": "Description of the source the data is taken from.", "examples": ["This information could be retrieved from..."]}, "url": {"$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/url", "type": "string", "title": "Url", "description": "URL (reference) where the data is taken from.", "format": "uri-reference", "examples": ["https://blueCompany.org"]}, "publiclyAvailable": {"$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/publiclyAvailable", "type": "boolean", "title": "PubliclyAvailable", "description": "Are these data publicly available?", "default": false, "examples": [false, true]}}, "required": ["description", "url", "publiclyAvailable"]}], "$id": "#/properties/sources/items/anyOf/0/properties/sources/items", "type": "object"}}}, "required": ["_id", "dataCategory", "sources"]}], "$id": "#/properties/sources/items", "type": "object"}}}
+{
+  "$id": "#/properties/sources",
+  "type": "array",
+  "title": "Sources",
+  "description": "This duty to provide information is limited to the collection of personal data that does not take place from the data subject (Art. 14).",
+  "examples": [
+    [
+      {
+        "_id": "f1423cc00509931",
+        "dataCategory": "Creditworthiness",
+        "sources": [
+          {
+            "description": "This information could be retrieved from...",
+            "url": "https://blueCompany.org",
+            "publiclyAvailable": false
+          }
+        ]
+      }
+    ]
+  ],
+  "additionalItems": true,
+  "items": {
+    "anyOf": [
+      {
+        "$id": "#/properties/sources/items/anyOf/0",
+        "title": "First anyOf",
+        "examples": [
+          {
+            "_id": "f1423cc00509931",
+            "dataCategory": "Creditworthiness",
+            "sources": [
+              {
+                "description": "This information could be retrieved from...",
+                "url": "https://blueCompany.org",
+                "publiclyAvailable": false
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "_id": {
+            "$id": "#/properties/sources/items/anyOf/0/properties/_id",
+            "type": "string",
+            "title": "_id",
+            "description": "This refers to an locally unique ID in an arbitrary but deterministic format.",
+            "examples": [
+              "f1423cc00509931"
+            ]
+          },
+          "dataCategory": {
+            "$id": "#/properties/sources/items/anyOf/0/properties/dataCategory",
+            "type": "string",
+            "title": "DataCategory",
+            "description": "The category the data refer to.",
+            "examples": [
+              "Creditworthiness"
+            ]
+          },
+          "sources": {
+            "$id": "#/properties/sources/items/anyOf/0/properties/sources",
+            "type": "array",
+            "title": "Sources",
+            "description": "Specify the source(s) where the data come from.",
+            "examples": [
+              [
+                {
+                  "description": "This information could be retrieved from...",
+                  "url": "https://blueCompany.org",
+                  "publiclyAvailable": false
+                }
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0",
+                  "title": "First anyOf",
+                  "examples": [
+                    {
+                      "description": "This information could be retrieved from...",
+                      "url": "https://blueCompany.org",
+                      "publiclyAvailable": false
+                    }
+                  ],
+                  "properties": {
+                    "description": {
+                      "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/description",
+                      "type": "string",
+                      "title": "Description",
+                      "description": "Description of the source the data is taken from.",
+                      "examples": [
+                        "This information could be retrieved from..."
+                      ]
+                    },
+                    "url": {
+                      "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/url",
+                      "type": "string",
+                      "title": "Url",
+                      "description": "URL (reference) where the data is taken from.",
+                      "format": "uri-reference",
+                      "examples": [
+                        "https://blueCompany.org"
+                      ]
+                    },
+                    "publiclyAvailable": {
+                      "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/publiclyAvailable",
+                      "type": "boolean",
+                      "title": "PubliclyAvailable",
+                      "description": "Are these data publicly available?",
+                      "default": false,
+                      "examples": [
+                        false,
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "url",
+                    "publiclyAvailable"
+                  ]
+                }
+              ],
+              "$id": "#/properties/sources/items/anyOf/0/properties/sources/items",
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "_id",
+          "dataCategory",
+          "sources"
+        ]
+      }
+    ],
+    "$id": "#/properties/sources/items",
+    "type": "object"
+  }
+}

@@ -1,1 +1,94 @@
-{"rightToWithdrawConsent": {"$id": "#/properties/rightToWithdrawConsent", "type": "object", "title": "RightToWithdrawConsent", "description": "This schema refers to the right to withdraw consent.", "examples": [{"available": true, "description": "For the right to withdraw consent please use this contact form and...", "url": "https://greencompany.org/rights", "email": "contact@greencompany.de", "identificationEvidences": ["Email verification"]}], "if": {"properties": {"available": {"const": true}}, "required": ["available"]}, "then": {"required": ["description"]}, "properties": {"available": {"$id": "#/properties/rightToWithdrawConsent/properties/available", "type": "boolean", "title": "Available", "default": true, "examples": [true, false]}, "description": {"$id": "#/properties/rightToWithdrawConsent/properties/description", "type": "string", "title": "Description", "examples": ["For the right to withdraw consent please use this contact form and..."]}, "url": {"$id": "#/properties/rightToWithdrawConsent/properties/url", "type": "string", "title": "Url", "format": "uri-reference", "examples": ["https://greencompany.org/rights"]}, "email": {"$id": "#/properties/rightToWithdrawConsent/properties/email", "type": "string", "title": "Email", "format": "email", "examples": ["contact@greencompany.de"]}, "identificationEvidences": {"$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences", "type": "array", "title": "IdentificationEvidences", "examples": [["Email verification"]], "additionalItems": true, "items": {"anyOf": [{"$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items/anyOf/0", "title": "First anyOf", "examples": ["Email verification"]}], "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items", "type": "string"}}}}}
+{
+  "$id": "#/properties/rightToWithdrawConsent",
+  "type": "object",
+  "title": "RightToWithdrawConsent",
+  "description": "This schema refers to the right to withdraw consent.",
+  "examples": [
+    {
+      "available": true,
+      "description": "For the right to withdraw consent please use this contact form and...",
+      "url": "https://greencompany.org/rights",
+      "email": "contact@greencompany.de",
+      "identificationEvidences": [
+        "Email verification"
+      ]
+    }
+  ],
+  "if": {
+    "properties": {
+      "available": {
+        "const": true
+      }
+    },
+    "required": [
+      "available"
+    ]
+  },
+  "then": {
+    "required": [
+      "description"
+    ]
+  },
+  "properties": {
+    "available": {
+      "$id": "#/properties/rightToWithdrawConsent/properties/available",
+      "type": "boolean",
+      "title": "Available",
+      "default": true,
+      "examples": [
+        true,
+        false
+      ]
+    },
+    "description": {
+      "$id": "#/properties/rightToWithdrawConsent/properties/description",
+      "type": "string",
+      "title": "Description",
+      "examples": [
+        "For the right to withdraw consent please use this contact form and..."
+      ]
+    },
+    "url": {
+      "$id": "#/properties/rightToWithdrawConsent/properties/url",
+      "type": "string",
+      "title": "Url",
+      "format": "uri-reference",
+      "examples": [
+        "https://greencompany.org/rights"
+      ]
+    },
+    "email": {
+      "$id": "#/properties/rightToWithdrawConsent/properties/email",
+      "type": "string",
+      "title": "Email",
+      "format": "email",
+      "examples": [
+        "contact@greencompany.de"
+      ]
+    },
+    "identificationEvidences": {
+      "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences",
+      "type": "array",
+      "title": "IdentificationEvidences",
+      "examples": [
+        [
+          "Email verification"
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "anyOf": [
+          {
+            "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items/anyOf/0",
+            "title": "First anyOf",
+            "examples": [
+              "Email verification"
+            ]
+          }
+        ],
+        "$id": "#/properties/rightToWithdrawConsent/properties/identificationEvidences/items",
+        "type": "string"
+      }
+    }
+  }
+}

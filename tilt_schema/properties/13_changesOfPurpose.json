@@ -1,1 +1,98 @@
-{"changesOfPurpose": {"$id": "#/properties/changesOfPurpose", "type": "array", "title": "ChangesOfPurpose", "description": "Notification of change of purpose.", "examples": [[{"description": "Due to technical requirements...", "affectedDataCategories": ["Email adress", "Credit score"], "plannedDateOfChange": "2020-08-20", "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"}]], "additionalItems": true, "items": {"anyOf": [{"$id": "#/properties/changesOfPurpose/items/anyOf/0", "title": "First anyOf", "examples": [{"description": "Due to technical requirements...", "affectedDataCategories": ["Email adress", "Credit score"], "plannedDateOfChange": "2020-08-20", "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"}], "properties": {"description": {"$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/description", "type": "string", "title": "Description", "description": "Description of the change of purpose.", "examples": ["Due to technical requirements..."]}, "affectedDataCategories": {"$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories", "type": "array", "title": "AffectedDataCategories", "description": "Data categories that are affected from the change of purpose.", "examples": [["Email adress", "Credit score"]], "additionalItems": true, "items": {"anyOf": [{"$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items/anyOf/0", "title": "First anyOf", "examples": ["Email adress", "Credit score"]}], "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items", "type": "string"}}, "plannedDateOfChange": {"$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/plannedDateOfChange", "type": "string", "title": "PlannedDateOfChange", "description": "Specify the planned date to the changes as ISO 8601 string.", "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$", "examples": ["2020-08-20"]}, "urlOfNewVersion": {"$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/urlOfNewVersion", "type": "string", "title": "UrlOfNewVersion", "description": "URL points to a document of the same as this one. That creates a chain of information requirements for seamless recognition of transparency information even over a longer period of time.", "examples": ["https://greencomp.de/tilt/2"]}}}], "$id": "#/properties/changesOfPurpose/items", "type": "object"}}}
+{
+  "$id": "#/properties/changesOfPurpose",
+  "type": "array",
+  "title": "ChangesOfPurpose",
+  "description": "Notification of change of purpose.",
+  "examples": [
+    [
+      {
+        "description": "Due to technical requirements...",
+        "affectedDataCategories": [
+          "Email adress",
+          "Credit score"
+        ],
+        "plannedDateOfChange": "2020-08-20",
+        "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
+      }
+    ]
+  ],
+  "additionalItems": true,
+  "items": {
+    "anyOf": [
+      {
+        "$id": "#/properties/changesOfPurpose/items/anyOf/0",
+        "title": "First anyOf",
+        "examples": [
+          {
+            "description": "Due to technical requirements...",
+            "affectedDataCategories": [
+              "Email adress",
+              "Credit score"
+            ],
+            "plannedDateOfChange": "2020-08-20",
+            "urlOfNewVersion": "https://greencomp.de/privacypolicy/2"
+          }
+        ],
+        "properties": {
+          "description": {
+            "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/description",
+            "type": "string",
+            "title": "Description",
+            "description": "Description of the change of purpose.",
+            "examples": [
+              "Due to technical requirements..."
+            ]
+          },
+          "affectedDataCategories": {
+            "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories",
+            "type": "array",
+            "title": "AffectedDataCategories",
+            "description": "Data categories that are affected from the change of purpose.",
+            "examples": [
+              [
+                "Email adress",
+                "Credit score"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items/anyOf/0",
+                  "title": "First anyOf",
+                  "examples": [
+                    "Email adress",
+                    "Credit score"
+                  ]
+                }
+              ],
+              "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/affectedDataCategories/items",
+              "type": "string"
+            }
+          },
+          "plannedDateOfChange": {
+            "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/plannedDateOfChange",
+            "type": "string",
+            "title": "PlannedDateOfChange",
+            "description": "Specify the planned date to the changes as ISO 8601 string.",
+            "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+            "examples": [
+              "2020-08-20"
+            ]
+          },
+          "urlOfNewVersion": {
+            "$id": "#/properties/changesOfPurpose/items/anyOf/0/properties/urlOfNewVersion",
+            "type": "string",
+            "title": "UrlOfNewVersion",
+            "description": "URL points to a document of the same as this one. That creates a chain of information requirements for seamless recognition of transparency information even over a longer period of time.",
+            "examples": [
+              "https://greencomp.de/tilt/2"
+            ]
+          }
+        }
+      }
+    ],
+    "$id": "#/properties/changesOfPurpose/items",
+    "type": "object"
+  }
+}

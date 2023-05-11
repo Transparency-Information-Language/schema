@@ -3,12 +3,12 @@
     "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
     "name": "Green Company",
     "created": "2020-04-03T15:53:05.929588",
-    "modified": "2020-04-03T15:53:05.929588",
+    "modified": "2020-04-03T15: 53: 05.929588",
     "version": 2,
     "language": "de",
     "status": "active",
     "url": "https://green-bikes.de/privacy",
-    "_hash": "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
+    "_hash": "d732a793562a3e5dc57645a8"
   },
   "controller": {
     "name": "Green Company AG",
@@ -31,7 +31,9 @@
   "dataDisclosed": [
     {
       "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
-      "category": "E-mail address",
+      "category": [
+        "E-mail address"
+      ],
       "purposes": [
         {
           "purpose": "Marketing",
@@ -50,7 +52,7 @@
       ],
       "legitimateInterests": [
         {
-          "exists": false,
+          "exists": true,
           "reasoning": "There is an legitimate interest based on ... and is not overwritten because ..."
         }
       ],
@@ -76,7 +78,7 @@
           "temporal": [
             {
               "description": "Creating backups.",
-              "ttl": "P3Y6M4DT12H30M5S"
+              "ttl": "2005-08-09T18:31:42P3Y6M4DT12H30M17S"
             },
             {
               "description": "Finishing ordering process.",
@@ -134,10 +136,7 @@
       "amount": 0,
       "currency": "EUR"
     },
-    "dataFormats": [
-      "json",
-      "xml"
-    ]
+    "dataFormat": "json"
   },
   "sources": [
     {
@@ -214,7 +213,7 @@
   },
   "changesOfPurpose": [
     {
-      "description": "Due to technical requirements...",
+      "description": "Due to techncial requirements...",
       "affectedDataCategories": [
         "Email adress",
         "Credit score"
