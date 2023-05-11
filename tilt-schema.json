@@ -10,12 +10,14 @@
         "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
         "name": "Green Company",
         "created": "2020-04-03T15:53:05.929588",
-        "modified": "2020-04-03T15: 53: 05.929588",
+        "modified": "2020-04-03T15:53:05.929588",
         "version": 2,
         "language": "de",
         "status": "active",
-        "url": "https://green-bikes.de/privacy",
-        "_hash": "d732a793562a3e5dc57645a8"
+        "url": [
+          "https://green-bikes.de/privacy"
+        ],
+        "_hash": "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
       },
       "controller": {
         "name": "Green Company AG",
@@ -26,7 +28,12 @@
           "name": "Jane Super",
           "email": "contact@greencompany.de",
           "phone": "0049 151 1234 5678"
-        }
+        },
+        "url": [
+          "https://green-bikes.de",
+          "https://bikes-that-are-green.de"
+        ],
+        "sector": "J"
       },
       "dataProtectionOfficer": {
         "name": "Jane Super",
@@ -69,6 +76,7 @@
               "division": "Product line e-mobility",
               "address": "Triana 123, 9999 Seville",
               "country": "ES",
+              "domain": "https://yellowcompany.es",
               "representative": {
                 "name": "Jane Super",
                 "email": "contact@yellowcompany.de",
@@ -133,7 +141,9 @@
       "accessAndDataPortability": {
         "available": true,
         "description": "Data access is possible through...",
-        "url": "https://green-bikes.de/access",
+        "url": [
+          "https://green-bikes.de/access"
+        ],
         "email": "access@greencompany.de",
         "identificationEvidences": [
           "ID card copy",
@@ -152,8 +162,11 @@
           "sources": [
             {
               "description": "This information could be retrieved from...",
-              "url": "https://blueCompany.org",
-              "publiclyAvailable": false
+              "url": [
+                "https://blueCompany.org"
+              ],
+              "publiclyAvailable": false,
+              "origin": "received"
             }
           ]
         }
@@ -161,7 +174,9 @@
       "rightToInformation": {
         "available": true,
         "description": "For the right to information please use this contact form and...",
-        "url": "https://greencompany.org/rightToInformation",
+        "url": [
+          "https://greencompany.org/rightToInformation"
+        ],
         "email": "contact@greencompany.de",
         "identificationEvidences": [
           "ID card copy",
@@ -171,7 +186,9 @@
       "rightToRectificationOrDeletion": {
         "available": true,
         "description": "For the right to rectification please use this contact form and...",
-        "url": "https://greencompany.org/rights",
+        "url": [
+          "https://greencompany.org/rights"
+        ],
         "email": "contact@greencompany.de",
         "identificationEvidences": [
           "ID card copy",
@@ -181,7 +198,9 @@
       "rightToDataPortability": {
         "available": false,
         "description": "Data portability is only possible when...",
-        "url": "https://greencompany.org/rights",
+        "url": [
+          "https://greencompany.org/rights"
+        ],
         "email": "contact@greencompany.de",
         "identificationEvidences": [
           "ID card copy"
@@ -190,7 +209,9 @@
       "rightToWithdrawConsent": {
         "available": true,
         "description": "For the right to withdraw consent please use this contact form and...",
-        "url": "https://greencompany.org/rights",
+        "url": [
+          "https://greencompany.org/rights"
+        ],
         "email": "contact@greencompany.de",
         "identificationEvidences": [
           "Email verification"
@@ -199,7 +220,9 @@
       "rightToComplain": {
         "available": true,
         "description": "For the right to complain please use this contact form and...",
-        "url": "https://greencompany.org/rights",
+        "url": [
+          "https://greencompany.org/rights"
+        ],
         "email": "contact@greencompany.de",
         "identificationEvidences": [
           "ID card copy",
@@ -246,8 +269,10 @@
           "version": 2,
           "language": "de",
           "status": "active",
-          "url": "https://green-bikes.de/privacy",
-          "_hash": "d732a793562a3e5dc57645a8"
+          "url": [
+            "https://green-bikes.de/privacy"
+          ],
+          "_hash": "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
         }
       ],
       "required": [
@@ -336,13 +361,22 @@
         },
         "url": {
           "$id": "#/properties/meta/properties/url",
-          "type": "string",
+          "type": "array",
           "title": "Url",
-          "description": "URL to this schema.",
+          "description": "URL(s) to the privacy policy of this schema. Multiple URLs can be used in case of potential sub-entities pointing to the same entity",
           "format": "uri-reference",
           "examples": [
-            "https://green-bikes.de/privacy"
-          ]
+            [
+              "https://green-bikes.de/privacy"
+            ]
+          ],
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri-reference",
+            "example": "https://green-bikes.de/privacy"
+          }
         },
         "_hash": {
           "$id": "#/properties/meta/properties/_hash",
@@ -373,6 +407,10 @@
             "email": "contact@greencompany.de",
             "phone": "0049 151 1234 5678"
           },
+          "url": [
+            "https://green-bikes.de",
+            "https://bikes-that-are-green.de"
+          ],
           "sector": "J"
         }
       ],
@@ -471,11 +509,30 @@
             }
           }
         },
+        "url": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "The URI(s) to identify this controller. Multiple URs are possible accomodating for multiple representation of the same entity",
+          "items": {
+            "type": "string",
+            "format": "uri-reference",
+            "example": "https://green-bikes.de"
+          },
+          "examples": [
+            [
+              "https://green-bikes.de",
+              "https://bikes-that-are-green.de"
+            ]
+          ]
+        },
         "sector": {
           "$id": "#/properties/controller/properties/sector",
           "type": "string",
           "description": "The industry of the controller according to UN ISIC Rev. 4",
-          "example": "J",
+          "examples": [
+            "J"
+          ],
           "maxLength": 1,
           "pattern": "[A-Z]"
         }
@@ -563,7 +620,9 @@
         [
           {
             "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
-            "category": "E-mail address",
+            "category": [
+              "E-mail address"
+            ],
             "purposes": [
               {
                 "purpose": "Marketing",
@@ -592,6 +651,7 @@
                 "division": "Product line e-mobility",
                 "address": "Triana 123, 9999 Seville",
                 "country": "ES",
+                "domain": "https://yellowcompany.es",
                 "representative": {
                   "name": "Jane Super",
                   "email": "contact@yellowcompany.de",
@@ -672,6 +732,7 @@
                     "division": "Product line e-mobility",
                     "address": "Triana 123, 9999 Seville",
                     "country": "ES",
+                    "domain": "https://yellowcompany.es",
                     "representative": {
                       "name": "Jane Super",
                       "email": "contact@yellowcompany.de",
@@ -728,7 +789,9 @@
                 "title": "Category",
                 "description": "The data (category/categories) the data disclosed are referred to. Can be multiple",
                 "examples": [
-                  "E-mail address"
+                  [
+                    "E-mail address"
+                  ]
                 ],
                 "items": {
                   "type": "string"
@@ -928,6 +991,7 @@
                       "division": "Product line e-mobility",
                       "address": "Triana 123, 9999 Seville",
                       "country": "ES",
+                      "domain": "https://yellowcompany.es",
                       "representative": {
                         "name": "Jane Super",
                         "email": "contact@yellowcompany.de",
@@ -952,6 +1016,7 @@
                           "division": "Product line e-mobility",
                           "address": "Triana 123, 9999 Seville",
                           "country": "ES",
+                          "domain": "https://yellowcompany.es",
                           "representative": {
                             "name": "Jane Super",
                             "email": "contact@yellowcompany.de",
@@ -998,6 +1063,16 @@
                           "pattern": "^[A-Z][A-Z]$",
                           "examples": [
                             "ES"
+                          ]
+                        },
+                        "domain": {
+                          "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/domain",
+                          "type": "string",
+                          "title": "Domain",
+                          "description": "The domain of the third party (recipient) as a url starting with protocol.",
+                          "pattern": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$",
+                          "examples": [
+                            "https://yellowcompany.es"
                           ]
                         },
                         "representative": {
@@ -1052,6 +1127,16 @@
                           "examples": [
                             "Marketing content provider"
                           ]
+                        },
+                        "url": {
+                          "type": "array",
+                          "minItems": 1,
+                          "uniqueItems": true,
+                          "items": {
+                            "type": "string",
+                            "format": "uri-reference",
+                            "example": "bikes-advertising.de"
+                          }
                         }
                       },
                       "required": [
@@ -1639,7 +1724,9 @@
         {
           "available": true,
           "description": "Data access is possible through...",
-          "url": "https://green-bikes.de/access",
+          "url": [
+            "https://green-bikes.de/access"
+          ],
           "email": "access@greencompany.de",
           "identificationEvidences": [
             "ID card copy",
@@ -1678,13 +1765,21 @@
         },
         "url": {
           "$id": "#/properties/accessAndDataPortability/properties/url",
-          "type": "string",
+          "type": "array",
           "title": "Url",
           "description": "URL to relevant resources such as access portals.",
           "format": "uri-reference",
           "examples": [
-            "https://green-bikes.de/access"
-          ]
+            [
+              "https://green-bikes.de/access"
+            ]
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "example": "https://green-bikes.de/access",
+            "format": "uri-reference"
+          }
         },
         "email": {
           "$id": "#/properties/accessAndDataPortability/properties/email",
@@ -1772,8 +1867,10 @@
             "json"
           ],
           "examples": [
-            "json",
-            "xml"
+            [
+              "json",
+              "xml"
+            ]
           ],
           "items": {
             "anyOf": [
@@ -1805,8 +1902,11 @@
             "sources": [
               {
                 "description": "This information could be retrieved from...",
-                "url": "https://blueCompany.org",
-                "publiclyAvailable": false
+                "url": [
+                  "https://blueCompany.org"
+                ],
+                "publiclyAvailable": false,
+                "origin": "received"
               }
             ]
           }
@@ -1825,8 +1925,11 @@
                 "sources": [
                   {
                     "description": "This information could be retrieved from...",
-                    "url": "https://blueCompany.org",
-                    "publiclyAvailable": false
+                    "url": [
+                      "https://blueCompany.org"
+                    ],
+                    "publiclyAvailable": false,
+                    "origin": "received"
                   }
                 ]
               }
@@ -1859,8 +1962,11 @@
                   [
                     {
                       "description": "This information could be retrieved from...",
-                      "url": "https://blueCompany.org",
-                      "publiclyAvailable": false
+                      "url": [
+                        "https://blueCompany.org"
+                      ],
+                      "publiclyAvailable": false,
+                      "origin": "received"
                     }
                   ]
                 ],
@@ -1869,12 +1975,15 @@
                   "anyOf": [
                     {
                       "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0",
-                      "title": "First anyOf",
+                      "title": "First anyOf Sources",
                       "examples": [
                         {
                           "description": "This information could be retrieved from...",
-                          "url": "https://blueCompany.org",
-                          "publiclyAvailable": false
+                          "url": [
+                            "https://blueCompany.org"
+                          ],
+                          "publiclyAvailable": false,
+                          "origin": "received"
                         }
                       ],
                       "properties": {
@@ -1889,13 +1998,20 @@
                         },
                         "url": {
                           "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/url",
-                          "type": "string",
+                          "type": "array",
                           "title": "Url",
                           "description": "URL (reference) where the data is taken from.",
                           "format": "uri-reference",
                           "examples": [
                             "https://blueCompany.org"
-                          ]
+                          ],
+                          "items": {
+                            "type": "string",
+                            "format": "uri-reference",
+                            "example": [
+                              "https://blueCompany.org"
+                            ]
+                          }
                         },
                         "publiclyAvailable": {
                           "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/publiclyAvailable",
@@ -1907,12 +2023,27 @@
                             false,
                             true
                           ]
+                        },
+                        "origin": {
+                          "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/origin",
+                          "type": "string",
+                          "title": "Origin",
+                          "description": "How was the data obtained?",
+                          "enum": [
+                            "received",
+                            "observed",
+                            "inferred"
+                          ],
+                          "examples": [
+                            "received"
+                          ]
                         }
                       },
                       "required": [
                         "description",
                         "url",
-                        "publiclyAvailable"
+                        "publiclyAvailable",
+                        "origin"
                       ]
                     }
                   ],
@@ -1941,7 +2072,9 @@
         {
           "available": true,
           "description": "For the right to information please use this contact form and...",
-          "url": "https://greencompany.org/rightToInformation",
+          "url": [
+            "https://greencompany.org/rightToInformation"
+          ],
           "email": "contact@greencompany.de",
           "identificationEvidences": [
             "ID card copy",
@@ -1986,13 +2119,21 @@
         },
         "url": {
           "$id": "#/properties/rightToInformation/properties/url",
-          "type": "string",
+          "type": "array",
           "title": "Url",
           "description": "URL to an online portal.",
           "format": "uri-reference",
           "examples": [
-            "https://greencompany.org/rightToInformation"
-          ]
+            [
+              "https://greencompany.org/rightToInformation"
+            ]
+          ],
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri-reference",
+            "example": "https://greencompany.org/rightToInformation"
+          }
         },
         "email": {
           "$id": "#/properties/rightToInformation/properties/email",
@@ -2040,7 +2181,9 @@
         {
           "available": true,
           "description": "For the right to rectification please use this contact form and...",
-          "url": "https://greencompany.org/rights",
+          "url": [
+            "https://greencompany.org/rights"
+          ],
           "email": "contact@greencompany.de",
           "identificationEvidences": [
             "ID card copy",
@@ -2085,12 +2228,21 @@
         },
         "url": {
           "$id": "#/properties/rightToRectificationOrDeletion/properties/url",
-          "type": "string",
+          "type": "array",
           "title": "Url",
           "format": "uri-reference",
           "examples": [
-            "https://greencompany.org/rights"
-          ]
+            [
+              "https://greencompany.org/rights"
+            ]
+          ],
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "example": "https://greencompany.org/rights",
+            "format": "uri-reference"
+          }
         },
         "email": {
           "$id": "#/properties/rightToRectificationOrDeletion/properties/email",
@@ -2138,7 +2290,9 @@
         {
           "available": true,
           "description": "Data portability is only possible when...",
-          "url": "https://greencompany.org/rights",
+          "url": [
+            "https://greencompany.org/rights"
+          ],
           "email": "contact@greencompany.de",
           "identificationEvidences": [
             "ID card copy"
@@ -2181,12 +2335,21 @@
         },
         "url": {
           "$id": "#/properties/rightToDataPortability/properties/url",
-          "type": "string",
+          "type": "array",
           "title": "Url",
           "format": "uri-reference",
           "examples": [
-            "https://greencompany.org/rights"
-          ]
+            [
+              "https://greencompany.org/rights"
+            ]
+          ],
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri-reference",
+            "example": "https://greencompany.org/rights"
+          }
         },
         "email": {
           "$id": "#/properties/rightToDataPortability/properties/email",
@@ -2232,7 +2395,9 @@
         {
           "available": true,
           "description": "For the right to withdraw consent please use this contact form and...",
-          "url": "https://greencompany.org/rights",
+          "url": [
+            "https://greencompany.org/rights"
+          ],
           "email": "contact@greencompany.de",
           "identificationEvidences": [
             "Email verification"
@@ -2275,12 +2440,21 @@
         },
         "url": {
           "$id": "#/properties/rightToWithdrawConsent/properties/url",
-          "type": "string",
+          "type": "array",
           "title": "Url",
           "format": "uri-reference",
           "examples": [
-            "https://greencompany.org/rights"
-          ]
+            [
+              "https://greencompany.org/rights"
+            ]
+          ],
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri-reference",
+            "example": "https://greencompany.org/rights"
+          }
         },
         "email": {
           "$id": "#/properties/rightToWithdrawConsent/properties/email",
@@ -2326,7 +2500,9 @@
         {
           "available": true,
           "description": "For the right to complain please use this contact form and...",
-          "url": "https://greencompany.org/rights",
+          "url": [
+            "https://greencompany.org/rights"
+          ],
           "email": "contact@greencompany.de",
           "identificationEvidences": [
             "ID card copy",
@@ -2379,12 +2555,21 @@
         },
         "url": {
           "$id": "#/properties/rightToComplain/properties/url",
-          "type": "string",
+          "type": "array",
           "title": "Url",
           "format": "uri-reference",
           "examples": [
-            "https://greencompany.org/rights"
-          ]
+            [
+              "https://greencompany.org/rights"
+            ]
+          ],
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri-reference",
+            "example": "https://greencompany.org/rights"
+          }
         },
         "email": {
           "$id": "#/properties/rightToComplain/properties/email",

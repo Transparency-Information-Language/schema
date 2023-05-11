@@ -7,7 +7,9 @@
     {
       "available": true,
       "description": "For the right to rectification please use this contact form and...",
-      "url": "https://greencompany.org/rights",
+      "url": [
+        "https://greencompany.org/rights"
+      ],
       "email": "contact@greencompany.de",
       "identificationEvidences": [
         "ID card copy",
@@ -52,12 +54,21 @@
     },
     "url": {
       "$id": "#/properties/rightToRectificationOrDeletion/properties/url",
-      "type": "string",
+      "type": "array",
       "title": "Url",
       "format": "uri-reference",
       "examples": [
-        "https://greencompany.org/rights"
-      ]
+        [
+          "https://greencompany.org/rights"
+        ]
+      ],
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "example": "https://greencompany.org/rights",
+        "format": "uri-reference"
+      }
     },
     "email": {
       "$id": "#/properties/rightToRectificationOrDeletion/properties/email",

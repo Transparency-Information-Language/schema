@@ -7,7 +7,9 @@
     {
       "available": true,
       "description": "For the right to withdraw consent please use this contact form and...",
-      "url": "https://greencompany.org/rights",
+      "url": [
+        "https://greencompany.org/rights"
+      ],
       "email": "contact@greencompany.de",
       "identificationEvidences": [
         "Email verification"
@@ -50,12 +52,21 @@
     },
     "url": {
       "$id": "#/properties/rightToWithdrawConsent/properties/url",
-      "type": "string",
+      "type": "array",
       "title": "Url",
       "format": "uri-reference",
       "examples": [
-        "https://greencompany.org/rights"
-      ]
+        [
+          "https://greencompany.org/rights"
+        ]
+      ],
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri-reference",
+        "example": "https://greencompany.org/rights"
+      }
     },
     "email": {
       "$id": "#/properties/rightToWithdrawConsent/properties/email",

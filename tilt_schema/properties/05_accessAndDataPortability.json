@@ -7,7 +7,9 @@
     {
       "available": true,
       "description": "Data access is possible through...",
-      "url": "https://green-bikes.de/access",
+      "url": [
+        "https://green-bikes.de/access"
+      ],
       "email": "access@greencompany.de",
       "identificationEvidences": [
         "ID card copy",
@@ -46,13 +48,21 @@
     },
     "url": {
       "$id": "#/properties/accessAndDataPortability/properties/url",
-      "type": "string",
+      "type": "array",
       "title": "Url",
       "description": "URL to relevant resources such as access portals.",
       "format": "uri-reference",
       "examples": [
-        "https://green-bikes.de/access"
-      ]
+        [
+          "https://green-bikes.de/access"
+        ]
+      ],
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "example": "https://green-bikes.de/access",
+        "format": "uri-reference"
+      }
     },
     "email": {
       "$id": "#/properties/accessAndDataPortability/properties/email",
@@ -140,8 +150,10 @@
         "json"
       ],
       "examples": [
-        "json",
-        "xml"
+        [
+          "json",
+          "xml"
+        ]
       ],
       "items": {
         "anyOf": [

@@ -11,8 +11,11 @@
         "sources": [
           {
             "description": "This information could be retrieved from...",
-            "url": "https://blueCompany.org",
-            "publiclyAvailable": false
+            "url": [
+              "https://blueCompany.org"
+            ],
+            "publiclyAvailable": false,
+            "origin": "received"
           }
         ]
       }
@@ -31,8 +34,11 @@
             "sources": [
               {
                 "description": "This information could be retrieved from...",
-                "url": "https://blueCompany.org",
-                "publiclyAvailable": false
+                "url": [
+                  "https://blueCompany.org"
+                ],
+                "publiclyAvailable": false,
+                "origin": "received"
               }
             ]
           }
@@ -65,8 +71,11 @@
               [
                 {
                   "description": "This information could be retrieved from...",
-                  "url": "https://blueCompany.org",
-                  "publiclyAvailable": false
+                  "url": [
+                    "https://blueCompany.org"
+                  ],
+                  "publiclyAvailable": false,
+                  "origin": "received"
                 }
               ]
             ],
@@ -75,12 +84,15 @@
               "anyOf": [
                 {
                   "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0",
-                  "title": "First anyOf",
+                  "title": "First anyOf Sources",
                   "examples": [
                     {
                       "description": "This information could be retrieved from...",
-                      "url": "https://blueCompany.org",
-                      "publiclyAvailable": false
+                      "url": [
+                        "https://blueCompany.org"
+                      ],
+                      "publiclyAvailable": false,
+                      "origin": "received"
                     }
                   ],
                   "properties": {
@@ -95,13 +107,20 @@
                     },
                     "url": {
                       "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/url",
-                      "type": "string",
+                      "type": "array",
                       "title": "Url",
                       "description": "URL (reference) where the data is taken from.",
                       "format": "uri-reference",
                       "examples": [
                         "https://blueCompany.org"
-                      ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "example": [
+                          "https://blueCompany.org"
+                        ]
+                      }
                     },
                     "publiclyAvailable": {
                       "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/publiclyAvailable",
@@ -113,12 +132,27 @@
                         false,
                         true
                       ]
+                    },
+                    "origin": {
+                      "$id": "#/properties/sources/items/anyOf/0/properties/sources/items/anyOf/0/properties/origin",
+                      "type": "string",
+                      "title": "Origin",
+                      "description": "How was the data obtained?",
+                      "enum": [
+                        "received",
+                        "observed",
+                        "inferred"
+                      ],
+                      "examples": [
+                        "received"
+                      ]
                     }
                   },
                   "required": [
                     "description",
                     "url",
-                    "publiclyAvailable"
+                    "publiclyAvailable",
+                    "origin"
                   ]
                 }
               ],

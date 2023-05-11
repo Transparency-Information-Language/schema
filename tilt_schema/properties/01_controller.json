@@ -14,6 +14,10 @@
         "email": "contact@greencompany.de",
         "phone": "0049 151 1234 5678"
       },
+      "url": [
+        "https://green-bikes.de",
+        "https://bikes-that-are-green.de"
+      ],
       "sector": "J"
     }
   ],
@@ -112,11 +116,30 @@
         }
       }
     },
+    "url": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "The URI(s) to identify this controller. Multiple URs are possible accomodating for multiple representation of the same entity",
+      "items": {
+        "type": "string",
+        "format": "uri-reference",
+        "example": "https://green-bikes.de"
+      },
+      "examples": [
+        [
+          "https://green-bikes.de",
+          "https://bikes-that-are-green.de"
+        ]
+      ]
+    },
     "sector": {
       "$id": "#/properties/controller/properties/sector",
       "type": "string",
       "description": "The industry of the controller according to UN ISIC Rev. 4",
-      "example": "J",
+      "examples": [
+        "J"
+      ],
       "maxLength": 1,
       "pattern": "[A-Z]"
     }

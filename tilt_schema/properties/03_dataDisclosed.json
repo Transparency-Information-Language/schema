@@ -7,7 +7,9 @@
     [
       {
         "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
-        "category": "E-mail address",
+        "category": [
+          "E-mail address"
+        ],
         "purposes": [
           {
             "purpose": "Marketing",
@@ -36,6 +38,7 @@
             "division": "Product line e-mobility",
             "address": "Triana 123, 9999 Seville",
             "country": "ES",
+            "domain": "https://yellowcompany.es",
             "representative": {
               "name": "Jane Super",
               "email": "contact@yellowcompany.de",
@@ -116,6 +119,7 @@
                 "division": "Product line e-mobility",
                 "address": "Triana 123, 9999 Seville",
                 "country": "ES",
+                "domain": "https://yellowcompany.es",
                 "representative": {
                   "name": "Jane Super",
                   "email": "contact@yellowcompany.de",
@@ -172,7 +176,9 @@
             "title": "Category",
             "description": "The data (category/categories) the data disclosed are referred to. Can be multiple",
             "examples": [
-              "E-mail address"
+              [
+                "E-mail address"
+              ]
             ],
             "items": {
               "type": "string"
@@ -372,6 +378,7 @@
                   "division": "Product line e-mobility",
                   "address": "Triana 123, 9999 Seville",
                   "country": "ES",
+                  "domain": "https://yellowcompany.es",
                   "representative": {
                     "name": "Jane Super",
                     "email": "contact@yellowcompany.de",
@@ -396,6 +403,7 @@
                       "division": "Product line e-mobility",
                       "address": "Triana 123, 9999 Seville",
                       "country": "ES",
+                      "domain": "https://yellowcompany.es",
                       "representative": {
                         "name": "Jane Super",
                         "email": "contact@yellowcompany.de",
@@ -442,6 +450,16 @@
                       "pattern": "^[A-Z][A-Z]$",
                       "examples": [
                         "ES"
+                      ]
+                    },
+                    "domain": {
+                      "$id": "#/properties/dataDisclosed/items/anyOf/0/properties/recipients/items/anyOf/0/properties/domain",
+                      "type": "string",
+                      "title": "Domain",
+                      "description": "The domain of the third party (recipient) as a url starting with protocol.",
+                      "pattern": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$",
+                      "examples": [
+                        "https://yellowcompany.es"
                       ]
                     },
                     "representative": {
@@ -496,6 +514,16 @@
                       "examples": [
                         "Marketing content provider"
                       ]
+                    },
+                    "url": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "example": "bikes-advertising.de"
+                      }
                     }
                   },
                   "required": [

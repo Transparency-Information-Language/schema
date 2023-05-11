@@ -12,8 +12,10 @@
       "version": 2,
       "language": "de",
       "status": "active",
-      "url": "https://green-bikes.de/privacy",
-      "_hash": "d732a793562a3e5dc57645a8"
+      "url": [
+        "https://green-bikes.de/privacy"
+      ],
+      "_hash": "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
     }
   ],
   "required": [
@@ -102,13 +104,22 @@
     },
     "url": {
       "$id": "#/properties/meta/properties/url",
-      "type": "string",
+      "type": "array",
       "title": "Url",
-      "description": "URL to this schema.",
+      "description": "URL(s) to the privacy policy of this schema. Multiple URLs can be used in case of potential sub-entities pointing to the same entity",
       "format": "uri-reference",
       "examples": [
-        "https://green-bikes.de/privacy"
-      ]
+        [
+          "https://green-bikes.de/privacy"
+        ]
+      ],
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri-reference",
+        "example": "https://green-bikes.de/privacy"
+      }
     },
     "_hash": {
       "$id": "#/properties/meta/properties/_hash",

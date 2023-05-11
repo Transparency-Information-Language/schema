@@ -7,7 +7,9 @@
     {
       "available": true,
       "description": "For the right to information please use this contact form and...",
-      "url": "https://greencompany.org/rightToInformation",
+      "url": [
+        "https://greencompany.org/rightToInformation"
+      ],
       "email": "contact@greencompany.de",
       "identificationEvidences": [
         "ID card copy",
@@ -52,13 +54,21 @@
     },
     "url": {
       "$id": "#/properties/rightToInformation/properties/url",
-      "type": "string",
+      "type": "array",
       "title": "Url",
       "description": "URL to an online portal.",
       "format": "uri-reference",
       "examples": [
-        "https://greencompany.org/rightToInformation"
-      ]
+        [
+          "https://greencompany.org/rightToInformation"
+        ]
+      ],
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "format": "uri-reference",
+        "example": "https://greencompany.org/rightToInformation"
+      }
     },
     "email": {
       "$id": "#/properties/rightToInformation/properties/email",
