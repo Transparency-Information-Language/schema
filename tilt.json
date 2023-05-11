@@ -3,12 +3,14 @@
     "_id": "f1424f86-ca0f-4f0c-9438-43cc00509931",
     "name": "Green Company",
     "created": "2020-04-03T15:53:05.929588",
-    "modified": "2020-04-03T15: 53: 05.929588",
+    "modified": "2020-04-03T15:53:05.929588",
     "version": 2,
     "language": "de",
     "status": "active",
-    "url": "https://green-bikes.de/privacy",
-    "_hash": "d732a793562a3e5dc57645a8"
+    "url": [
+      "https://green-bikes.de/privacy"
+    ],
+    "_hash": "be81d309088dde861ab5fc4d62d4bbfe0aeef3e3baf2f5362c1086f451f0a1e7"
   },
   "controller": {
     "name": "Green Company AG",
@@ -19,7 +21,12 @@
       "name": "Jane Super",
       "email": "contact@greencompany.de",
       "phone": "0049 151 1234 5678"
-    }
+    },
+    "url": [
+      "https://green-bikes.de",
+      "https://bikes-that-are-green.de"
+    ],
+    "sector": "J"
   },
   "dataProtectionOfficer": {
     "name": "Jane Super",
@@ -62,6 +69,7 @@
           "division": "Product line e-mobility",
           "address": "Triana 123, 9999 Seville",
           "country": "ES",
+          "domain": "https://yellowcompany.es",
           "representative": {
             "name": "Jane Super",
             "email": "contact@yellowcompany.de",
@@ -126,7 +134,9 @@
   "accessAndDataPortability": {
     "available": true,
     "description": "Data access is possible through...",
-    "url": "https://green-bikes.de/access",
+    "url": [
+      "https://green-bikes.de/access"
+    ],
     "email": "access@greencompany.de",
     "identificationEvidences": [
       "ID card copy",
@@ -145,8 +155,11 @@
       "sources": [
         {
           "description": "This information could be retrieved from...",
-          "url": "https://blueCompany.org",
-          "publiclyAvailable": false
+          "url": [
+            "https://blueCompany.org"
+          ],
+          "publiclyAvailable": false,
+          "origin": "received"
         }
       ]
     }
@@ -154,7 +167,9 @@
   "rightToInformation": {
     "available": true,
     "description": "For the right to information please use this contact form and...",
-    "url": "https://greencompany.org/rightToInformation",
+    "url": [
+      "https://greencompany.org/rightToInformation"
+    ],
     "email": "contact@greencompany.de",
     "identificationEvidences": [
       "ID card copy",
@@ -164,7 +179,9 @@
   "rightToRectificationOrDeletion": {
     "available": true,
     "description": "For the right to rectification please use this contact form and...",
-    "url": "https://greencompany.org/rights",
+    "url": [
+      "https://greencompany.org/rights"
+    ],
     "email": "contact@greencompany.de",
     "identificationEvidences": [
       "ID card copy",
@@ -174,7 +191,9 @@
   "rightToDataPortability": {
     "available": false,
     "description": "Data portability is only possible when...",
-    "url": "https://greencompany.org/rights",
+    "url": [
+      "https://greencompany.org/rights"
+    ],
     "email": "contact@greencompany.de",
     "identificationEvidences": [
       "ID card copy"
@@ -183,7 +202,9 @@
   "rightToWithdrawConsent": {
     "available": true,
     "description": "For the right to withdraw consent please use this contact form and...",
-    "url": "https://greencompany.org/rights",
+    "url": [
+      "https://greencompany.org/rights"
+    ],
     "email": "contact@greencompany.de",
     "identificationEvidences": [
       "Email verification"
@@ -192,7 +213,9 @@
   "rightToComplain": {
     "available": true,
     "description": "For the right to complain please use this contact form and...",
-    "url": "https://greencompany.org/rights",
+    "url": [
+      "https://greencompany.org/rights"
+    ],
     "email": "contact@greencompany.de",
     "identificationEvidences": [
       "ID card copy",
